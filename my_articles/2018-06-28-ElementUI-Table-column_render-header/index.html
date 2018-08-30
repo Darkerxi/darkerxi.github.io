@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+
+
+
+
+
+
+
+<head>
+  
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+
+  
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>ElementUI-Table-column_render-header | darkerxi</title>
+<meta name="generator" content="Jekyll v3.8.3" />
+<meta property="og:title" content="ElementUI-Table-column_render-header" />
+<meta name="author" content="darkerxi" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="ElementUI的Table表格，官方网站上提供了很多样式，但是在日常开发中还会碰到各种情况，显然官方提供的是不能满足需求的。那么，我们就根据自己的需求对table进行改造。" />
+<meta property="og:description" content="ElementUI的Table表格，官方网站上提供了很多样式，但是在日常开发中还会碰到各种情况，显然官方提供的是不能满足需求的。那么，我们就根据自己的需求对table进行改造。" />
+<link rel="canonical" href="https://darkerxi.github.io/my_articles/2018-06-28-ElementUI-Table-column_render-header/" />
+<meta property="og:url" content="https://darkerxi.github.io/my_articles/2018-06-28-ElementUI-Table-column_render-header/" />
+<meta property="og:site_name" content="darkerxi" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-06-28T00:00:00+08:00" />
+<script type="application/ld+json">
+{"description":"ElementUI的Table表格，官方网站上提供了很多样式，但是在日常开发中还会碰到各种情况，显然官方提供的是不能满足需求的。那么，我们就根据自己的需求对table进行改造。","author":{"@type":"Person","name":"darkerxi"},"@type":"BlogPosting","url":"https://darkerxi.github.io/my_articles/2018-06-28-ElementUI-Table-column_render-header/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://darkerxi.github.io/assets/icons/icon.png"},"name":"darkerxi"},"headline":"ElementUI-Table-column_render-header","dateModified":"2018-06-28T00:00:00+08:00","datePublished":"2018-06-28T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://darkerxi.github.io/my_articles/2018-06-28-ElementUI-Table-column_render-header/"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+  
+
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="darkerxi">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<meta name="application-name" content="darkerxi">
+<meta name="msapplication-config" content="/assets/ieconfig.xml">
+
+
+<meta name="theme-color" content="rgb(25,55,71)">
+
+
+<meta name="generator" content="Hydejack v8.0.0" />
+
+
+
+
+<link rel="alternate" href="https://darkerxi.github.io/my_articles/2018-06-28-ElementUI-Table-column_render-header/" hreflang="en">
+
+<link rel="shortcut icon" href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/icon.png">
+
+<link rel="manifest" href="/assets/manifest.json">
+
+
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+
+
+
+
+
+
+<link href="/assets/js/hydejack-8.0.0.js" id="_hrefJS">
+<link href="/assets/bower_components/fontfaceobserver/fontfaceobserver.standalone.js" id="_hrefFFO">
+<link href="/assets/bower_components/katex/dist/katex.min.js" id="_hrefKatexJS">
+<link href="/assets/bower_components/katex/dist/katex.min.css" id="_hrefKatexCSS">
+<link href="/assets/img/swipe.svg" id="_hrefSwipeSVG">
+
+<script>
+  !function(e,t){"use strict";function n(e,t,n,r){e.addEventListener?e.addEventListener(t,n,r):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n}e.loadJS=function(e,r){var o=t.createElement("script");o.src=e,r&&n(o,"load",r,{once:!0});var a=t.scripts[0];return a.parentNode.insertBefore(o,a),o},e._loaded=!1,e.loadJSDeferred=function(r,o){function a(){e._loaded=!0,o&&n(d,"load",o,{once:!0});var r=t.scripts[0];r.parentNode.insertBefore(d,r)}var d=t.createElement("script");return d.src=r,e._loaded?a():n(e,"load",a,{once:!0}),d},e.setRel=e.setRelStylesheet=function(e){function n(){this.rel="stylesheet"}var r=t.getElementById(e);r.addEventListener?r.addEventListener("load",n,{once:!0}):r.onload=n}}(window,document);
+!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+
+  window._noPushState = false;
+  window._noDrawer = false;
+  
+    !function(w, d) {
+      loadJS(document.getElementById('_hrefFFO').href, function() {
+        if ('Promise' in w) Promise.all([
+          new FontFaceObserver('Noto Sans').load(),
+          new FontFaceObserver('Roboto Slab').load(),
+        ]).then(function f() { d.body.className += ' font-active'; }, function() {});
+      });
+    }(window, document);
+  
+</script>
+
+<!--[if gt IE 8]><!---->
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="/assets/css/hydejack-8.0.0.css">
+  <link rel="stylesheet" href="/assets/icomoon/style.css">
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400|Noto+Sans:400,400i,700,700i">
+    <noscript>
+      <style>
+        html { font-family: Noto Sans, Helvetica, Arial, sans-serif!important; }
+        h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .heading { font-family: Roboto Slab, Helvetica, Arial, sans-serif!important; }
+      </style>
+    </noscript>
+  
+
+
+<style id="_pageStyle">
+
+.content a:not(.btn){color:#4fb1ba;border-color:rgba(79,177,186,0.2)}.content a:not(.btn):hover{border-color:#4fb1ba}:focus{outline-color:#4fb1ba}.btn-primary{color:#fff;background-color:#4fb1ba;border-color:#4fb1ba}.btn-primary:focus,.btn-primary.focus,.form-control:focus,.form-control.focus{box-shadow:0 0 0 3px rgba(79,177,186,0.5)}.btn-primary:hover,.btn-primary.hover{color:#fff;background-color:#409ba3;border-color:#409ba3}.btn-primary:disabled,.btn-primary.disabled{color:#fff;background-color:#4fb1ba;border-color:#4fb1ba}.btn-primary:active,.btn-primary.active{color:#fff;background-color:#409ba3;border-color:#409ba3}::selection{color:#fff;background:#4fb1ba}::-moz-selection{color:#fff;background:#4fb1ba}
+
+</style>
+
+<!--<![endif]-->
+
+
+
+
+</head>
+
+<body>
+  <div class="navbar fixed-top">
+  <div class="content">
+    <div class="nav-btn-bar">
+      <span class="sr-only">Jump to:</span>
+      <a id="_menu" class="nav-btn no-hover" href="#_navigation">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-menu"></span>
+      </a>
+    </div>
+  </div>
+</div>
+<hr class="sr-only" hidden />
+
+
+<hy-push-state
+  replace-ids="_main"
+  link-selector="a[href]:not([href*='/assets/']):not(.external):not(.no-push-state)"
+  duration="250"
+  script-selector="script:not([type^='math/tex'])"
+  prefetch
+>
+  
+    <main
+  id="_main"
+  class="content fade-in layout-post"
+  role="main"
+  data-color="rgb(79,177,186)"
+  data-theme-color="rgb(25,55,71)"
+  
+    data-image="/assets/img/sidebar-bg.jpg"
+    data-overlay
+  
+  >
+  
+
+
+
+
+<article id="post-my_articles-ElementUI-Table-column_render-header" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title">
+      
+        ElementUI-Table-column_render-header
+      
+    </h1>
+
+    <p class="post-date heading">
+      
+      <time datetime="2018-06-28T00:00:00+08:00">28 Jun 2018</time>
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+in <a href="/my-articles/" class="flip-title">Blog</a>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+    </p>
+
+    
+    
+
+    <!-- 
+
+
+
+  <div class="hr pb0"></div>
+
+ -->
+  </header>
+
+
+  
+    <p>ElementUI的Table表格，官方网站上提供了很多样式，但是在日常开发中还会碰到各种情况，显然官方提供的是不能满足需求的。那么，我们就根据自己的需求对table进行改造。</p>
+
+<p>先丢出关于Table的官方文档的传送门，请戳这里→ <a href="http://element-cn.eleme.io/#/zh-CN/component/table" target="_blank">http://element-cn.eleme.io/#/zh-CN/component/table</a>
+官方对Table相关的Attributes介绍的不是很详细，对于不太熟悉人，很难搞明白，实际操作起来很难受。</p>
+
+<p>下面就关于<strong>Table-column</strong>中<strong>render-header</strong>的运用，稍作说明，具体请移步此项目文件中查看(文章最下面有传送门)。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>参数</th>
+      <th>说明</th>
+      <th>类型</th>
+      <th>可选值</th>
+      <th>默认值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>render-header</td>
+      <td>列标题 Label 区域渲染使用的 Function</td>
+      <td>Function(h, { column, $index })</td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="一自定义表头样式">一、自定义表头样式</h4>
+<p>
+  <hy-img root-margin="512px"  src="/assets/img/articles/ElementUI-Table-column_render-header/tableHead.jpg" alt="自定义表头样式" >
+    <noscript><img re-ignore  src="/assets/img/articles/ElementUI-Table-column_render-header/tableHead.jpg" alt="自定义表头样式" /></noscript>
+    <span class="loading" slot="loading" hidden>
+      <span class="icon-cog"></span>
+    </span>
+  </hy-img></p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">renderHeaderOne</span> <span class="p">(</span><span class="nx">h</span><span class="p">,</span> <span class="p">{</span> <span class="nx">column</span><span class="p">,</span> <span class="nx">$index</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">h</span><span class="p">(</span><span class="s1">'span'</span><span class="p">,</span> <span class="p">[</span>
+    <span class="nx">h</span><span class="p">(</span><span class="s1">'span'</span><span class="p">,</span> <span class="nx">column</span><span class="p">.</span><span class="nx">label</span><span class="p">),</span>
+    <span class="nx">h</span><span class="p">(</span><span class="s1">'span'</span><span class="p">,</span> <span class="p">{</span>
+      <span class="na">class</span><span class="p">:</span> <span class="s1">'errorIcon'</span><span class="p">,</span>
+      <span class="na">on</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">click</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">column</span><span class="p">.</span><span class="nx">label</span><span class="p">}</span><span class="s2">   </span><span class="p">${</span><span class="nx">$index</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">})</span>
+  <span class="p">])</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="二自定义表头样式和整列的拖动">二、自定义表头样式和整列的拖动</h4>
+<p>
+  <hy-img root-margin="512px"  src="/assets/img/articles/ElementUI-Table-column_render-header/tableDrag.gif" alt="自定义表头样式和整列的拖动" >
+    <noscript><img re-ignore  src="/assets/img/articles/ElementUI-Table-column_render-header/tableDrag.gif" alt="自定义表头样式和整列的拖动" /></noscript>
+    <span class="loading" slot="loading" hidden>
+      <span class="icon-cog"></span>
+    </span>
+  </hy-img></p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">renderHeader</span> <span class="p">(</span><span class="nx">h</span><span class="p">,</span> <span class="p">{</span> <span class="nx">column</span><span class="p">,</span> <span class="nx">$index</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="c1">// 这里可以根据$index的值来对自身需求进行修改，</span>
+  <span class="k">return</span> <span class="nx">h</span><span class="p">(</span><span class="s1">'span'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s1">'class'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'thead-cell'</span><span class="p">],</span>
+    <span class="na">on</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">mousedown</span><span class="p">:</span> <span class="p">(</span><span class="nx">$event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleMouseDown</span><span class="p">(</span><span class="nx">$event</span><span class="p">,</span> <span class="nx">column</span><span class="p">)</span> <span class="p">},</span>
+      <span class="na">mouseup</span><span class="p">:</span> <span class="p">(</span><span class="nx">$event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleMouseUp</span><span class="p">(</span><span class="nx">$event</span><span class="p">,</span> <span class="nx">column</span><span class="p">)</span> <span class="p">},</span>
+      <span class="na">mousemove</span><span class="p">:</span> <span class="p">(</span><span class="nx">$event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleMouseMove</span><span class="p">(</span><span class="nx">$event</span><span class="p">,</span> <span class="nx">column</span><span class="p">)</span> <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span> <span class="p">[</span>
+    <span class="nx">h</span><span class="p">(</span><span class="s1">'span'</span><span class="p">,</span> <span class="p">[</span>
+      <span class="nx">h</span><span class="p">(</span><span class="s1">'span'</span><span class="p">,</span>
+        <span class="p">{</span>
+          <span class="na">class</span><span class="p">:</span> <span class="nx">$index</span> <span class="o">===</span> <span class="mi">0</span> <span class="p">?</span> <span class="s1">'el-icon-star-off'</span> <span class="p">:</span> <span class="nx">$index</span> <span class="o">===</span> <span class="mi">1</span> <span class="p">?</span> <span class="s1">'el-icon-time'</span> <span class="p">:</span> <span class="nx">$index</span> <span class="o">===</span> <span class="mi">2</span> <span class="p">?</span> <span class="s1">'el-icon-location'</span> <span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+          <span class="na">style</span><span class="p">:</span> <span class="p">{</span>
+            <span class="c1">// marginLeft: ''</span>
+          <span class="p">},</span>
+          <span class="na">on</span><span class="p">:</span> <span class="p">{</span>
+          <span class="p">}</span>
+      <span class="p">}),</span>
+      <span class="nx">h</span><span class="p">(</span><span class="s1">'span'</span><span class="p">,</span> <span class="nx">column</span><span class="p">.</span><span class="nx">label</span><span class="p">)</span>
+    <span class="p">]),</span>
+    <span class="nx">h</span><span class="p">(</span><span class="s1">'span'</span><span class="p">,</span> <span class="p">{</span>
+      <span class="s1">'class'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'virtual'</span><span class="p">]</span>
+    <span class="p">})</span>
+  <span class="p">])</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>DEMO传送门，请戳这里→ <a href="https://github.com/Darkerxi/ElementUI-Table-column_render-header" target="_blank">https://github.com/Darkerxi/ElementUI-Table-column_render-header</a></p>
+
+    
+  
+</article>
+
+
+<hr class="dingbat related" />
+
+
+
+
+  
+    
+
+
+
+
+<aside class="related mb4" role="complementary">
+  <h2 class="hr">Related Posts</h2>
+
+  <ul class="related-posts">
+    
+      
+
+
+<li>
+  <a href="/my_articles/2018-06-03-ElementUI-Upload-qiniuyun/" class="h4 flip-title">
+    <span>ElementUI-Upload-qiniuyun</span>
+  </a>
+  <time class="heading faded fine" datetime="2018-06-03T00:00:00+08:00">03 Jun 2018</time>
+</li>
+
+    
+      
+
+
+<li>
+  <a href="/my_articles/2018-05-24-vue-router-h5-history/" class="h4 flip-title">
+    <span>vue-router-h5-history</span>
+  </a>
+  <time class="heading faded fine" datetime="2018-05-24T00:00:00+08:00">24 May 2018</time>
+</li>
+
+    
+      
+
+
+<li>
+  <a href="/my_articles/2018-05-20-webpack_externals-Vue/" class="h4 flip-title">
+    <span>配置webpack中externals来减少打包后vendor.js的体积</span>
+  </a>
+  <time class="heading faded fine" datetime="2018-05-20T00:00:00+08:00">20 May 2018</time>
+</li>
+
+    
+  </ul>
+</aside>
+
+
+  
+
+
+  
+
+
+  
+<footer role="contentinfo">
+  <hr/>
+  
+    <p><small class="copyright">Copyright © 2018 Darkerxi
+</small></p>
+  
+  
+  <!-- <p><small>Powered by Jekyll & Hydejack.</small></p> -->
+  <hr class="sr-only"/>
+</footer>
+
+
+</main>
+
+    <hy-drawer
+  class=""
+  align="left"
+  threshold="10"
+  touch-events
+  prevent-default
+>
+  <header id="_sidebar" class="sidebar" role="banner">
+    
+    <div class="sidebar-bg sidebar-overlay" style="background-color:rgb(25,55,71);background-image:url(/assets/img/sidebar-bg.jpg)"></div>
+
+    <div class="sidebar-sticky">
+      <div class="sidebar-about">
+        
+          <a class="no-hover" href="/" tabindex="-1">
+            <img src="/assets/icons/icon.png" class="avatar" alt="darkerxi" re-ignore />
+          </a>
+        
+        <h2 class="h1"><a href="/">darkerxi</a></h2>
+        
+        
+          <p class="">
+            “Und wenn du lange in einen Abgrund blickst, blickt der Abgrund auch in dich hinein”
+
+          </p>
+        
+      </div>
+
+      <nav class="sidebar-nav heading" role="navigation">
+        <span class="sr-only">Navigation:</span>
+<ul>
+  
+  
+  
+  
+    
+      <li>
+        <a
+          id="_navigation"
+          href="/my_articles/"
+          class="sidebar-nav-item active"
+          
+          >
+          Blog
+        </a>
+      </li>
+    
+  
+    
+      <li>
+        <a
+          
+          href="/my_tools/"
+          class="sidebar-nav-item"
+          
+          >
+          Tools
+        </a>
+      </li>
+    
+  
+    
+      <li>
+        <a
+          
+          href="/about/"
+          class="sidebar-nav-item"
+          
+          >
+          About
+        </a>
+      </li>
+    
+  
+</ul>
+
+      </nav>
+
+      
+
+      <div class="sidebar-social">
+        <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/darkerxi" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:darkerxi@163.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+      </div>
+    </div>
+  </header>
+</hy-drawer>
+<hr class="sr-only" hidden />
+
+  
+</hy-push-state>
+
+
+  <!--[if gt IE 9]><!---->
+  <script>window.loadJSDeferred(document.getElementById('_hrefJS').href);</script>
+  
+
+  <!--<![endif]-->
+
+  
+
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      
+        navigator.serviceWorker.register('/sw.js')
+          .then(r => r.update())
+          .catch(() => {});
+      
+    }
+  </script>
+
+
+
+
+
+
+<h2 class="sr-only" hidden>Templates (for web app):</h2>
+
+<template id="_animation-template" hidden>
+  <div class="animation-main fixed-top">
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+<template id="_loading-template" hidden>
+  <div class="loading">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+<template id="_error-template" hidden>
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+<template id="_back-template" hidden>
+  <a id="_back" class="back nav-btn no-hover">
+    <span class="sr-only">Back</span>
+    <span class="icon-arrow-left2"></span>
+  </a>
+</template>
+
+<template id="_permalink-template" hidden>
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="icon-link"></span>
+  </a>
+</template>
+
+
+
+
+</body>
+</html>
