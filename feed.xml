@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="https://darkerxi.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://darkerxi.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2018-09-06T15:26:24+08:00</updated><id>https://darkerxi.github.io/</id><title type="html">darkerxi</title><subtitle></subtitle><author><name>darkerxi</name></author><entry><title type="html">ElementUI-Table-column_render-header</title><link href="https://darkerxi.github.io/my_articles/2018-06-28-ElementUI-Table-column_render-header/" rel="alternate" type="text/html" title="ElementUI-Table-column_render-header" /><published>2018-06-28T00:00:00+08:00</published><updated>2018-06-28T00:00:00+08:00</updated><id>https://darkerxi.github.io/my_articles/ElementUI-Table-column_render-header</id><content type="html" xml:base="https://darkerxi.github.io/my_articles/2018-06-28-ElementUI-Table-column_render-header/">&lt;p&gt;ElementUI的Table表格，官方网站上提供了很多样式，但是在日常开发中还会碰到各种情况，显然官方提供的是不能满足需求的。那么，我们就根据自己的需求对table进行改造。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="https://darkerxi.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://darkerxi.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2018-09-12T17:43:03+08:00</updated><id>https://darkerxi.github.io/</id><title type="html">darkerxi</title><subtitle></subtitle><author><name>darkerxi</name></author><entry><title type="html">ElementUI-Table-column_render-header</title><link href="https://darkerxi.github.io/my_articles/2018-06-28-ElementUI-Table-column_render-header/" rel="alternate" type="text/html" title="ElementUI-Table-column_render-header" /><published>2018-06-28T00:00:00+08:00</published><updated>2018-06-28T00:00:00+08:00</updated><id>https://darkerxi.github.io/my_articles/ElementUI-Table-column_render-header</id><content type="html" xml:base="https://darkerxi.github.io/my_articles/2018-06-28-ElementUI-Table-column_render-header/">&lt;p&gt;ElementUI的Table表格，官方网站上提供了很多样式，但是在日常开发中还会碰到各种情况，显然官方提供的是不能满足需求的。那么，我们就根据自己的需求对table进行改造。&lt;/p&gt;
 
 &lt;p&gt;先丢出关于Table的官方文档的传送门，请戳这里→ &lt;a href=&quot;http://element-cn.eleme.io/#/zh-CN/component/table&quot; target=&quot;_blank&quot;&gt;http://element-cn.eleme.io/#/zh-CN/component/table&lt;/a&gt;
 官方对Table相关的Attributes介绍的不是很详细，对于不太熟悉人，很难搞明白，实际操作起来很难受。&lt;/p&gt;
@@ -1392,4 +1392,139 @@ externals 配置选项提供了「从输出的 bundle 中排除依赖」的方�
 
 &lt;p&gt;在打包不同环境下项目的时候，直接用对应的命令&lt;strong&gt;npm run build&lt;/strong&gt;、&lt;strong&gt;npm run build test&lt;/strong&gt;、&lt;strong&gt;npm run build prod&lt;/strong&gt;就可以了，再也不用去文件中修改接口地址了。&lt;/p&gt;
 
-&lt;p&gt;这样我们就可以一劳永逸了，在启动和打包项目的时候一条命令直接搞定。&lt;/p&gt;</content><author><name>darkerxi</name></author><summary type="html">前后端分离的项目开发中，我们有开发环境、测试环境、预生产环境和生产环境。</summary></entry><entry><title type="html">Icomoon</title><link href="https://darkerxi.github.io/my_tools/2017-02-25-icomoon/" rel="alternate" type="text/html" title="Icomoon" /><published>2017-02-25T00:00:00+08:00</published><updated>2017-02-25T00:00:00+08:00</updated><id>https://darkerxi.github.io/my_tools/icomoon</id><content type="html" xml:base="https://darkerxi.github.io/my_tools/2017-02-25-icomoon/">&lt;p&gt;　　IcoMoon提供了一组矢量图标，用于创建&lt;strong&gt;自定义图标字体&lt;/strong&gt;，&lt;strong&gt;SVG精灵&lt;/strong&gt;和&lt;strong&gt;编译Web字体图标集&lt;/strong&gt;。 浏览数千个像素以获得完美图标或导入您自己的矢量。&lt;/p&gt;</content><author><name>darkerxi</name></author><category term="CSS" /><summary type="html">　　IcoMoon提供了一组矢量图标，用于创建自定义图标字体，SVG精灵和编译Web字体图标集。 浏览数千个像素以获得完美图标或导入您自己的矢量。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://darkerxi.github.io/assets/img/tools/icomoon.jpg" /></entry><entry><title type="html">Autoprefixer</title><link href="https://darkerxi.github.io/my_tools/2017-02-11-autoprefixer/" rel="alternate" type="text/html" title="Autoprefixer" /><published>2017-02-11T00:00:00+08:00</published><updated>2017-02-11T00:00:00+08:00</updated><id>https://darkerxi.github.io/my_tools/autoprefixer</id><content type="html" xml:base="https://darkerxi.github.io/my_tools/2017-02-11-autoprefixer/">&lt;p&gt;　　Autoprefixer CSS在线，添加所需的供应商前缀并删除CSS中不必要的内容。&lt;/p&gt;</content><author><name>darkerxi</name></author><category term="CSS3" /><summary type="html">　　Autoprefixer CSS在线，添加所需的供应商前缀并删除CSS中不必要的内容。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://darkerxi.github.io/assets/img/tools/autoprefixer.jpg" /></entry><entry><title type="html">Cmd Markdown</title><link href="https://darkerxi.github.io/my_tools/2016-07-16-cmd-markdown/" rel="alternate" type="text/html" title="Cmd Markdown" /><published>2016-07-16T00:00:00+08:00</published><updated>2016-07-16T00:00:00+08:00</updated><id>https://darkerxi.github.io/my_tools/cmd-markdown</id><content type="html" xml:base="https://darkerxi.github.io/my_tools/2016-07-16-cmd-markdown/">&lt;p&gt;　　Markdown是一种易于记忆和书写的&lt;strong&gt;纯文本标记语言&lt;/strong&gt;。 用户可以使用这些标记以最小的输入成本生成具有高度表现力的文档。&lt;/p&gt;</content><author><name>darkerxi</name></author><category term="editor" /><summary type="html">　　Markdown是一种易于记忆和书写的纯文本标记语言。 用户可以使用这些标记以最小的输入成本生成具有高度表现力的文档。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://darkerxi.github.io/assets/img/tools/markdown.jpg" /></entry><entry><title type="html">Iconfont</title><link href="https://darkerxi.github.io/my_tools/2016-06-12-iconfont/" rel="alternate" type="text/html" title="Iconfont" /><published>2016-06-12T00:00:00+08:00</published><updated>2016-06-12T00:00:00+08:00</updated><id>https://darkerxi.github.io/my_tools/iconfont</id><content type="html" xml:base="https://darkerxi.github.io/my_tools/2016-06-12-iconfont/">&lt;p&gt;　　阿里妈妈 MUX致力于创建&lt;strong&gt;矢量图标管理&lt;/strong&gt;和通信平台。 设计人员将图标上传到Iconfont平台，用户可以&lt;strong&gt;自定义下载多种格式的图标&lt;/strong&gt;，平台还可以将&lt;strong&gt;图标转换为字体&lt;/strong&gt;，方便前端工程师调整和调用。&lt;/p&gt;</content><author><name>darkerxi</name></author><category term="CSS" /><summary type="html">　　阿里妈妈 MUX致力于创建矢量图标管理和通信平台。 设计人员将图标上传到Iconfont平台，用户可以自定义下载多种格式的图标，平台还可以将图标转换为字体，方便前端工程师调整和调用。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://darkerxi.github.io/assets/img/tools/iconfont.jpg" /></entry></feed>
+&lt;p&gt;这样我们就可以一劳永逸了，在启动和打包项目的时候一条命令直接搞定。&lt;/p&gt;</content><author><name>darkerxi</name></author><summary type="html">前后端分离的项目开发中，我们有开发环境、测试环境、预生产环境和生产环境。</summary></entry><entry><title type="html">vue动态绑定图片和背景图</title><link href="https://darkerxi.github.io/my_articles/2018-05-19-binding_img_bg-Vue/" rel="alternate" type="text/html" title="vue动态绑定图片和背景图" /><published>2018-05-19T00:00:00+08:00</published><updated>2018-05-19T00:00:00+08:00</updated><id>https://darkerxi.github.io/my_articles/binding_img_bg-Vue</id><content type="html" xml:base="https://darkerxi.github.io/my_articles/2018-05-19-binding_img_bg-Vue/">&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;1&lt;/strong&gt;、动态绑定图片&lt;/p&gt;
+  &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;binding-img&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;:src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;require('../assets/images/test.png')&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;2&lt;/strong&gt;、动态绑定背景图
+```html&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&quot;binding-bg&quot; :style=&quot;{ 'background': 'url(' + require('../assets/images/'+bgDef) + ') no-repeat center center', 'background-size': '100% 100%'}&quot;&gt;
+```
+```html
+&lt;div class=&quot;binding-bg&quot; :style=&quot;{ background: 'url(' + require('../assets/images/'+ testBg ? testBg : bgDef) + ') no-repeat center center', backgroundSize: '100% 100%'}&quot;&gt;
+```
+&lt;/div&gt;&lt;/div&gt;</content><author><name>darkerxi</name></author><summary type="html">1、动态绑定图片 &amp;lt;img class=&quot;binding-img&quot; :src=&quot;require('../assets/images/test.png')&quot; /&amp;gt; 2、动态绑定背景图 ```html ``` ```html ```</summary></entry><entry><title type="html">Git Flow 是什么</title><link href="https://darkerxi.github.io/my_articles/2017-04-22-git-flow/" rel="alternate" type="text/html" title="Git Flow 是什么" /><published>2017-04-22T00:00:00+08:00</published><updated>2017-04-22T00:00:00+08:00</updated><id>https://darkerxi.github.io/my_articles/git-flow</id><content type="html" xml:base="https://darkerxi.github.io/my_articles/2017-04-22-git-flow/">&lt;p&gt;Git Flow是构建在Git之上的一个组织软件开发活动的模型，是在Git之上构建的一项软件开发最佳实践。Git Flow是一套使用Git进行源代码管理时的一套行为规范和简化部分Git操作的工具。&lt;/p&gt;
+
+&lt;p&gt;2010年5月，在一篇名为“一种成功的Git分支模型”的博文中，@nvie介绍了一种在Git之上的软件开发模型。通过利用Git创建和管理分支的能力，为每个分支设定具有特定的含义名称，并将软件生命周期中的各类活动归并到不同的分支上。实现了软件开发过程不同操作的相互隔离。这种软件开发的活动模型被nwie称为“Git Flow”。&lt;/p&gt;
+
+&lt;p&gt;一般而言，软件开发模型有常见的瀑布模型、迭代开发模型、以及最近出现的敏捷开发模型等不同的模型。每种模型有各自应用场景。Git Flow重点解决的是由于源代码在开发过程中的各种冲突导致开发活动混乱的问题。因此，Git flow可以很好的于各种现有开发模型相结合使用。&lt;/p&gt;
+
+&lt;p&gt;在开始研究Git Flow的具体内容前，下面这张图可以看到模型的全貌（引自nvie的&lt;a href=&quot;https://nvie.com/posts/a-successful-git-branching-model/&quot; target=&quot;_blank&quot;&gt;博文&lt;/a&gt;)：
+&lt;img src=&quot;/assets/img/articles/git-flow/git-flow.png&quot; alt=&quot;git flow&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;git-flow中的分支&quot;&gt;Git Flow中的分支&lt;/h3&gt;
+&lt;p&gt;Git Flow模型中定义了&lt;strong&gt;主分支&lt;/strong&gt;和&lt;strong&gt;辅助分支&lt;/strong&gt;两类分支。&lt;/p&gt;
+
+&lt;p&gt;1、&lt;strong&gt;主分支&lt;/strong&gt;用于组织与软件开发、部署相关的活动。&lt;/p&gt;
+
+&lt;p&gt;主分支是所有开发活动的核心分支。所有的开发活动产生的输出物最终都会反映到主分支的代码中。&lt;/p&gt;
+
+&lt;p&gt;主分支分为&lt;strong&gt;master&lt;/strong&gt;分支和&lt;strong&gt;development&lt;/strong&gt;分支。&lt;/p&gt;
+
+&lt;p&gt;1). &lt;strong&gt;&lt;em&gt;master分支&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;master分支上存放的应该是随时可供在生产环境中部署的代码（Production Ready state）。当开发活动告一段落，产生了一份新的可供部署的
+代码时，master分支上的代码会被更新。同时，每一次更新，最好添加对应的版本号标签（TAG）。&lt;/p&gt;
+
+&lt;p&gt;2). &lt;strong&gt;&lt;em&gt;develop分支&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;develop分支是保存当前最新开发成果的分支。通常这个分支上的代码也是可进行每日夜间发布的代码（Nightly build）。因此这个分支有时也可以被称作“integration branch”。&lt;/p&gt;
+
+&lt;p&gt;当develop分支上的代码已实现了软件需求说明书中所有的功能，通过了所有的测试后，并且代码已经足够稳定时，就可以将所有的开发成果合并回master分支了。对于master分支上的新提交的代码建议都打上一个新的版本号标签（TAG），供后续代码跟踪使用。&lt;/p&gt;
+
+&lt;p&gt;因此，每次将develop分支上的代码合并回master分支时，我们都可以认为一个新的可供在生产环境中部署的版本就产生了。通常而言，“仅在发布新的可供部署的代码时才更新master分支上的代码”是推荐所有人都遵守的行为准则。基于此，理论上说，每当有代码提交到master分支时，我们可以使用Git Hook触发软件自动测试以及生产环境代码的自动更新工作。这些自动化操作将有利于减少新代码发布之后的一些事务性工作。&lt;/p&gt;
+
+&lt;p&gt;2、&lt;strong&gt;辅助分支&lt;/strong&gt;组织为了解决特定的问题而进行的各种开发活动。&lt;/p&gt;
+
+&lt;p&gt;辅助分支是用于组织解决特定问题的各种软件开发活动的分支。&lt;/p&gt;
+
+&lt;p&gt;辅助分支主要用于组织软件新功能的并行开发、简化新功能开发代码的跟踪、辅助完成版本发布工作以及对生产代码的缺陷进行紧急修复工作。这些分支与主分支不同，通常只会在有限的时间范围内存在。&lt;/p&gt;
+
+&lt;p&gt;辅助分支分为&lt;strong&gt;feature分支&lt;/strong&gt;（开发新功能）、&lt;strong&gt;release分支&lt;/strong&gt;（辅助版本发布）和&lt;strong&gt;hotfix分支&lt;/strong&gt;（修正生产代码中的缺陷）。&lt;/p&gt;
+
+&lt;p&gt;以上这些分支都有固定的使用目的和分支操作限制。从单纯技术的角度说，这些分支与Git其他分支并没有什么区别，但通过命名，我们定义了使用这些分支的方法。&lt;/p&gt;
+
+&lt;p&gt;1). &lt;strong&gt;&lt;em&gt;feature分支&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;一般而言，feature分支代码可以保存在开发者自己的代码库中而不强制提交到主代码库里。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;使用规范&lt;/em&gt;：&lt;/p&gt;
+
+&lt;p&gt;(1).可以从develop分支发起feature分支&lt;/p&gt;
+
+&lt;p&gt;(2).代码必须合并回develop分支&lt;/p&gt;
+
+&lt;p&gt;(3).feature分支的命名可以使用除master，develop，release-&lt;em&gt;，hotfix-&lt;/em&gt;之外的任何名称&lt;/p&gt;
+
+&lt;p&gt;(4).feature分支（有时也可以被叫做“topic分支”）通常是在开发一项新的软件功能的时候使用，这个分支上的代码变更最终合并回develop分支或者干脆被抛弃掉（例如实验性且效果不好的代码变更）。&lt;/p&gt;
+
+&lt;p&gt;2). &lt;strong&gt;&lt;em&gt;release分支&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;release分支是为发布新的产品版本而设计的。在这个分支上的代码允许做小的缺陷修正、准备发布版本所需的各项说明信息（版本号、发布时间、编译时间等等）。通过在release分支上进行这些工作可以让develop分支空闲出来以接受新的feature分支上的代码提交，进入新的软件开发迭代周期。&lt;/p&gt;
+
+&lt;p&gt;当develop分支上的代码已经包含了所有即将发布的版本中所计划包含的软件功能，并且已通过所有测试时，我们就可以考虑准备创建release分支了。而所有在当前即将发布的版本之外的业务需求一定要确保不能混到release分支之内（避免由此引入一些不可控的系统缺陷）。&lt;/p&gt;
+
+&lt;p&gt;成功的派生了release分支，并被赋予版本号之后，develop分支就可以为“下一个版本”服务了。所谓的“下一个版本”是在当前即将发布的版本之后发布的版本。版本号的命名可以依据项目定义的版本号命名规则进行。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;使用规范&lt;/em&gt;：&lt;/p&gt;
+
+&lt;p&gt;(1).可以从develop分支派生&lt;/p&gt;
+
+&lt;p&gt;(2).必须合并回develop分支和master分支&lt;/p&gt;
+
+&lt;p&gt;(3).分支命名惯例：release-*&lt;/p&gt;
+
+&lt;p&gt;3). &lt;strong&gt;&lt;em&gt;hotfix分支&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;除了是计划外创建的以外，hotfix分支与release分支十分相似：都可以产生一个新的可供在生产环境部署的软件版本。&lt;/p&gt;
+
+&lt;p&gt;当生产环境中的软件遇到了异常情况或者发现了严重到必须立即修复的软件缺陷的时候，就需要从master分支上指定的TAG版本派生hotfix分支来组织代码的紧急修复工作。&lt;/p&gt;
+
+&lt;p&gt;这样做的显而易见的好处是不会打断正在进行的develop分支的开发工作，能够让团队中负责新功能开发的人与负责代码紧急修复的人并行的开展工作。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;使用规范&lt;/em&gt;：&lt;/p&gt;
+
+&lt;p&gt;(1).可以从master分支派生&lt;/p&gt;
+
+&lt;p&gt;(2).必须合并回master分支和develop分支&lt;/p&gt;
+
+&lt;p&gt;(3).分支命名惯例：hotfix-*&lt;/p&gt;
+
+&lt;p&gt;Git Flow开发模型从源代码管理角度对通常意义上的软件开发活动进行了约束。应该说，为我们的软件开发提供了一个可供参考的管理模型。Git Flow开发模型让nvie的开发代码仓库保持整洁，让小组各个成员之间的开发相互隔离，能够有效避免处于开发状态中的代码相互影响而导致的效率低下和混乱。&lt;/p&gt;
+
+&lt;p&gt;所谓模型，在不同的开发团队，不同的文化，不同的项目背景情况下都有可能需要进行适当的裁剪或扩充。&lt;/p&gt;</content><author><name>darkerxi</name></author><summary type="html">Git Flow 是什么</summary></entry><entry><title type="html">开发分支管理模型之阿里AoneFlow</title><link href="https://darkerxi.github.io/my_articles/2017-04-22-AoneFlow/" rel="alternate" type="text/html" title="开发分支管理模型之阿里AoneFlow" /><published>2017-04-22T00:00:00+08:00</published><updated>2017-04-22T00:00:00+08:00</updated><id>https://darkerxi.github.io/my_articles/AoneFlow</id><content type="html" xml:base="https://darkerxi.github.io/my_articles/2017-04-22-AoneFlow/">&lt;p&gt;说到分支管理模型，令人最为熟悉的莫过于TrunkBased 和 GitFlow。&lt;/p&gt;
+
+&lt;p&gt;TrunkBased 模型是持续集成思想所崇尚的工作方式，它由单个master分支和许多release分支组成，每个release分支在特定版本的提交点上从master分支创建出来，用来进行上线部署和 Hotfix。在 TrunkBased 模式中，没有显性的feature分支。&lt;/p&gt;
+
+&lt;p&gt;GitFlow 模型是若干模式的集大成者，包含一个master分支、一个develop分支、许多的feature分支、许多的release分支和 Hotfix 分支，以及许多繁琐的合并规则。&lt;/p&gt;
+
+&lt;p&gt;基于这两种模型，演变出了很多的新模型，而阿里的AoneFlow，它基本上兼顾了 TrunkBased 的“易于持续集成”和 GitFlow 的“易于管理需求”特点，同时规避掉 GitFlow 的那些繁文缛节。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;AoneFlow 只使用三种分支类型：master分支、feature分支、release分支，以及三条基本规则。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;规则一，开始工作前，从master创建feature分支。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;从代表最新已发布版本的master分支上创建一个通常以feature/前缀命名的特性分支，然后在这个分支上提交代码修改。也就是说，每个工作项（可以是一个人完成，或是多个人协作完成）对应一个特性分支，所有的修改都不允许直接提交到master分支。
+&lt;img src=&quot;/assets/img/articles/aoneflow/AoneFlow1.jpg&quot; alt=&quot;AoneFlow1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;规则二，通过合并feature分支，形成release分支。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;从master分支上拉出一条新分支，将所有本次要集成或发布的feature分支依次合并过去，从而得到release分支。release分支通常以release/前缀命名。
+&lt;img src=&quot;/assets/img/articles/aoneflow/AoneFlow2.jpg&quot; alt=&quot;AoneFlow2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;规则三，发布到线上正式环境后，合并相应的release分支到master分支，在master分支上添加tag，同时删除该release分支关联的feature分支。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;为了避免在代码仓库里堆积大量历史上的feature分支，还应该清理掉已经上线部分feature分支。如果要回溯历史版本，只需在master分支上找到相应的版本的tag即可。
+&lt;img src=&quot;/assets/img/articles/aoneflow/AoneFlow3.jpg&quot; alt=&quot;AoneFlow3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;除了基本规则，还有一些实际操作中不成文的技巧。比如上线后的Hotfix，正常的处理方法应该是，创建一条新的release分支，对应线上环境（相当于Hotfix分支），同时为这个分支创建临时流水线，以保障必要的发布前检查和冒烟测试能够自动执行。&lt;/p&gt;
+
+&lt;p&gt;其实还有一种简便方法是，将线上正式环境对应的release分支上关联的feature分支全部清退掉，在这个release分支上直接进行修改，改完利用现成的流水线自动发布。&lt;/p&gt;
+
+&lt;p&gt;如果非得修一个历史版本的Bug怎么办呢？那就老老实实地在master分支找到版本tag位置，然后从那个位置创建 Hotfix分支。&lt;/p&gt;
+
+&lt;p&gt;所谓模型，在不同的开发团队，不同的文化，不同的项目背景情况下都有可能需要进行适当的裁剪或扩充。&lt;/p&gt;</content><author><name>darkerxi</name></author><summary type="html">说到分支管理模型，令人最为熟悉的莫过于TrunkBased 和 GitFlow。</summary></entry><entry><title type="html">Icomoon</title><link href="https://darkerxi.github.io/my_tools/2017-02-25-icomoon/" rel="alternate" type="text/html" title="Icomoon" /><published>2017-02-25T00:00:00+08:00</published><updated>2017-02-25T00:00:00+08:00</updated><id>https://darkerxi.github.io/my_tools/icomoon</id><content type="html" xml:base="https://darkerxi.github.io/my_tools/2017-02-25-icomoon/">&lt;p&gt;　　IcoMoon提供了一组矢量图标，用于创建&lt;strong&gt;自定义图标字体&lt;/strong&gt;，&lt;strong&gt;SVG精灵&lt;/strong&gt;和&lt;strong&gt;编译Web字体图标集&lt;/strong&gt;。 浏览数千个像素以获得完美图标或导入您自己的矢量。&lt;/p&gt;</content><author><name>darkerxi</name></author><category term="CSS" /><summary type="html">　　IcoMoon提供了一组矢量图标，用于创建自定义图标字体，SVG精灵和编译Web字体图标集。 浏览数千个像素以获得完美图标或导入您自己的矢量。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://darkerxi.github.io/assets/img/tools/icomoon.jpg" /></entry></feed>
