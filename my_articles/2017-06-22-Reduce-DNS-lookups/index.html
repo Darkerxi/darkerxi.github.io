@@ -24,20 +24,20 @@
 
   
 <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Tools | darkerxi</title>
+<title>高性能网站建设指南(九)减少DNS查找 | darkerxi</title>
 <meta name="generator" content="Jekyll v3.8.3" />
-<meta property="og:title" content="Tools" />
+<meta property="og:title" content="高性能网站建设指南(九)减少DNS查找" />
 <meta name="author" content="darkerxi" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="I am a web developer focusing on front-end development. Here are some of the tools I use in my daily development." />
-<meta property="og:description" content="I am a web developer focusing on front-end development. Here are some of the tools I use in my daily development." />
-<link rel="canonical" href="https://darkerxi.github.io/my-tools/" />
-<meta property="og:url" content="https://darkerxi.github.io/my-tools/" />
+<meta name="description" content="Internet是通过IP地址来查找服务器的。由于IP地址很难记忆，通常使用包含主机名的URL来取代它，但当浏览器发送其它请求时，IP地址仍然是必须的。这就是DNS（Domain Name System）所处的角色。" />
+<meta property="og:description" content="Internet是通过IP地址来查找服务器的。由于IP地址很难记忆，通常使用包含主机名的URL来取代它，但当浏览器发送其它请求时，IP地址仍然是必须的。这就是DNS（Domain Name System）所处的角色。" />
+<link rel="canonical" href="https://darkerxi.github.io/my_articles/2017-06-22-Reduce-DNS-lookups/" />
+<meta property="og:url" content="https://darkerxi.github.io/my_articles/2017-06-22-Reduce-DNS-lookups/" />
 <meta property="og:site_name" content="darkerxi" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-21T16:43:56+08:00" />
+<meta property="article:published_time" content="2017-06-22T00:00:00+08:00" />
 <script type="application/ld+json">
-{"description":"I am a web developer focusing on front-end development. Here are some of the tools I use in my daily development.","author":{"@type":"Person","name":"darkerxi"},"@type":"WebPage","url":"https://darkerxi.github.io/my-tools/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://darkerxi.github.io/assets/icons/icon.png"},"name":"darkerxi"},"headline":"Tools","dateModified":"2018-09-21T16:43:56+08:00","datePublished":"2018-09-21T16:43:56+08:00","@context":"http://schema.org"}</script>
+{"description":"Internet是通过IP地址来查找服务器的。由于IP地址很难记忆，通常使用包含主机名的URL来取代它，但当浏览器发送其它请求时，IP地址仍然是必须的。这就是DNS（Domain Name System）所处的角色。","author":{"@type":"Person","name":"darkerxi"},"@type":"BlogPosting","url":"https://darkerxi.github.io/my_articles/2017-06-22-Reduce-DNS-lookups/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://darkerxi.github.io/assets/icons/icon.png"},"name":"darkerxi"},"headline":"高性能网站建设指南(九)减少DNS查找","dateModified":"2017-06-22T00:00:00+08:00","datePublished":"2017-06-22T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://darkerxi.github.io/my_articles/2017-06-22-Reduce-DNS-lookups/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -64,7 +64,7 @@
 
 
 
-<link rel="alternate" href="https://darkerxi.github.io/my-tools/" hreflang="en">
+<link rel="alternate" href="https://darkerxi.github.io/my_articles/2017-06-22-Reduce-DNS-lookups/" hreflang="en">
 
 <link rel="shortcut icon" href="/assets/icons/favicon.ico">
 <link rel="apple-touch-icon" href="/assets/icons/icon.png">
@@ -166,7 +166,7 @@
   
     <main
   id="_main"
-  class="content fade-in layout-list"
+  class="content fade-in layout-post"
   role="main"
   data-color="rgb(79,177,186)"
   data-theme-color="rgb(25,55,71)"
@@ -178,163 +178,137 @@
   
 
 
+
+
+<article id="post-my_articles-Reduce-DNS-lookups" class="page post mb6" role="article">
   <header>
-    <h1 class="page-title">Tools</h1>
-    
+    <h1 class="post-title">
+      
+        高性能网站建设指南(九)减少DNS查找
+      
+    </h1>
+
+    <p class="post-date heading">
+      
+      <time datetime="2017-06-22T00:00:00+08:00">22 Jun 2017</time>
+      
+      
+      
+      
+      
 
 
 
-  
-    <p class="message" >
-      I am a web developer focusing on front-end development. <br />Here are some of the tools I use in my daily development.
+
+
+
+
+
+
+in <a href="/my-articles/" class="flip-title">Blog</a>
+
+      
+
+
+
+
+
+
+
+
+
+
 
     </p>
-  
+
+    
+    
+
+    <!-- 
 
 
+
+  <div class="hr pb0"></div>
+
+ -->
   </header>
-  <hr class="sr-only"/>
-
-
-
-
-
-
-
-
 
 
   
-  
-    
-    <h2 id="y-2017" class="hr">2017</h2>
-    <ul class="related-posts">
-    
-  
-  
+    <p>Internet是通过IP地址来查找服务器的。由于IP地址很难记忆，通常使用包含主机名的URL来取代它，但当浏览器发送其它请求时，IP地址仍然是必须的。这就是DNS（Domain Name System）所处的角色。</p>
 
+<blockquote>
+  <p><strong>DNS缓存和TTL（DNS Caching and TTLs）</strong></p>
+</blockquote>
 
-<li>
-  <a href="/my_tools/2017-02-25-icomoon/" class="h4 flip-title">
-    <span>Icomoon</span>
-  </a>
-  <time class="heading faded fine" datetime="2017-02-25T00:00:00+08:00">25 Feb</time>
-</li>
+<p>DNS查找可以被缓存起来以提高性能。浏览器对缓存的DNS记录的数量也有限制，而不管缓存记录的时间。
+查找返回的DNS记录包含一个存活时间（TIme-to-live，TTL）值。该值告诉客户端可以对该记录缓存多久。TTL建议值为1天，避免使用过短的时间。</p>
 
-  
+<p>Keep-Alive（持久连接），默认情况下，一个持久的TCP连接将会一直使用，直到其空闲1分钟为止。由于连接是持久的，因此无需DNS查找。另一个优点，Keep-Alive通过重用现有连接避免了重复的DNS查找。</p>
 
-  
-  
-  
+<p>当客户端的DNS缓存为空（浏览器和操作系统都是）时，DNS查找的数量与Web页面中唯一主机名的数量相等。这包括页面URL、图片、脚本文件、样式表、Flash对象等的主机名。减少唯一主机名的数量就可以减少DNS查找数量。随之也会潜在地减少页面中并行下载的数量。避免DNS查找降低了响应时间，但减少并行下载可能会增加响应时间。</p>
 
+<p>建议是将这些组件分别放到至少2个，但不要超过4ge主机名下。这是在减少DNS查找和允许高度并行下载之间作出很好的权衡。</p>
 
-<li>
-  <a href="/my_tools/2017-02-11-autoprefixer/" class="h4 flip-title">
-    <span>Autoprefixer</span>
-  </a>
-  <time class="heading faded fine" datetime="2017-02-11T00:00:00+08:00">11 Feb</time>
-</li>
-
-  
-
-  
-  
-    </ul>
-    <h2 id="y-2016" class="hr">2016</h2>
-    <ul class="related-posts">
     
   
-  
+</article>
 
 
-<li>
-  <a href="/my_tools/2016-07-16-cmd-markdown/" class="h4 flip-title">
-    <span>Cmd Markdown</span>
-  </a>
-  <time class="heading faded fine" datetime="2016-07-16T00:00:00+08:00">16 Jul</time>
-</li>
-
-  
-
-  
-  
-  
+<hr class="dingbat related" />
 
 
-<li>
-  <a href="/my_tools/2016-06-12-iconfont/" class="h4 flip-title">
-    <span>Iconfont</span>
-  </a>
-  <time class="heading faded fine" datetime="2016-06-12T00:00:00+08:00">12 Jun</time>
-</li>
+
 
   
-
-  
-  
-    </ul>
-    <h2 id="y-2015" class="hr">2015</h2>
-    <ul class="related-posts">
     
-  
-  
 
 
-<li>
-  <a href="/my_tools/2015-10-24-html5test/" class="h4 flip-title">
-    <span>Html5test</span>
-  </a>
-  <time class="heading faded fine" datetime="2015-10-24T00:00:00+08:00">24 Oct</time>
-</li>
-
-  
-
-  
-  
-  
 
 
-<li>
-  <a href="/my_tools/2015-06-13-tinypng/" class="h4 flip-title">
-    <span>TinyPNG</span>
-  </a>
-  <time class="heading faded fine" datetime="2015-06-13T00:00:00+08:00">13 Jun</time>
-</li>
+<aside class="related mb4" role="complementary">
+  <h2 class="hr">Related Posts</h2>
 
-  
-
-  
-  
-    </ul>
-    <h2 id="y-2014" class="hr">2014</h2>
-    <ul class="related-posts">
+  <ul class="related-posts">
     
-  
-  
+      
 
 
 <li>
-  <a href="/my_tools/2014-01-26-CSS-click-chart/" class="h4 flip-title">
-    <span>CSS Click Chart</span>
+  <a href="/my_articles/2018-06-28-ElementUI_Table-render-header/" class="h4 flip-title">
+    <span>ElementUI中Table自定义表头render-header</span>
   </a>
-  <time class="heading faded fine" datetime="2014-01-26T00:00:00+08:00">26 Jan</time>
+  <time class="heading faded fine" datetime="2018-06-28T00:00:00+08:00">28 Jun 2018</time>
 </li>
 
-  
-
-  
-  
-  
+    
+      
 
 
 <li>
-  <a href="/my_tools/2014-01-18-spritePad/" class="h4 flip-title">
-    <span>SpritePad</span>
+  <a href="/my_articles/2018-06-23-Refresh-Load-in-Vue/" class="h4 flip-title">
+    <span>vue移动端下拉刷新、上拉加载</span>
   </a>
-  <time class="heading faded fine" datetime="2014-01-18T00:00:00+08:00">18 Jan</time>
+  <time class="heading faded fine" datetime="2018-06-23T00:00:00+08:00">23 Jun 2018</time>
 </li>
 
+    
+      
+
+
+<li>
+  <a href="/my_articles/2018-06-03-ElementUI_Upload-Qiniuyun/" class="h4 flip-title">
+    <span>ElementUI中Upload上传七牛云</span>
+  </a>
+  <time class="heading faded fine" datetime="2018-06-03T00:00:00+08:00">03 Jun 2018</time>
+</li>
+
+    
   </ul>
+</aside>
+
+
+  
 
 
   
@@ -395,7 +369,7 @@
         <a
           id="_navigation"
           href="/my_articles/"
-          class="sidebar-nav-item"
+          class="sidebar-nav-item active"
           
           >
           Blog

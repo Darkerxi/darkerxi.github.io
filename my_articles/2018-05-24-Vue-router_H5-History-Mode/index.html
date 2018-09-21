@@ -24,20 +24,20 @@
 
   
 <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Tools | darkerxi</title>
+<title>vue-router-h5-history | darkerxi</title>
 <meta name="generator" content="Jekyll v3.8.3" />
-<meta property="og:title" content="Tools" />
+<meta property="og:title" content="vue-router-h5-history" />
 <meta name="author" content="darkerxi" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="I am a web developer focusing on front-end development. Here are some of the tools I use in my daily development." />
-<meta property="og:description" content="I am a web developer focusing on front-end development. Here are some of the tools I use in my daily development." />
-<link rel="canonical" href="https://darkerxi.github.io/my-tools/" />
-<meta property="og:url" content="https://darkerxi.github.io/my-tools/" />
+<meta name="description" content="vue-router的HTML5 History 模式，这种模式充分利用 history.pushState API 来完成 URL 跳转而无须重新加载页面。" />
+<meta property="og:description" content="vue-router的HTML5 History 模式，这种模式充分利用 history.pushState API 来完成 URL 跳转而无须重新加载页面。" />
+<link rel="canonical" href="https://darkerxi.github.io/my_articles/2018-05-24-Vue-router_H5-History-Mode/" />
+<meta property="og:url" content="https://darkerxi.github.io/my_articles/2018-05-24-Vue-router_H5-History-Mode/" />
 <meta property="og:site_name" content="darkerxi" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-21T16:43:56+08:00" />
+<meta property="article:published_time" content="2018-05-24T00:00:00+08:00" />
 <script type="application/ld+json">
-{"description":"I am a web developer focusing on front-end development. Here are some of the tools I use in my daily development.","author":{"@type":"Person","name":"darkerxi"},"@type":"WebPage","url":"https://darkerxi.github.io/my-tools/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://darkerxi.github.io/assets/icons/icon.png"},"name":"darkerxi"},"headline":"Tools","dateModified":"2018-09-21T16:43:56+08:00","datePublished":"2018-09-21T16:43:56+08:00","@context":"http://schema.org"}</script>
+{"description":"vue-router的HTML5 History 模式，这种模式充分利用 history.pushState API 来完成 URL 跳转而无须重新加载页面。","author":{"@type":"Person","name":"darkerxi"},"@type":"BlogPosting","url":"https://darkerxi.github.io/my_articles/2018-05-24-Vue-router_H5-History-Mode/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://darkerxi.github.io/assets/icons/icon.png"},"name":"darkerxi"},"headline":"vue-router-h5-history","dateModified":"2018-05-24T00:00:00+08:00","datePublished":"2018-05-24T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://darkerxi.github.io/my_articles/2018-05-24-Vue-router_H5-History-Mode/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -64,7 +64,7 @@
 
 
 
-<link rel="alternate" href="https://darkerxi.github.io/my-tools/" hreflang="en">
+<link rel="alternate" href="https://darkerxi.github.io/my_articles/2018-05-24-Vue-router_H5-History-Mode/" hreflang="en">
 
 <link rel="shortcut icon" href="/assets/icons/favicon.ico">
 <link rel="apple-touch-icon" href="/assets/icons/icon.png">
@@ -166,7 +166,7 @@
   
     <main
   id="_main"
-  class="content fade-in layout-list"
+  class="content fade-in layout-post"
   role="main"
   data-color="rgb(79,177,186)"
   data-theme-color="rgb(25,55,71)"
@@ -178,163 +178,190 @@
   
 
 
+
+
+<article id="post-my_articles-Vue-router_H5-History-Mode" class="page post mb6" role="article">
   <header>
-    <h1 class="page-title">Tools</h1>
-    
+    <h1 class="post-title">
+      
+        vue-router-h5-history
+      
+    </h1>
+
+    <p class="post-date heading">
+      
+      <time datetime="2018-05-24T00:00:00+08:00">24 May 2018</time>
+      
+      
+      
+      
+      
 
 
 
-  
-    <p class="message" >
-      I am a web developer focusing on front-end development. <br />Here are some of the tools I use in my daily development.
+
+
+
+
+
+
+in <a href="/my-articles/" class="flip-title">Blog</a>
+
+      
+
+
+
+
+
+
+
+
+
+
 
     </p>
-  
+
+    
+    
+
+    <!-- 
 
 
+
+  <div class="hr pb0"></div>
+
+ -->
   </header>
-  <hr class="sr-only"/>
-
-
-
-
-
-
-
-
 
 
   
-  
-    
-    <h2 id="y-2017" class="hr">2017</h2>
-    <ul class="related-posts">
-    
-  
-  
+    <p>vue-router的HTML5 History 模式，这种模式充分利用 history.pushState API 来完成 URL 跳转而无须重新加载页面。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueRouter</span><span class="p">({</span>
+  <span class="na">mode</span><span class="p">:</span> <span class="s1">'history'</span><span class="p">,</span>
+  <span class="na">routes</span><span class="p">:</span> <span class="p">[...]</span>
+<span class="p">})</span>
+</code></pre></div></div>
+<p>当你使用 history 模式时，URL 就像正常的 url，例如 <code class="highlighter-rouge">http://yoursite.com/user/id</code>， 就是长这样的！</p>
+
+<p>不过这种模式要玩好，还需要后台配置支持。因为我们的应用是个单页客户端应用，如果后台没有正确的配置，当用户在浏览器直接访问 <code class="highlighter-rouge">http://oursite.com/user/id</code> 就会返回 404，这就尴尬了。</p>
+
+<p>所以，你要在服务端增加一个覆盖所有情况的候选资源：如果 URL 匹配不到任何静态资源，则应该返回同一个 index.html 页面，这个页面就是你 app 依赖的页面。</p>
+
+<p>目前后端服务器有<strong>Apache、nginx、原生 Node.js、基于 Node.js 的 Express、Internet Information Services (IIS)、Caddy、Firebase 主机</strong>等。</p>
+
+<p>先给一个官方标准版配置的传送门，请戳这里→ <a href="https://router.vuejs.org/zh/guide/essentials/history-mode.html" target="_blank">https://router.vuejs.org/zh/guide/essentials/history-mode.html</a>
+既然是官方给出的配置，那肯定就会说的很官方咯~</p>
+
+<p>按照官方给出的示例，将道理是成功的，但是官方给出的只局限于这个项目在服务器的<strong>根目录</strong>下！
+如果你的项目没有放在根目录下，那么就是这么的不讲道理。</p>
+
+<p>下面是在实际开发中碰到的问题。</p>
+
+<p>我们的后端服务器是nginx，所以按照官方的给出的配置，找到nginx.conf，照抄代码，修改完后重启服务器，讲道理是成功的。</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>server
+{
+    listen 80;
+    server_name oursite.com;
+    location /test/ {            
+        alias  /usr/local/test/;
+        index  index.htm index.html;
+        #上面的就是一些常规配置，下面这个才是重点
+        try_files $uri $uri/ /index.html;
+
+        #这里没有采用官方给出处理404错误页面的方案
+        #方案一（把所有没有后缀名的请求如果404都跳转到index.html，我们没有采用）
+        #error_page 404 /test/index.html;
+
+        #方案二（404的方式，不是特别完美。会有浏览器留下404的状态（容易被第三方劫持），以下方式可以避免被第三方劫持！）
+        if (!-e $request_filename) {
+            rewrite ^/(.*) /test/index.html last;
+            break;
+        }
+    }
+}
+</code></pre></div></div>
+
+<p>但是，事实就是这么的不讲道理，我们并没有成功！这就令人很是郁闷了，心中一万只神兽羊驼，奔腾而过~ 为什么没有成功呢，都是按部就班做的呀，完全不讲道理！</p>
+
+<p>而真相只有一个，那就是~~~</p>
+
+<p><strong>路由文件中的路径有问题</strong></p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VueRouter</span><span class="p">({</span>
+  <span class="na">mode</span><span class="p">:</span> <span class="s1">'history'</span><span class="p">,</span>
+  <span class="na">routes</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="na">path</span><span class="p">:</span> <span class="s1">'/test/'</span><span class="p">,</span> <span class="na">component</span><span class="p">:</span> <span class="nx">YourComponent</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="na">path</span><span class="p">:</span> <span class="s1">'/test/a'</span><span class="p">,</span> <span class="na">component</span><span class="p">:</span> <span class="nx">YourComponent</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="na">path</span><span class="p">:</span> <span class="s1">'/test/b:x'</span><span class="p">,</span> <span class="na">component</span><span class="p">:</span> <span class="nx">YourComponent</span> <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">})</span>
+</code></pre></div></div>
+<p>在路由文件中所有的路径前面加上服务器下项目所在的文件名即可，当然也包括<code class="highlighter-rouge">&lt;router-link&gt;</code>和<code class="highlighter-rouge">this.$router.push()</code>中的路径，不然又是不讲道理的。</p>
+
+<p>这只是在nginx服务器下的一种解决方案，至于别的服务器应该也是同理的。</p>
+
+<p>如果您有更好更优的方案，欢迎交流，谢谢。</p>
 
 
-<li>
-  <a href="/my_tools/2017-02-25-icomoon/" class="h4 flip-title">
-    <span>Icomoon</span>
-  </a>
-  <time class="heading faded fine" datetime="2017-02-25T00:00:00+08:00">25 Feb</time>
-</li>
-
-  
-
-  
-  
-  
-
-
-<li>
-  <a href="/my_tools/2017-02-11-autoprefixer/" class="h4 flip-title">
-    <span>Autoprefixer</span>
-  </a>
-  <time class="heading faded fine" datetime="2017-02-11T00:00:00+08:00">11 Feb</time>
-</li>
-
-  
-
-  
-  
-    </ul>
-    <h2 id="y-2016" class="hr">2016</h2>
-    <ul class="related-posts">
-    
-  
-  
-
-
-<li>
-  <a href="/my_tools/2016-07-16-cmd-markdown/" class="h4 flip-title">
-    <span>Cmd Markdown</span>
-  </a>
-  <time class="heading faded fine" datetime="2016-07-16T00:00:00+08:00">16 Jul</time>
-</li>
-
-  
-
-  
-  
-  
-
-
-<li>
-  <a href="/my_tools/2016-06-12-iconfont/" class="h4 flip-title">
-    <span>Iconfont</span>
-  </a>
-  <time class="heading faded fine" datetime="2016-06-12T00:00:00+08:00">12 Jun</time>
-</li>
-
-  
-
-  
-  
-    </ul>
-    <h2 id="y-2015" class="hr">2015</h2>
-    <ul class="related-posts">
     
   
-  
+</article>
 
 
-<li>
-  <a href="/my_tools/2015-10-24-html5test/" class="h4 flip-title">
-    <span>Html5test</span>
-  </a>
-  <time class="heading faded fine" datetime="2015-10-24T00:00:00+08:00">24 Oct</time>
-</li>
-
-  
-
-  
-  
-  
+<hr class="dingbat related" />
 
 
-<li>
-  <a href="/my_tools/2015-06-13-tinypng/" class="h4 flip-title">
-    <span>TinyPNG</span>
-  </a>
-  <time class="heading faded fine" datetime="2015-06-13T00:00:00+08:00">13 Jun</time>
-</li>
+
 
   
-
-  
-  
-    </ul>
-    <h2 id="y-2014" class="hr">2014</h2>
-    <ul class="related-posts">
     
-  
-  
+
+
+
+
+<aside class="related mb4" role="complementary">
+  <h2 class="hr">Related Posts</h2>
+
+  <ul class="related-posts">
+    
+      
 
 
 <li>
-  <a href="/my_tools/2014-01-26-CSS-click-chart/" class="h4 flip-title">
-    <span>CSS Click Chart</span>
+  <a href="/my_articles/2018-06-28-ElementUI_Table-render-header/" class="h4 flip-title">
+    <span>ElementUI中Table自定义表头render-header</span>
   </a>
-  <time class="heading faded fine" datetime="2014-01-26T00:00:00+08:00">26 Jan</time>
+  <time class="heading faded fine" datetime="2018-06-28T00:00:00+08:00">28 Jun 2018</time>
 </li>
 
-  
-
-  
-  
-  
+    
+      
 
 
 <li>
-  <a href="/my_tools/2014-01-18-spritePad/" class="h4 flip-title">
-    <span>SpritePad</span>
+  <a href="/my_articles/2018-06-23-Refresh-Load-in-Vue/" class="h4 flip-title">
+    <span>vue移动端下拉刷新、上拉加载</span>
   </a>
-  <time class="heading faded fine" datetime="2014-01-18T00:00:00+08:00">18 Jan</time>
+  <time class="heading faded fine" datetime="2018-06-23T00:00:00+08:00">23 Jun 2018</time>
 </li>
 
+    
+      
+
+
+<li>
+  <a href="/my_articles/2018-06-03-ElementUI_Upload-Qiniuyun/" class="h4 flip-title">
+    <span>ElementUI中Upload上传七牛云</span>
+  </a>
+  <time class="heading faded fine" datetime="2018-06-03T00:00:00+08:00">03 Jun 2018</time>
+</li>
+
+    
   </ul>
+</aside>
+
+
+  
 
 
   
@@ -395,7 +422,7 @@
         <a
           id="_navigation"
           href="/my_articles/"
-          class="sidebar-nav-item"
+          class="sidebar-nav-item active"
           
           >
           Blog

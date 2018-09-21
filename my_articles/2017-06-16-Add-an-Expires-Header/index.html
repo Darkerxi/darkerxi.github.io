@@ -24,20 +24,20 @@
 
   
 <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Tools | darkerxi</title>
+<title>高性能网站建设指南(三)添加Expires头 | darkerxi</title>
 <meta name="generator" content="Jekyll v3.8.3" />
-<meta property="og:title" content="Tools" />
+<meta property="og:title" content="高性能网站建设指南(三)添加Expires头" />
 <meta name="author" content="darkerxi" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="I am a web developer focusing on front-end development. Here are some of the tools I use in my daily development." />
-<meta property="og:description" content="I am a web developer focusing on front-end development. Here are some of the tools I use in my daily development." />
-<link rel="canonical" href="https://darkerxi.github.io/my-tools/" />
-<meta property="og:url" content="https://darkerxi.github.io/my-tools/" />
+<meta name="description" content="如何配置组件，使其能够最大化地利用浏览器的缓存能力来改善页面的性能。如今的Web页面都内包含了大量的组件，并且其数量在不断增长。页面的初访者会进行很多HTTP请求，但通过使用一个长久的Expires头，可以使这些组件被缓存。这会在后续的页面浏览中避免不必要的HTTP请求。长久的Expires头最常用于图片，但应该将其用在所有的组件上，包括脚本、样式表和Flash。" />
+<meta property="og:description" content="如何配置组件，使其能够最大化地利用浏览器的缓存能力来改善页面的性能。如今的Web页面都内包含了大量的组件，并且其数量在不断增长。页面的初访者会进行很多HTTP请求，但通过使用一个长久的Expires头，可以使这些组件被缓存。这会在后续的页面浏览中避免不必要的HTTP请求。长久的Expires头最常用于图片，但应该将其用在所有的组件上，包括脚本、样式表和Flash。" />
+<link rel="canonical" href="https://darkerxi.github.io/my_articles/2017-06-16-Add-an-Expires-Header/" />
+<meta property="og:url" content="https://darkerxi.github.io/my_articles/2017-06-16-Add-an-Expires-Header/" />
 <meta property="og:site_name" content="darkerxi" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-21T16:43:56+08:00" />
+<meta property="article:published_time" content="2017-06-16T00:00:00+08:00" />
 <script type="application/ld+json">
-{"description":"I am a web developer focusing on front-end development. Here are some of the tools I use in my daily development.","author":{"@type":"Person","name":"darkerxi"},"@type":"WebPage","url":"https://darkerxi.github.io/my-tools/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://darkerxi.github.io/assets/icons/icon.png"},"name":"darkerxi"},"headline":"Tools","dateModified":"2018-09-21T16:43:56+08:00","datePublished":"2018-09-21T16:43:56+08:00","@context":"http://schema.org"}</script>
+{"description":"如何配置组件，使其能够最大化地利用浏览器的缓存能力来改善页面的性能。如今的Web页面都内包含了大量的组件，并且其数量在不断增长。页面的初访者会进行很多HTTP请求，但通过使用一个长久的Expires头，可以使这些组件被缓存。这会在后续的页面浏览中避免不必要的HTTP请求。长久的Expires头最常用于图片，但应该将其用在所有的组件上，包括脚本、样式表和Flash。","author":{"@type":"Person","name":"darkerxi"},"@type":"BlogPosting","url":"https://darkerxi.github.io/my_articles/2017-06-16-Add-an-Expires-Header/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://darkerxi.github.io/assets/icons/icon.png"},"name":"darkerxi"},"headline":"高性能网站建设指南(三)添加Expires头","dateModified":"2017-06-16T00:00:00+08:00","datePublished":"2017-06-16T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://darkerxi.github.io/my_articles/2017-06-16-Add-an-Expires-Header/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -64,7 +64,7 @@
 
 
 
-<link rel="alternate" href="https://darkerxi.github.io/my-tools/" hreflang="en">
+<link rel="alternate" href="https://darkerxi.github.io/my_articles/2017-06-16-Add-an-Expires-Header/" hreflang="en">
 
 <link rel="shortcut icon" href="/assets/icons/favicon.ico">
 <link rel="apple-touch-icon" href="/assets/icons/icon.png">
@@ -166,7 +166,7 @@
   
     <main
   id="_main"
-  class="content fade-in layout-list"
+  class="content fade-in layout-post"
   role="main"
   data-color="rgb(79,177,186)"
   data-theme-color="rgb(25,55,71)"
@@ -178,163 +178,164 @@
   
 
 
+
+
+<article id="post-my_articles-Add-an-Expires-Header" class="page post mb6" role="article">
   <header>
-    <h1 class="page-title">Tools</h1>
-    
+    <h1 class="post-title">
+      
+        高性能网站建设指南(三)添加Expires头
+      
+    </h1>
+
+    <p class="post-date heading">
+      
+      <time datetime="2017-06-16T00:00:00+08:00">16 Jun 2017</time>
+      
+      
+      
+      
+      
 
 
 
-  
-    <p class="message" >
-      I am a web developer focusing on front-end development. <br />Here are some of the tools I use in my daily development.
+
+
+
+
+
+
+in <a href="/my-articles/" class="flip-title">Blog</a>
+
+      
+
+
+
+
+
+
+
+
+
+
 
     </p>
-  
+
+    
+    
+
+    <!-- 
 
 
+
+  <div class="hr pb0"></div>
+
+ -->
   </header>
-  <hr class="sr-only"/>
-
-
-
-
-
-
-
-
 
 
   
-  
-    
-    <h2 id="y-2017" class="hr">2017</h2>
-    <ul class="related-posts">
-    
-  
-  
+    <p>如何配置组件，使其能够最大化地利用浏览器的缓存能力来<strong>改善页面的性能</strong>。如今的Web页面都内包含了大量的组件，并且其数量在不断增长。页面的初访者会进行很多HTTP请求，但通过使用一个长久的Expires头，可以使这些组件被缓存。这会在后续的页面浏览中避免不必要的HTTP请求。长久的Expires头最常用于图片，但应该将其用在<strong>所有</strong>的组件上，包括脚本、样式表和Flash。</p>
 
+<blockquote>
+  <p><strong>Expires头（Expires Header）</strong></p>
+</blockquote>
 
-<li>
-  <a href="/my_tools/2017-02-25-icomoon/" class="h4 flip-title">
-    <span>Icomoon</span>
-  </a>
-  <time class="heading faded fine" datetime="2017-02-25T00:00:00+08:00">25 Feb</time>
-</li>
+<p>浏览器（和代理）使用缓存来减少HTTP请求的数量，并减小HTTP响应的大小，使Web页面加载得更快。Web服务器使用Expires头来告诉Web客户端它可以使用一个组件的当前副本，直到指定的时间为止。</p>
 
-  
+<blockquote>
+  <p><strong>Max-Age和mod_expires</strong></p>
+</blockquote>
 
-  
-  
-  
+<p>HTTP1.1引入了Cache-Control头来克服Expires头的限制。因为Expires头使用一个特定的时间，它要求服务器和客户端的时钟严格同步。</p>
 
+<p>换一种方式，Cache-Control使用max-age指令指定组件被缓存多久。它以秒为单位定义了一个更新窗。如果两者同时出现，HTTP规范规定max-age指令将重写Expires头。</p>
 
-<li>
-  <a href="/my_tools/2017-02-11-autoprefixer/" class="h4 flip-title">
-    <span>Autoprefixer</span>
-  </a>
-  <time class="heading faded fine" datetime="2017-02-11T00:00:00+08:00">11 Feb</time>
-</li>
+<p>mod_expires Apache模块使你在使用Expires头时能够像max-age那样以相对的当时设置日期。这通过Expires-Default指令来完成。</p>
 
-  
+<p>跨浏览器改善缓存的最佳解决方案就是使用由ExpiresDefault设置的Expires头。</p>
 
-  
-  
-    </ul>
-    <h2 id="y-2016" class="hr">2016</h2>
-    <ul class="related-posts">
+<blockquote>
+  <p><strong>空缓存 VS 完整缓存（Empty Cache VS. Primed Cache）</strong></p>
+</blockquote>
+
+<p>空缓存和完成缓存，指的是与你野蛮相关的浏览器缓存的状态。如果你的页面中的组件没有放在缓存中，则缓存为“空”。反之，如果你的页面中的可缓存组件都在缓存中，则缓存是“完整的”。</p>
+
+<p>空缓存或完整缓存页面浏览的数量取决于Web应用程序的本质。</p>
+
+<blockquote>
+  <p><strong>不仅仅是图片（More Than Just Images）</strong></p>
+</blockquote>
+
+<p>为图片使用长久的Expires头非常之普遍，但这一最佳实践不应该仅限于图片。长久的Expires头应该包含任何不经常变化组件，包括脚本、样式表和Flash组件。但是，HTML文档不应该使用长久的Expires头，因为它包含动态内容，这些内容在每次用户请求时都降被更新。</p>
+
+<blockquote>
+  <p><strong>修订文件名（Revving Filenames）</strong></p>
+</blockquote>
+
+<p>如果将组件配置为可以由浏览器代理缓存，当这些组件改变时用户如何获得更新呢？</p>
+
+<p>为了确保用户能获取组件的更新版本，需要在所有的HTML页面中修改组件的文件名。嵌入版本好不仅可以改变文件名，还能在 调试时更容易地找到准确的源代码文件。</p>
+
     
   
-  
+</article>
 
 
-<li>
-  <a href="/my_tools/2016-07-16-cmd-markdown/" class="h4 flip-title">
-    <span>Cmd Markdown</span>
-  </a>
-  <time class="heading faded fine" datetime="2016-07-16T00:00:00+08:00">16 Jul</time>
-</li>
-
-  
-
-  
-  
-  
+<hr class="dingbat related" />
 
 
-<li>
-  <a href="/my_tools/2016-06-12-iconfont/" class="h4 flip-title">
-    <span>Iconfont</span>
-  </a>
-  <time class="heading faded fine" datetime="2016-06-12T00:00:00+08:00">12 Jun</time>
-</li>
+
 
   
-
-  
-  
-    </ul>
-    <h2 id="y-2015" class="hr">2015</h2>
-    <ul class="related-posts">
     
-  
-  
 
 
-<li>
-  <a href="/my_tools/2015-10-24-html5test/" class="h4 flip-title">
-    <span>Html5test</span>
-  </a>
-  <time class="heading faded fine" datetime="2015-10-24T00:00:00+08:00">24 Oct</time>
-</li>
-
-  
-
-  
-  
-  
 
 
-<li>
-  <a href="/my_tools/2015-06-13-tinypng/" class="h4 flip-title">
-    <span>TinyPNG</span>
-  </a>
-  <time class="heading faded fine" datetime="2015-06-13T00:00:00+08:00">13 Jun</time>
-</li>
+<aside class="related mb4" role="complementary">
+  <h2 class="hr">Related Posts</h2>
 
-  
-
-  
-  
-    </ul>
-    <h2 id="y-2014" class="hr">2014</h2>
-    <ul class="related-posts">
+  <ul class="related-posts">
     
-  
-  
+      
 
 
 <li>
-  <a href="/my_tools/2014-01-26-CSS-click-chart/" class="h4 flip-title">
-    <span>CSS Click Chart</span>
+  <a href="/my_articles/2018-06-28-ElementUI_Table-render-header/" class="h4 flip-title">
+    <span>ElementUI中Table自定义表头render-header</span>
   </a>
-  <time class="heading faded fine" datetime="2014-01-26T00:00:00+08:00">26 Jan</time>
+  <time class="heading faded fine" datetime="2018-06-28T00:00:00+08:00">28 Jun 2018</time>
 </li>
 
-  
-
-  
-  
-  
+    
+      
 
 
 <li>
-  <a href="/my_tools/2014-01-18-spritePad/" class="h4 flip-title">
-    <span>SpritePad</span>
+  <a href="/my_articles/2018-06-23-Refresh-Load-in-Vue/" class="h4 flip-title">
+    <span>vue移动端下拉刷新、上拉加载</span>
   </a>
-  <time class="heading faded fine" datetime="2014-01-18T00:00:00+08:00">18 Jan</time>
+  <time class="heading faded fine" datetime="2018-06-23T00:00:00+08:00">23 Jun 2018</time>
 </li>
 
+    
+      
+
+
+<li>
+  <a href="/my_articles/2018-06-03-ElementUI_Upload-Qiniuyun/" class="h4 flip-title">
+    <span>ElementUI中Upload上传七牛云</span>
+  </a>
+  <time class="heading faded fine" datetime="2018-06-03T00:00:00+08:00">03 Jun 2018</time>
+</li>
+
+    
   </ul>
+</aside>
+
+
+  
 
 
   
@@ -395,7 +396,7 @@
         <a
           id="_navigation"
           href="/my_articles/"
-          class="sidebar-nav-item"
+          class="sidebar-nav-item active"
           
           >
           Blog

@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+
+
+
+
+
+
+
+<head>
+  
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+
+  
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>vue移动端下拉刷新、上拉加载 | darkerxi</title>
+<meta name="generator" content="Jekyll v3.8.3" />
+<meta property="og:title" content="vue移动端下拉刷新、上拉加载" />
+<meta name="author" content="darkerxi" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="由于自身的项目比较简单，只有几个H5页面，用来嵌入app中，所有没有引入移动端的UI框架，但是介于能让用户在浏览H5页面时有下拉刷新和上拉加载，有更好的用户体验，自己写组件实现。" />
+<meta property="og:description" content="由于自身的项目比较简单，只有几个H5页面，用来嵌入app中，所有没有引入移动端的UI框架，但是介于能让用户在浏览H5页面时有下拉刷新和上拉加载，有更好的用户体验，自己写组件实现。" />
+<link rel="canonical" href="https://darkerxi.github.io/my_articles/2018-06-23-Refresh-Load-in-Vue/" />
+<meta property="og:url" content="https://darkerxi.github.io/my_articles/2018-06-23-Refresh-Load-in-Vue/" />
+<meta property="og:site_name" content="darkerxi" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-06-23T00:00:00+08:00" />
+<script type="application/ld+json">
+{"description":"由于自身的项目比较简单，只有几个H5页面，用来嵌入app中，所有没有引入移动端的UI框架，但是介于能让用户在浏览H5页面时有下拉刷新和上拉加载，有更好的用户体验，自己写组件实现。","author":{"@type":"Person","name":"darkerxi"},"@type":"BlogPosting","url":"https://darkerxi.github.io/my_articles/2018-06-23-Refresh-Load-in-Vue/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://darkerxi.github.io/assets/icons/icon.png"},"name":"darkerxi"},"headline":"vue移动端下拉刷新、上拉加载","dateModified":"2018-06-23T00:00:00+08:00","datePublished":"2018-06-23T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://darkerxi.github.io/my_articles/2018-06-23-Refresh-Load-in-Vue/"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+  
+
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="darkerxi">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<meta name="application-name" content="darkerxi">
+<meta name="msapplication-config" content="/assets/ieconfig.xml">
+
+
+<meta name="theme-color" content="rgb(25,55,71)">
+
+
+<meta name="generator" content="Hydejack v8.0.0" />
+
+
+
+
+<link rel="alternate" href="https://darkerxi.github.io/my_articles/2018-06-23-Refresh-Load-in-Vue/" hreflang="en">
+
+<link rel="shortcut icon" href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/icon.png">
+
+<link rel="manifest" href="/assets/manifest.json">
+
+
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+
+
+
+
+
+
+<link href="/assets/js/hydejack-8.0.0.js" id="_hrefJS">
+<link href="/assets/bower_components/fontfaceobserver/fontfaceobserver.standalone.js" id="_hrefFFO">
+<link href="/assets/bower_components/katex/dist/katex.min.js" id="_hrefKatexJS">
+<link href="/assets/bower_components/katex/dist/katex.min.css" id="_hrefKatexCSS">
+<link href="/assets/img/swipe.svg" id="_hrefSwipeSVG">
+
+<script>
+  !function(e,t){"use strict";function n(e,t,n,r){e.addEventListener?e.addEventListener(t,n,r):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n}e.loadJS=function(e,r){var o=t.createElement("script");o.src=e,r&&n(o,"load",r,{once:!0});var a=t.scripts[0];return a.parentNode.insertBefore(o,a),o},e._loaded=!1,e.loadJSDeferred=function(r,o){function a(){e._loaded=!0,o&&n(d,"load",o,{once:!0});var r=t.scripts[0];r.parentNode.insertBefore(d,r)}var d=t.createElement("script");return d.src=r,e._loaded?a():n(e,"load",a,{once:!0}),d},e.setRel=e.setRelStylesheet=function(e){function n(){this.rel="stylesheet"}var r=t.getElementById(e);r.addEventListener?r.addEventListener("load",n,{once:!0}):r.onload=n}}(window,document);
+!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+
+  window._noPushState = false;
+  window._noDrawer = false;
+  
+    !function(w, d) {
+      loadJS(document.getElementById('_hrefFFO').href, function() {
+        if ('Promise' in w) Promise.all([
+          new FontFaceObserver('Noto Sans').load(),
+          new FontFaceObserver('Roboto Slab').load(),
+        ]).then(function f() { d.body.className += ' font-active'; }, function() {});
+      });
+    }(window, document);
+  
+</script>
+
+<!--[if gt IE 8]><!---->
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="/assets/css/hydejack-8.0.0.css">
+  <link rel="stylesheet" href="/assets/icomoon/style.css">
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400|Noto+Sans:400,400i,700,700i">
+    <noscript>
+      <style>
+        html { font-family: Noto Sans, Helvetica, Arial, sans-serif!important; }
+        h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .heading { font-family: Roboto Slab, Helvetica, Arial, sans-serif!important; }
+      </style>
+    </noscript>
+  
+
+
+<style id="_pageStyle">
+
+.content a:not(.btn){color:#4fb1ba;border-color:rgba(79,177,186,0.2)}.content a:not(.btn):hover{border-color:#4fb1ba}:focus{outline-color:#4fb1ba}.btn-primary{color:#fff;background-color:#4fb1ba;border-color:#4fb1ba}.btn-primary:focus,.btn-primary.focus,.form-control:focus,.form-control.focus{box-shadow:0 0 0 3px rgba(79,177,186,0.5)}.btn-primary:hover,.btn-primary.hover{color:#fff;background-color:#409ba3;border-color:#409ba3}.btn-primary:disabled,.btn-primary.disabled{color:#fff;background-color:#4fb1ba;border-color:#4fb1ba}.btn-primary:active,.btn-primary.active{color:#fff;background-color:#409ba3;border-color:#409ba3}::selection{color:#fff;background:#4fb1ba}::-moz-selection{color:#fff;background:#4fb1ba}
+
+</style>
+
+<!--<![endif]-->
+
+
+
+
+</head>
+
+<body>
+  <div class="navbar fixed-top">
+  <div class="content">
+    <div class="nav-btn-bar">
+      <span class="sr-only">Jump to:</span>
+      <a id="_menu" class="nav-btn no-hover" href="#_navigation">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-menu"></span>
+      </a>
+    </div>
+  </div>
+</div>
+<hr class="sr-only" hidden />
+
+
+<hy-push-state
+  replace-ids="_main"
+  link-selector="a[href]:not([href*='/assets/']):not(.external):not(.no-push-state)"
+  duration="250"
+  script-selector="script:not([type^='math/tex'])"
+  prefetch
+>
+  
+    <main
+  id="_main"
+  class="content fade-in layout-post"
+  role="main"
+  data-color="rgb(79,177,186)"
+  data-theme-color="rgb(25,55,71)"
+  
+    data-image="/assets/img/sidebar-bg.jpg"
+    data-overlay
+  
+  >
+  
+
+
+
+
+<article id="post-my_articles-Refresh-Load-in-Vue" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title">
+      
+        vue移动端下拉刷新、上拉加载
+      
+    </h1>
+
+    <p class="post-date heading">
+      
+      <time datetime="2018-06-23T00:00:00+08:00">23 Jun 2018</time>
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+in <a href="/my-articles/" class="flip-title">Blog</a>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+    </p>
+
+    
+    
+
+    <!-- 
+
+
+
+  <div class="hr pb0"></div>
+
+ -->
+  </header>
+
+
+  
+    <p>由于自身的项目比较简单，只有几个H5页面，用来嵌入app中，所有没有引入移动端的UI框架，但是介于能让用户在浏览H5页面时有下拉刷新和上拉加载，有更好的用户体验，自己写组件实现。</p>
+
+<p>
+  <hy-img root-margin="512px"  src="/assets/img/articles/Refresh&amp;Load/Refresh&amp;Load.gif" alt="Refresh&amp;Load" >
+    <noscript><img re-ignore  src="/assets/img/articles/Refresh&amp;Load/Refresh&amp;Load.gif" alt="Refresh&amp;Load" /></noscript>
+    <span class="loading" slot="loading" hidden>
+      <span class="icon-cog"></span>
+    </span>
+  </hy-img></p>
+
+<blockquote>
+  <p><strong>1</strong>、下拉刷新<code class="highlighter-rouge">DropDownRefresh.vue</code></p>
+</blockquote>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;template</span> <span class="na">lang=</span><span class="s">"html"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"refreshMoudle"</span> <span class="err">@</span><span class="na">touchstart=</span><span class="s">"touchStart($event)"</span> <span class="err">@</span><span class="na">touchmove=</span><span class="s">"touchMove($event)"</span> <span class="err">@</span><span class="na">touchend=</span><span class="s">"touchEnd($event)"</span> <span class="na">:style=</span><span class="s">"{transform: 'translate3d(0,' + top + 'px, 0)'}"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"pull-refresh"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;slot</span> <span class="na">name=</span><span class="s">"pull-refresh"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"down-tip"</span> <span class="na">v-if=</span><span class="s">"dropDownState==1"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;img</span> <span class="na">v-if=</span><span class="s">"dropDownStateText.downImg"</span> <span class="na">class=</span><span class="s">"down-tip-img"</span> <span class="na">:src=</span><span class="s">"require('../../assets/images/refreshAndReload/'+dropDownStateText.downImg)"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"down-tip-text"</span><span class="nt">&gt;&lt;/span&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"up-tip"</span> <span class="na">v-if=</span><span class="s">"dropDownState==2"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;img</span> <span class="na">v-if=</span><span class="s">"dropDownStateText.upImg"</span> <span class="na">class=</span><span class="s">"up-tip-img"</span> <span class="na">:src=</span><span class="s">"require('../../assets/images/refreshAndReload/'+dropDownStateText.upImg)"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"up-tip-text"</span><span class="nt">&gt;&lt;/span&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"refresh-tip"</span> <span class="na">v-if=</span><span class="s">"dropDownState==3"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;img</span> <span class="na">v-if=</span><span class="s">"dropDownStateText.refreshImg"</span> <span class="na">class=</span><span class="s">"refresh-tip-img"</span> <span class="na">:src=</span><span class="s">"require('../../assets/images/refreshAndReload/'+dropDownStateText.refreshImg)"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"refresh-tip-text"</span><span class="nt">&gt;&lt;/span&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/slot&gt;</span>
+      <span class="nt">&lt;/header&gt;</span>
+      <span class="nt">&lt;slot&gt;&lt;/slot&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">props</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">onRefresh</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="nb">Function</span><span class="p">,</span>
+      <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nx">data</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">defaultOffset</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="c1">// 默认高度, 相应的修改.releshMoudle的margin-top和.down-tip, .up-tip, .refresh-tip的height</span>
+      <span class="na">top</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="na">scrollIsToTop</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="na">startY</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="na">isDropDown</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">// 是否下拉</span>
+      <span class="na">isRefreshing</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">// 是否正在刷新</span>
+      <span class="na">dropDownState</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="c1">// 显示1:下拉刷新, 2:松开刷新, 3:刷新中……</span>
+      <span class="na">dropDownStateText</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">downTxt</span><span class="p">:</span> <span class="s1">'下拉刷新'</span><span class="p">,</span>
+        <span class="na">downImg</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+        <span class="na">upTxt</span><span class="p">:</span> <span class="s1">'松开刷新'</span><span class="p">,</span>
+        <span class="na">upImg</span><span class="p">:</span> <span class="s1">'release.png'</span><span class="p">,</span>
+        <span class="na">refreshTxt</span><span class="p">:</span> <span class="s1">'刷新中...'</span><span class="p">,</span>
+        <span class="na">refreshImg</span><span class="p">:</span> <span class="s1">'refresh.gif'</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nx">created</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'.down-tip'</span><span class="p">))</span> <span class="p">{</span>
+      <span class="c1">// 获取不同手机的物理像素（dpr）,以便适配rem</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">defaultOffset</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'.down-tip'</span><span class="p">).</span><span class="nx">clientHeight</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">defaultOffset</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">touchStart</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">startY</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">targetTouches</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">pageY</span>
+    <span class="p">},</span>
+    <span class="nx">touchMove</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">scrollIsToTop</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">scrollTop</span> <span class="o">||</span> <span class="nb">window</span><span class="p">.</span><span class="nx">pageYOffset</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">scrollTop</span> <span class="c1">// safari 获取scrollTop用window.pageYOffset</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">targetTouches</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">pageY</span> <span class="o">&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">startY</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 下拉</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">isDropDown</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">scrollIsToTop</span> <span class="o">===</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">isRefreshing</span><span class="p">)</span> <span class="p">{</span>
+          <span class="c1">// 拉动的距离</span>
+          <span class="kd">let</span> <span class="nx">diff</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">targetTouches</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">pageY</span> <span class="o">-</span> <span class="k">this</span><span class="p">.</span><span class="nx">startY</span> <span class="o">-</span> <span class="k">this</span><span class="p">.</span><span class="nx">scrollIsToTop</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">top</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="nx">diff</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">dropDownState</span> <span class="o">===</span> <span class="mi">3</span> <span class="p">?</span> <span class="k">this</span><span class="p">.</span><span class="nx">defaultOffset</span> <span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+          <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">top</span> <span class="o">&gt;=</span> <span class="k">this</span><span class="p">.</span><span class="nx">defaultOffset</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">dropDownState</span> <span class="o">=</span> <span class="mi">2</span>
+            <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">dropDownState</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">isDropDown</span> <span class="o">=</span> <span class="kc">false</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">dropDownState</span> <span class="o">=</span> <span class="mi">1</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nx">touchEnd</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">isDropDown</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">isRefreshing</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">top</span> <span class="o">&gt;=</span> <span class="k">this</span><span class="p">.</span><span class="nx">defaultOffset</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// do refresh</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">refresh</span><span class="p">()</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">isRefreshing</span> <span class="o">=</span> <span class="kc">true</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`do refresh`</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="c1">// cancel refresh</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">isRefreshing</span> <span class="o">=</span> <span class="kc">false</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">isDropDown</span> <span class="o">=</span> <span class="kc">false</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">dropDownState</span> <span class="o">=</span> <span class="mi">1</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">top</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nx">refresh</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">dropDownState</span> <span class="o">=</span> <span class="mi">3</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">top</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">defaultOffset</span>
+      <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">onRefresh</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">refreshDone</span><span class="p">)</span>
+      <span class="p">},</span> <span class="mi">1200</span><span class="p">)</span>
+    <span class="p">},</span>
+    <span class="nx">refreshDone</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">isRefreshing</span> <span class="o">=</span> <span class="kc">false</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">isDropDown</span> <span class="o">=</span> <span class="kc">false</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">dropDownState</span> <span class="o">=</span> <span class="mi">1</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">top</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="c">&lt;!-- Add "scoped" attribute to limit CSS to this component only --&gt;</span>
+<span class="nt">&lt;style </span><span class="na">scoped</span><span class="nt">&gt;</span>
+<span class="nc">.refreshMoudle</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">margin-top</span><span class="p">:</span> <span class="m">-100px</span><span class="p">;</span>
+  <span class="nl">-webkit-overflow-scrolling</span><span class="p">:</span> <span class="n">touch</span><span class="p">;</span> <span class="c">/* ios5+ */</span>
+<span class="p">}</span>
+<span class="nc">.pull-refresh</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#999</span><span class="p">;</span>
+  <span class="nl">transition-duration</span><span class="p">:</span> <span class="m">200ms</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.refreshMoudle</span> <span class="nc">.down-tip</span><span class="o">,</span>
+<span class="nc">.up-tip</span><span class="o">,</span>
+<span class="nc">.refresh-tip</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">justify-content</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.refreshMoudle</span> <span class="nc">.down-tip-img</span><span class="o">,</span>
+<span class="nc">.up-tip-img</span><span class="o">,</span>
+<span class="nc">.refresh-tip-img</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">35px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">35px</span><span class="p">;</span>
+  <span class="nl">margin-right</span><span class="p">:</span> <span class="m">5px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>2</strong>、上拉加载<code class="highlighter-rouge">PullUpReload.vue</code></p>
+</blockquote>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;template</span> <span class="na">lang=</span><span class="s">"html"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"loadMoudle"</span> <span class="err">@</span><span class="na">touchstart=</span><span class="s">"touchStart($event)"</span> <span class="err">@</span><span class="na">touchmove=</span><span class="s">"touchMove($event)"</span> <span class="na">:style=</span><span class="s">"{transform: 'translate3d(0,' + top + 'px, 0)'}"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;slot&gt;&lt;/slot&gt;</span>
+    <span class="nt">&lt;footer</span> <span class="na">class=</span><span class="s">"load-more"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;slot</span> <span class="na">name=</span><span class="s">"load-more"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"moreData-tip"</span> <span class="na">v-if=</span><span class="s">"pullUpState==1"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"moreData-tip-text"</span><span class="nt">&gt;&lt;/span&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"loadingMoreData-tip"</span> <span class="na">v-if=</span><span class="s">"pullUpState==2"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon-loading"</span><span class="nt">&gt;&lt;/span&gt;</span>
+          <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"loadingMoreData-tip-text"</span><span class="nt">&gt;&lt;/span&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"noMoreData-tip"</span> <span class="na">v-if=</span><span class="s">"pullUpState==3"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"connectingLine"</span><span class="nt">&gt;&lt;/span&gt;</span>
+          <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"noMoreData-tip-text"</span><span class="nt">&gt;&lt;/span&gt;</span>
+          <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"connectingLine"</span><span class="nt">&gt;&lt;/span&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/slot&gt;</span>
+    <span class="nt">&lt;/footer&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">props</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">parentPullUpState</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">default</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">},</span>
+    <span class="na">onInfiniteLoad</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="nb">Function</span><span class="p">,</span>
+      <span class="na">require</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nx">data</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">top</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="na">startY</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="na">pullUpState</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="c1">// 1:上拉加载更多, 2:加载中……, 3:我是有底线的</span>
+      <span class="na">isLoading</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">// 是否正在加载</span>
+      <span class="na">pullUpStateText</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">moreDataTxt</span><span class="p">:</span> <span class="s1">'上拉加载更多'</span><span class="p">,</span>
+        <span class="na">loadingMoreDataTxt</span><span class="p">:</span> <span class="s1">'加载中...'</span><span class="p">,</span>
+        <span class="na">noMoreDataTxt</span><span class="p">:</span> <span class="s1">'我是有底线的'</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">touchStart</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">startY</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">targetTouches</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">pageY</span>
+    <span class="p">},</span>
+    <span class="nx">touchMove</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">targetTouches</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">pageY</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">startY</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 上拉</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">judgeScrollBarToTheEnd</span><span class="p">()</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+
+    <span class="c1">// 判断滚动条是否到底</span>
+    <span class="nx">judgeScrollBarToTheEnd</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">innerHeight</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'.loadMoudle'</span><span class="p">).</span><span class="nx">clientHeight</span>
+      <span class="c1">// 变量scrollTop是滚动条滚动时，距离顶部的距离</span>
+      <span class="kd">let</span> <span class="nx">scrollTop</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">scrollTop</span> <span class="o">||</span> <span class="nb">window</span><span class="p">.</span><span class="nx">pageYOffset</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">scrollTop</span>
+      <span class="c1">// 变量scrollHeight是滚动条的总高度</span>
+      <span class="kd">let</span> <span class="nx">scrollHeight</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">clientHeight</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">scrollHeight</span>
+      <span class="c1">// 滚动条到底部的条件</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">scrollTop</span> <span class="o">+</span> <span class="nx">scrollHeight</span> <span class="o">&gt;=</span> <span class="nx">innerHeight</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">pullUpState</span> <span class="o">!==</span> <span class="mi">3</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">isLoading</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">pullUpState</span> <span class="o">=</span> <span class="mi">1</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">infiniteLoad</span><span class="p">()</span>
+          <span class="c1">// setTimeout(() =&gt; {</span>
+          <span class="c1">//   this.infiniteLoad()</span>
+          <span class="c1">// }, 200)</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+
+    <span class="nx">infiniteLoad</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">pullUpState</span> <span class="o">=</span> <span class="mi">2</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">isLoading</span> <span class="o">=</span> <span class="kc">true</span>
+      <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">onInfiniteLoad</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">infiniteLoadDone</span><span class="p">)</span>
+      <span class="p">},</span> <span class="mi">800</span><span class="p">)</span>
+    <span class="p">},</span>
+    <span class="nx">infiniteLoadDone</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">pullUpState</span> <span class="o">=</span> <span class="mi">0</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">isLoading</span> <span class="o">=</span> <span class="kc">false</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">watch</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">parentPullUpState</span> <span class="p">(</span><span class="nx">curVal</span><span class="p">,</span> <span class="nx">oldVal</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">pullUpState</span> <span class="o">=</span> <span class="nx">curVal</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="c">&lt;!-- Add "scoped" attribute to limit CSS to this component only --&gt;</span>
+<span class="nt">&lt;style </span><span class="na">scoped</span><span class="nt">&gt;</span>
+<span class="nc">.load-more</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#c0c0c0</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="m">#f7f7f7</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.moreData-tip</span><span class="o">,</span>
+<span class="nc">.loadingMoreData-tip</span><span class="o">,</span>
+<span class="nc">.noMoreData-tip</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">justify-content</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">150px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.loadMoudle</span> <span class="nc">.icon-loading</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">inline-flex</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">35px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">35px</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="sx">url(../../assets/images/refreshAndReload/loading.png)</span> <span class="nb">no-repeat</span><span class="p">;</span>
+  <span class="nl">background-size</span><span class="p">:</span> <span class="n">cover</span><span class="p">;</span>
+  <span class="nl">margin-right</span><span class="p">:</span> <span class="m">5px</span><span class="p">;</span>
+  <span class="nl">animation</span><span class="p">:</span> <span class="n">rotating</span> <span class="m">2s</span> <span class="n">linear</span> <span class="n">infinite</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">@keyframes</span> <span class="n">rotating</span> <span class="p">{</span>
+  <span class="nt">0</span><span class="o">%</span> <span class="p">{</span>
+    <span class="nl">transform</span><span class="p">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">0deg</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nt">100</span><span class="o">%</span> <span class="p">{</span>
+    <span class="nl">transform</span><span class="p">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">1turn</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nc">.connectingLine</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">inline-flex</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">150px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">2px</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="m">#ddd</span><span class="p">;</span>
+  <span class="nl">margin-left</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="nl">margin-right</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+</code></pre></div></div>
+<blockquote>
+  <p><strong>3</strong>、对两个组件的使用</p>
+</blockquote>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;template&gt;</span>
+  <span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;v-refresh</span> <span class="na">:on-refresh=</span><span class="s">"onRefresh"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;v-reload</span> <span class="na">:on-infinite-load=</span><span class="s">"onInfiniteLoad"</span> <span class="na">:parent-pull-up-state=</span><span class="s">"infiniteLoadData.pullUpState"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bank_lists"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bank_box"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bank_list"</span> <span class="na">v-for=</span><span class="s">"item in bank_list"</span> <span class="na">:key=</span><span class="s">"item.id"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bank_icon"</span> <span class="na">:style=</span><span class="s">"{ 'background': 'url(' + require('../assets/images/56_56/'+item.iconName) + ') no-repeat', 'background-size': '100%' }"</span> <span class="nt">&gt;&lt;/div&gt;</span>
+          <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"bank_name"</span><span class="nt">&gt;&lt;/span&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"hot_box"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"hot_header"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"hot_name"</span><span class="nt">&gt;</span>热门推荐<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"more_box"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"more_text"</span><span class="nt">&gt;</span>查看更多<span class="nt">&lt;/span&gt;</span>
+          <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"more_icon"</span><span class="nt">&gt;&lt;/span&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"hot_centenrt"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"hot_centent_left"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"hot_left_name"</span><span class="nt">&gt;&lt;/span&gt;</span>
+          <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"hot_left_desc"</span><span class="nt">&gt;&lt;/span&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"hot_left_img"</span> <span class="na">:style=</span><span class="s">"{ 'background': 'url(' + require('../assets/images/bank/'+hot_centent_left.imgName) + ') no-repeat', 'background-size': '100%' }"</span> <span class="nt">&gt;&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"hot_centent_right"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"hot_right_top"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"hot_right_text_box"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"hot_right_name"</span><span class="nt">&gt;&lt;/span&gt;</span>
+              <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"hot_right_desc"</span><span class="nt">&gt;&lt;/span&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"hot_right_img"</span> <span class="na">:style=</span><span class="s">"{ 'background': 'url(' + require('../assets/images/bank/'+hot_c_r_one.imgName) + ') no-repeat', 'background-size': '100%' }"</span> <span class="nt">&gt;&lt;/div&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"hot_right_bottom"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"hot_right_text_box2"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"hot_right_name2"</span><span class="nt">&gt;&lt;/span&gt;</span>
+              <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"hot_right_desc2"</span><span class="nt">&gt;&lt;/span&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"hot_right_img"</span> <span class="na">:style=</span><span class="s">"{ 'background': 'url(' + require('../assets/images/bank/'+hot_c_r_two.imgName) + ') no-repeat', 'background-size': '100%' }"</span> <span class="nt">&gt;&lt;/div&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card_state"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card_progress border-right"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"progress_icon"</span><span class="nt">&gt;&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card_text"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"card_state_name"</span><span class="nt">&gt;&lt;/span&gt;</span>
+          <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"card_desc"</span><span class="nt">&gt;&lt;/span&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card_activation"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"activation_icon"</span><span class="nt">&gt;&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card_text"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"card_state_name"</span><span class="nt">&gt;&lt;/span&gt;</span>
+          <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"card_desc"</span><span class="nt">&gt;&lt;/span&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card_order"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"border_bottom card_content_bottom"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"hot_header"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"hot_name"</span><span class="nt">&gt;</span>热卡排行<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">slot=</span><span class="s">"load-more"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"card_list"</span> <span class="na">v-for=</span><span class="s">"(item,index) in infiniteLoadData.pullUpList"</span> <span class="na">:key=</span><span class="s">"item.id"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card_content"</span> <span class="na">:class=</span><span class="s">"infiniteLoadData.pullUpList.length - 1 != index? 'card_content_bottom':''"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card_img"</span> <span class="na">:style=</span><span class="s">"{ 'background': 'url(' + require('../assets/images/bank/'+item.imgName) + ') no-repeat', 'background-size': '100%' }"</span> <span class="nt">&gt;&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card_list_text"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card_name"</span><span class="nt">&gt;&lt;/p&gt;</span>
+            <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card_title"</span><span class="nt">&gt;&lt;/p&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card_words_lists"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card_words bor_rad_20"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card_word"</span><span class="nt">&gt;&lt;/p&gt;</span>
+              <span class="nt">&lt;/div&gt;</span>
+              <span class="nt">&lt;div</span> <span class="na">v-if=</span><span class="s">"item.cardWordTwo"</span> <span class="na">class=</span><span class="s">"card_words card_words_two bor_rad_20"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card_word"</span><span class="nt">&gt;&lt;/p&gt;</span>
+              <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/v-reload&gt;</span>
+    <span class="nt">&lt;/v-refresh&gt;</span>
+  <span class="nt">&lt;/section&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+<span class="k">import</span> <span class="nx">DropDownRefresh</span> <span class="k">from</span> <span class="s1">'./common/DropDownRefresh'</span>
+<span class="k">import</span> <span class="nx">PullUpReload</span> <span class="k">from</span> <span class="s1">'./common/PullUpReload'</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">data</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">bank_list</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="na">iconName</span><span class="p">:</span> <span class="s1">'zhaoshang.png'</span><span class="p">,</span>
+          <span class="na">bankName</span><span class="p">:</span> <span class="s1">'招商银行'</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="na">iconName</span><span class="p">:</span> <span class="s1">'minsheng.png'</span><span class="p">,</span>
+          <span class="na">bankName</span><span class="p">:</span> <span class="s1">'民生银行'</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="na">iconName</span><span class="p">:</span> <span class="s1">'pingancar.png'</span><span class="p">,</span>
+          <span class="na">bankName</span><span class="p">:</span> <span class="s1">'平安联名'</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="na">iconName</span><span class="p">:</span> <span class="s1">'xingye.png'</span><span class="p">,</span>
+          <span class="na">bankName</span><span class="p">:</span> <span class="s1">'兴业银行'</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="na">iconName</span><span class="p">:</span> <span class="s1">'shanghai.png'</span><span class="p">,</span>
+          <span class="na">bankName</span><span class="p">:</span> <span class="s1">'上海银行'</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="na">iconName</span><span class="p">:</span> <span class="s1">'jiaotong.png'</span><span class="p">,</span>
+          <span class="na">bankName</span><span class="p">:</span> <span class="s1">'交通银行'</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="na">iconName</span><span class="p">:</span> <span class="s1">'guangda.png'</span><span class="p">,</span>
+          <span class="na">bankName</span><span class="p">:</span> <span class="s1">'光大银行'</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="na">iconName</span><span class="p">:</span> <span class="s1">'more.png'</span><span class="p">,</span>
+          <span class="na">bankName</span><span class="p">:</span> <span class="s1">'全部银行'</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="na">hot_centent_left</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">bankName</span><span class="p">:</span> <span class="s1">'交通银行'</span><span class="p">,</span>
+        <span class="na">name</span><span class="p">:</span> <span class="s1">'交行Y-POWER黑卡'</span><span class="p">,</span>
+        <span class="na">desc</span><span class="p">:</span> <span class="s1">'额度100%取现'</span><span class="p">,</span>
+        <span class="na">imgName</span><span class="p">:</span> <span class="s1">'jiaohangY-POWER.png'</span>
+      <span class="p">},</span>
+      <span class="na">hot_c_r_one</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">bankName</span><span class="p">:</span> <span class="s1">'招商银行'</span><span class="p">,</span>
+        <span class="na">name</span><span class="p">:</span> <span class="s1">'招行YOUNG卡'</span><span class="p">,</span>
+        <span class="na">desc</span><span class="p">:</span> <span class="s1">'生日月双倍积分'</span><span class="p">,</span>
+        <span class="na">imgName</span><span class="p">:</span> <span class="s1">'zhaohangYOUNG.png'</span>
+      <span class="p">},</span>
+      <span class="na">hot_c_r_two</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">bankName</span><span class="p">:</span> <span class="s1">'光大银行'</span><span class="p">,</span>
+        <span class="na">name</span><span class="p">:</span> <span class="s1">'光大淘票票公仔联名卡'</span><span class="p">,</span>
+        <span class="na">desc</span><span class="p">:</span> <span class="s1">'电影达人必备'</span><span class="p">,</span>
+        <span class="na">imgName</span><span class="p">:</span> <span class="s1">'guangdalianming.png'</span>
+      <span class="p">},</span>
+      <span class="na">card_progress</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">name</span><span class="p">:</span> <span class="s1">'办卡进度'</span><span class="p">,</span>
+        <span class="na">desc</span><span class="p">:</span> <span class="s1">'让等待随处可见'</span>
+      <span class="p">},</span>
+      <span class="na">card_activation</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">name</span><span class="p">:</span> <span class="s1">'办卡激活'</span><span class="p">,</span>
+        <span class="na">desc</span><span class="p">:</span> <span class="s1">'让等待随处可见'</span>
+      <span class="p">},</span>
+      <span class="na">card_list</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="na">bankName</span><span class="p">:</span> <span class="s1">'平安联名'</span><span class="p">,</span>
+          <span class="na">imgName</span><span class="p">:</span> <span class="s1">'pinganqiche.png'</span><span class="p">,</span>
+          <span class="na">cardName</span><span class="p">:</span> <span class="s1">'平安银行信用卡'</span><span class="p">,</span>
+          <span class="na">cardTitle</span><span class="p">:</span> <span class="s1">'平安银行汽车之家联名单币卡'</span><span class="p">,</span>
+          <span class="na">cardWordOne</span><span class="p">:</span> <span class="s1">'首年免年费'</span><span class="p">,</span>
+          <span class="na">cardWordTwo</span><span class="p">:</span> <span class="s1">'加油88折'</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="na">bankName</span><span class="p">:</span> <span class="s1">'上海银行'</span><span class="p">,</span>
+          <span class="na">imgName</span><span class="p">:</span> <span class="s1">'shanghaitaobao.png'</span><span class="p">,</span>
+          <span class="na">cardName</span><span class="p">:</span> <span class="s1">'上海银行信用卡'</span><span class="p">,</span>
+          <span class="na">cardTitle</span><span class="p">:</span> <span class="s1">'淘宝金卡'</span><span class="p">,</span>
+          <span class="na">cardWordOne</span><span class="p">:</span> <span class="s1">'积分抵现'</span><span class="p">,</span>
+          <span class="na">cardWordTwo</span><span class="p">:</span> <span class="s1">'首刷有礼'</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="na">bankName</span><span class="p">:</span> <span class="s1">'华夏银行'</span><span class="p">,</span>
+          <span class="na">imgName</span><span class="p">:</span> <span class="s1">'huaxiaiqiyi.png'</span><span class="p">,</span>
+          <span class="na">cardName</span><span class="p">:</span> <span class="s1">'华夏银行信用卡'</span><span class="p">,</span>
+          <span class="na">cardTitle</span><span class="p">:</span> <span class="s1">'华夏爱奇艺悦看卡'</span><span class="p">,</span>
+          <span class="na">cardWordOne</span><span class="p">:</span> <span class="s1">'送爱奇艺会员'</span><span class="p">,</span>
+          <span class="na">cardWordTwo</span><span class="p">:</span> <span class="s1">'商城8折'</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="na">bankName</span><span class="p">:</span> <span class="s1">'浦发银行'</span><span class="p">,</span>
+          <span class="na">imgName</span><span class="p">:</span> <span class="s1">'pufajianyue.png'</span><span class="p">,</span>
+          <span class="na">cardName</span><span class="p">:</span> <span class="s1">'浦发银行信用卡'</span><span class="p">,</span>
+          <span class="na">cardTitle</span><span class="p">:</span> <span class="s1">'浦发银行简约白金卡'</span><span class="p">,</span>
+          <span class="na">cardWordOne</span><span class="p">:</span> <span class="s1">'团购立减'</span><span class="p">,</span>
+          <span class="na">cardWordTwo</span><span class="p">:</span> <span class="s1">'酒店优惠 免年费'</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="na">bankName</span><span class="p">:</span> <span class="s1">'中信银行'</span><span class="p">,</span>
+          <span class="na">imgName</span><span class="p">:</span> <span class="s1">'zhongxinbaijin.png'</span><span class="p">,</span>
+          <span class="na">cardName</span><span class="p">:</span> <span class="s1">'中信银行信用卡'</span><span class="p">,</span>
+          <span class="na">cardTitle</span><span class="p">:</span> <span class="s1">'中信银行i白金信用卡'</span><span class="p">,</span>
+          <span class="na">cardWordOne</span><span class="p">:</span> <span class="s1">'首刷有礼'</span><span class="p">,</span>
+          <span class="na">cardWordTwo</span><span class="p">:</span> <span class="s1">'双倍积分'</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+
+      <span class="c1">// 上拉加载的设置</span>
+      <span class="na">infiniteLoadData</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">initialShowNum</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="c1">// 初始显示多少条</span>
+        <span class="na">everyLoadingNum</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="c1">// 每次加载的个数</span>
+        <span class="na">pullUpState</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="c1">// 子组件的pullUpState状态</span>
+        <span class="na">pullUpList</span><span class="p">:</span> <span class="p">[],</span> <span class="c1">// 上拉加载更多数据的数组</span>
+        <span class="na">showPullUpListLength</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">initialShowNum</span> <span class="c1">// 上拉加载后所展示的个数</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nx">mounted</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">getStartPullUpState</span><span class="p">()</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">getPullUpDefData</span><span class="p">()</span>
+  <span class="p">},</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="c1">// 获取上拉加载的初始数据</span>
+    <span class="nx">getPullUpDefData</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">infiniteLoadData</span><span class="p">.</span><span class="nx">pullUpList</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">infiniteLoadData</span><span class="p">.</span><span class="nx">initialShowNum</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">infiniteLoadData</span><span class="p">.</span><span class="nx">pullUpList</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">card_list</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+
+    <span class="nx">getStartPullUpState</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">card_list</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">infiniteLoadData</span><span class="p">.</span><span class="nx">initialShowNum</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 修改子组件的pullUpState状态</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">infiniteLoadData</span><span class="p">.</span><span class="nx">pullUpState</span> <span class="o">=</span> <span class="mi">3</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">infiniteLoadData</span><span class="p">.</span><span class="nx">pullUpState</span> <span class="o">=</span> <span class="mi">0</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+
+    <span class="c1">// 上拉一次加载更多的数据</span>
+    <span class="nx">getPullUpMoreData</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">showPullUpListLength</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">infiniteLoadData</span><span class="p">.</span><span class="nx">pullUpList</span><span class="p">.</span><span class="nx">length</span>
+      <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">infiniteLoadData</span><span class="p">.</span><span class="nx">pullUpList</span><span class="p">.</span><span class="nx">length</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">infiniteLoadData</span><span class="p">.</span><span class="nx">everyLoadingNum</span> <span class="o">&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">card_list</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">card_list</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="k">this</span><span class="p">.</span><span class="nx">showPullUpListLength</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">infiniteLoadData</span><span class="p">.</span><span class="nx">pullUpList</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">card_list</span><span class="p">[</span><span class="nx">i</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">showPullUpListLength</span><span class="p">])</span>
+        <span class="p">}</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">infiniteLoadData</span><span class="p">.</span><span class="nx">everyLoadingNum</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">infiniteLoadData</span><span class="p">.</span><span class="nx">pullUpList</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">card_list</span><span class="p">[</span><span class="nx">i</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">showPullUpListLength</span><span class="p">])</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">card_list</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">infiniteLoadData</span><span class="p">.</span><span class="nx">pullUpList</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">infiniteLoadData</span><span class="p">.</span><span class="nx">pullUpState</span> <span class="o">=</span> <span class="mi">3</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">infiniteLoadData</span><span class="p">.</span><span class="nx">pullUpState</span> <span class="o">=</span> <span class="mi">0</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+
+    <span class="c1">// 下拉刷新</span>
+    <span class="nx">onRefresh</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// 如果下拉刷新和上拉加载同时使用，下拉时初始化上拉的数据</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">getStartPullUpState</span><span class="p">()</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">getPullUpDefData</span><span class="p">()</span>
+      <span class="nx">done</span><span class="p">()</span> <span class="c1">// call done</span>
+    <span class="p">},</span>
+
+    <span class="c1">// 上拉加载</span>
+    <span class="nx">onInfiniteLoad</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">infiniteLoadData</span><span class="p">.</span><span class="nx">pullUpState</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">getPullUpMoreData</span><span class="p">()</span>
+      <span class="p">}</span>
+      <span class="nx">done</span><span class="p">()</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'v-refresh'</span><span class="p">:</span> <span class="nx">DropDownRefresh</span><span class="p">,</span>
+    <span class="s1">'v-reload'</span><span class="p">:</span> <span class="nx">PullUpReload</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="c">&lt;!-- Add "scoped" attribute to limit CSS to this component only --&gt;</span>
+<span class="nt">&lt;style </span><span class="na">scoped</span><span class="nt">&gt;</span>
+<span class="k">@import</span> <span class="s1">"../assets/css/not2rem.css"</span><span class="p">;</span>
+<span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">flex-direction</span><span class="p">:</span> <span class="n">column</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">750px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">1334px</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="m">#f7f7f7</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.bank_lists</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">320px</span><span class="p">;</span>
+  <span class="nl">margin-top</span><span class="p">:</span> <span class="m">0px</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="m">#fff</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.bank_box</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">flex-wrap</span><span class="p">:</span> <span class="n">wrap</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">2px</span> <span class="m">7px</span> <span class="m">42px</span> <span class="m">7px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.bank_list</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">98px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">40px</span> <span class="m">42px</span> <span class="m">0</span> <span class="m">42px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.bank_icon</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">56px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">56px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="m">22px</span> <span class="m">18px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.bank_name</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">inline-flex</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">110px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">24px</span><span class="p">;</span>
+  <span class="nl">line-height</span><span class="p">:</span> <span class="m">24px</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">24px</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#333</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.hot_box</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">420px</span><span class="p">;</span>
+  <span class="nl">margin-top</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="m">#fff</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.hot_header</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">justify-content</span><span class="p">:</span> <span class="n">space-between</span><span class="p">;</span>
+  <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">674px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">80px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="m">30px</span> <span class="m">0</span> <span class="m">46px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.hot_name</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">inline-flex</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">28px</span><span class="p">;</span>
+  <span class="nl">line-height</span><span class="p">:</span> <span class="m">28px</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">28px</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#333</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.more_text</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">inline-flex</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">24px</span><span class="p">;</span>
+  <span class="nl">line-height</span><span class="p">:</span> <span class="m">24px</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">24px</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#999</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.more_icon</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">inline-flex</span><span class="p">;</span>
+  <span class="nl">margin-left</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">11px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="sx">url("../assets/images/icon/more.png")</span> <span class="nb">no-repeat</span><span class="p">;</span>
+  <span class="nl">background-size</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.hot_centenrt</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">flex-direction</span><span class="p">:</span> <span class="n">row</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">710px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">320px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="m">20px</span> <span class="m">20px</span> <span class="m">20px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.hot_centent_left</span> <span class="p">{</span>
+  <span class="nl">flex-direction</span><span class="p">:</span> <span class="n">column</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">350px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">320px</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="m">#f7f7f7</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.hot_left_name</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">inline-flex</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">282px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">24px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">50px</span> <span class="m">34px</span> <span class="m">0</span> <span class="m">34px</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">24px</span><span class="p">;</span>
+  <span class="nl">line-height</span><span class="p">:</span> <span class="m">24px</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#333</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.hot_left_desc</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">inline-flex</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">282px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">12px</span> <span class="m">34px</span> <span class="m">0</span> <span class="m">34px</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="nl">line-height</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#999</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.hot_left_img</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">220px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">142px</span><span class="p">;</span>
+  <span class="nl">margin-left</span><span class="p">:</span> <span class="m">34px</span><span class="p">;</span>
+  <span class="nl">margin-top</span><span class="p">:</span> <span class="m">34px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.hot_centent_right</span> <span class="p">{</span>
+  <span class="nl">flex-direction</span><span class="p">:</span> <span class="n">column</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">350px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">320px</span><span class="p">;</span>
+  <span class="nl">margin-left</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.hot_right_top</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">flex-direction</span><span class="p">:</span> <span class="n">row</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">156px</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="m">#f7f7f7</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.hot_right_text_box</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">flex-direction</span><span class="p">:</span> <span class="n">column</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">180px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">58px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">49px</span> <span class="m">20px</span> <span class="m">0</span> <span class="m">20px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.hot_right_name</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">inline-flex</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">24px</span><span class="p">;</span>
+  <span class="nl">line-height</span><span class="p">:</span> <span class="m">24px</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">24px</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#333</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.hot_right_desc</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">inline-flex</span><span class="p">;</span>
+  <span class="nl">margin-top</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">24px</span><span class="p">;</span>
+  <span class="nl">line-height</span><span class="p">:</span> <span class="m">24px</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">24px</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#999</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.hot_right_img</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">110px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">70px</span><span class="p">;</span>
+  <span class="nl">margin-top</span><span class="p">:</span> <span class="m">43px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.hot_right_bottom</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">flex-wrap</span><span class="p">:</span> <span class="n">wrap</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">156px</span><span class="p">;</span>
+  <span class="nl">margin-top</span><span class="p">:</span> <span class="m">8px</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="m">#f7f7f7</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.hot_right_text_box2</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">flex-direction</span><span class="p">:</span> <span class="n">column</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">180px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">31px</span> <span class="m">20px</span> <span class="m">0</span> <span class="m">20px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.hot_right_name2</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">inline-flex</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">58px</span><span class="p">;</span>
+  <span class="nl">line-height</span><span class="p">:</span> <span class="m">30px</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">24px</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#333</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.hot_right_desc2</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">inline-flex</span><span class="p">;</span>
+  <span class="nl">margin-top</span><span class="p">:</span> <span class="m">12px</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">24px</span><span class="p">;</span>
+  <span class="nl">line-height</span><span class="p">:</span> <span class="m">24px</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">24px</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#999</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.card_state</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">flex-direction</span><span class="p">:</span> <span class="n">row</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">128px</span><span class="p">;</span>
+  <span class="nl">margin-top</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="m">#fff</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.card_progress</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">inline-flex</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">327px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">88px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">20px</span> <span class="m">0</span> <span class="m">20px</span> <span class="m">48px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.progress_icon</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">48px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">48px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">20px</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="sx">url("../assets/images/icon/search.png")</span> <span class="nb">no-repeat</span><span class="p">;</span>
+  <span class="nl">background-size</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.activation_icon</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">48px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">48px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">20px</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="sx">url("../assets/images/icon/activation.png")</span> <span class="nb">no-repeat</span><span class="p">;</span>
+  <span class="nl">background-size</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.card_text</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">228px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">66px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">11px</span> <span class="m">20px</span> <span class="m">11px</span> <span class="m">30px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.card_state_name</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">inline-flex</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">28px</span><span class="p">;</span>
+  <span class="nl">line-height</span><span class="p">:</span> <span class="m">28px</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">28px</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#333</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.card_desc</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">inline-flex</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">22px</span><span class="p">;</span>
+  <span class="nl">line-height</span><span class="p">:</span> <span class="m">22px</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">22px</span><span class="p">;</span>
+  <span class="nl">margin-top</span><span class="p">:</span> <span class="m">16px</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#999</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.card_activation</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">inline-flex</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">326px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">88px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">20px</span> <span class="m">0</span> <span class="m">20px</span> <span class="m">48px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.card_order</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+  <span class="nl">margin-top</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="m">#fff</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.border_bottom</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">80px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.card_list</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">228px</span><span class="p">;</span>
+  <span class="nl">list-style-type</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.card_content</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">flex-direction</span><span class="p">:</span> <span class="n">row</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">700px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">228px</span><span class="p">;</span>
+  <span class="nl">margin-left</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.card_img</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">186px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">120px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">54px</span> <span class="m">0</span> <span class="m">54px</span> <span class="m">20px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.card_list_text</span> <span class="p">{</span>
+  <span class="nl">flex-direction</span><span class="p">:</span> <span class="n">column</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">386px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">124px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">52px</span> <span class="m">34px</span> <span class="m">52px</span> <span class="m">74px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.card_name</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">28px</span><span class="p">;</span>
+  <span class="nl">line-height</span><span class="p">:</span> <span class="m">28px</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">28px</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#333</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.card_title</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">24px</span><span class="p">;</span>
+  <span class="nl">margin-top</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="nl">line-height</span><span class="p">:</span> <span class="m">24px</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">24px</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#666</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.card_words_lists</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">flex-direction</span><span class="p">:</span> <span class="n">row</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.card_words</span> <span class="p">{</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">36px</span><span class="p">;</span>
+  <span class="nl">margin-top</span><span class="p">:</span> <span class="m">16px</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="m">#e8ca88</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.card_word</span> <span class="p">{</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">8px</span> <span class="m">18px</span><span class="p">;</span>
+  <span class="nl">line-height</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#4b4b4b</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.card_words_two</span> <span class="p">{</span>
+  <span class="nl">margin-left</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+</code></pre></div></div>
+
+    
+  
+</article>
+
+
+<hr class="dingbat related" />
+
+
+
+
+  
+    
+
+
+
+
+<aside class="related mb4" role="complementary">
+  <h2 class="hr">Related Posts</h2>
+
+  <ul class="related-posts">
+    
+      
+
+
+<li>
+  <a href="/my_articles/2018-06-28-ElementUI_Table-render-header/" class="h4 flip-title">
+    <span>ElementUI中Table自定义表头render-header</span>
+  </a>
+  <time class="heading faded fine" datetime="2018-06-28T00:00:00+08:00">28 Jun 2018</time>
+</li>
+
+    
+      
+
+
+<li>
+  <a href="/my_articles/2018-06-03-ElementUI_Upload-Qiniuyun/" class="h4 flip-title">
+    <span>ElementUI中Upload上传七牛云</span>
+  </a>
+  <time class="heading faded fine" datetime="2018-06-03T00:00:00+08:00">03 Jun 2018</time>
+</li>
+
+    
+      
+
+
+<li>
+  <a href="/my_articles/2018-05-24-Vue-router_H5-History-Mode/" class="h4 flip-title">
+    <span>vue-router-h5-history</span>
+  </a>
+  <time class="heading faded fine" datetime="2018-05-24T00:00:00+08:00">24 May 2018</time>
+</li>
+
+    
+  </ul>
+</aside>
+
+
+  
+
+
+  
+
+
+  
+<footer role="contentinfo">
+  <hr/>
+  
+    <p><small class="copyright">Copyright © 2018 Darkerxi
+</small></p>
+  
+  
+  <!-- <p><small>Powered by Jekyll & Hydejack.</small></p> -->
+  <hr class="sr-only"/>
+</footer>
+
+
+</main>
+
+    <hy-drawer
+  class=""
+  align="left"
+  threshold="10"
+  touch-events
+  prevent-default
+>
+  <header id="_sidebar" class="sidebar" role="banner">
+    
+    <div class="sidebar-bg sidebar-overlay" style="background-color:rgb(25,55,71);background-image:url(/assets/img/sidebar-bg.jpg)"></div>
+
+    <div class="sidebar-sticky">
+      <div class="sidebar-about">
+        
+          <a class="no-hover" href="/" tabindex="-1">
+            <img src="/assets/icons/icon.png" class="avatar" alt="darkerxi" re-ignore />
+          </a>
+        
+        <h2 class="h1"><a href="/">darkerxi</a></h2>
+        
+        
+          <p class="">
+            “Und wenn du lange in einen Abgrund blickst, blickt der Abgrund auch in dich hinein”
+
+          </p>
+        
+      </div>
+
+      <nav class="sidebar-nav heading" role="navigation">
+        <span class="sr-only">Navigation:</span>
+<ul>
+  
+  
+  
+  
+    
+      <li>
+        <a
+          id="_navigation"
+          href="/my_articles/"
+          class="sidebar-nav-item active"
+          
+          >
+          Blog
+        </a>
+      </li>
+    
+  
+    
+      <li>
+        <a
+          
+          href="/my_tools/"
+          class="sidebar-nav-item"
+          
+          >
+          Tools
+        </a>
+      </li>
+    
+  
+    
+      <li>
+        <a
+          
+          href="/about/"
+          class="sidebar-nav-item"
+          
+          >
+          About
+        </a>
+      </li>
+    
+  
+</ul>
+
+      </nav>
+
+      
+
+      <div class="sidebar-social">
+        <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/darkerxi" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:darkerxi@163.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+      </div>
+    </div>
+  </header>
+</hy-drawer>
+<hr class="sr-only" hidden />
+
+  
+</hy-push-state>
+
+
+  <!--[if gt IE 9]><!---->
+  <script>window.loadJSDeferred(document.getElementById('_hrefJS').href);</script>
+  
+
+  <!--<![endif]-->
+
+  
+
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      
+        navigator.serviceWorker.register('/sw.js')
+          .then(r => r.update())
+          .catch(() => {});
+      
+    }
+  </script>
+
+
+
+
+
+
+<h2 class="sr-only" hidden>Templates (for web app):</h2>
+
+<template id="_animation-template" hidden>
+  <div class="animation-main fixed-top">
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+<template id="_loading-template" hidden>
+  <div class="loading">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+<template id="_error-template" hidden>
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+<template id="_back-template" hidden>
+  <a id="_back" class="back nav-btn no-hover">
+    <span class="sr-only">Back</span>
+    <span class="icon-arrow-left2"></span>
+  </a>
+</template>
+
+<template id="_permalink-template" hidden>
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="icon-link"></span>
+  </a>
+</template>
+
+
+
+
+</body>
+</html>

@@ -24,20 +24,20 @@
 
   
 <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Tools | darkerxi</title>
+<title>高性能网站建设指南(十二)删除重复脚本 | darkerxi</title>
 <meta name="generator" content="Jekyll v3.8.3" />
-<meta property="og:title" content="Tools" />
+<meta property="og:title" content="高性能网站建设指南(十二)删除重复脚本" />
 <meta name="author" content="darkerxi" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="I am a web developer focusing on front-end development. Here are some of the tools I use in my daily development." />
-<meta property="og:description" content="I am a web developer focusing on front-end development. Here are some of the tools I use in my daily development." />
-<link rel="canonical" href="https://darkerxi.github.io/my-tools/" />
-<meta property="og:url" content="https://darkerxi.github.io/my-tools/" />
+<meta name="description" content="在一个页面中两次包含用一个JavaScript文件会损伤性能。导致一个脚本的重复有两个主要因素——团队大小和脚本数量。页面中的脚本越多，就越有可能将一个脚本包含两次。" />
+<meta property="og:description" content="在一个页面中两次包含用一个JavaScript文件会损伤性能。导致一个脚本的重复有两个主要因素——团队大小和脚本数量。页面中的脚本越多，就越有可能将一个脚本包含两次。" />
+<link rel="canonical" href="https://darkerxi.github.io/my_articles/2017-06-25-Remove-Duplicate-Scripts/" />
+<meta property="og:url" content="https://darkerxi.github.io/my_articles/2017-06-25-Remove-Duplicate-Scripts/" />
 <meta property="og:site_name" content="darkerxi" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-21T16:43:56+08:00" />
+<meta property="article:published_time" content="2017-06-25T00:00:00+08:00" />
 <script type="application/ld+json">
-{"description":"I am a web developer focusing on front-end development. Here are some of the tools I use in my daily development.","author":{"@type":"Person","name":"darkerxi"},"@type":"WebPage","url":"https://darkerxi.github.io/my-tools/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://darkerxi.github.io/assets/icons/icon.png"},"name":"darkerxi"},"headline":"Tools","dateModified":"2018-09-21T16:43:56+08:00","datePublished":"2018-09-21T16:43:56+08:00","@context":"http://schema.org"}</script>
+{"description":"在一个页面中两次包含用一个JavaScript文件会损伤性能。导致一个脚本的重复有两个主要因素——团队大小和脚本数量。页面中的脚本越多，就越有可能将一个脚本包含两次。","author":{"@type":"Person","name":"darkerxi"},"@type":"BlogPosting","url":"https://darkerxi.github.io/my_articles/2017-06-25-Remove-Duplicate-Scripts/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://darkerxi.github.io/assets/icons/icon.png"},"name":"darkerxi"},"headline":"高性能网站建设指南(十二)删除重复脚本","dateModified":"2017-06-25T00:00:00+08:00","datePublished":"2017-06-25T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://darkerxi.github.io/my_articles/2017-06-25-Remove-Duplicate-Scripts/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -64,7 +64,7 @@
 
 
 
-<link rel="alternate" href="https://darkerxi.github.io/my-tools/" hreflang="en">
+<link rel="alternate" href="https://darkerxi.github.io/my_articles/2017-06-25-Remove-Duplicate-Scripts/" hreflang="en">
 
 <link rel="shortcut icon" href="/assets/icons/favicon.ico">
 <link rel="apple-touch-icon" href="/assets/icons/icon.png">
@@ -166,7 +166,7 @@
   
     <main
   id="_main"
-  class="content fade-in layout-list"
+  class="content fade-in layout-post"
   role="main"
   data-color="rgb(79,177,186)"
   data-theme-color="rgb(25,55,71)"
@@ -178,163 +178,147 @@
   
 
 
+
+
+<article id="post-my_articles-Remove-Duplicate-Scripts" class="page post mb6" role="article">
   <header>
-    <h1 class="page-title">Tools</h1>
-    
+    <h1 class="post-title">
+      
+        高性能网站建设指南(十二)删除重复脚本
+      
+    </h1>
+
+    <p class="post-date heading">
+      
+      <time datetime="2017-06-25T00:00:00+08:00">25 Jun 2017</time>
+      
+      
+      
+      
+      
 
 
 
-  
-    <p class="message" >
-      I am a web developer focusing on front-end development. <br />Here are some of the tools I use in my daily development.
+
+
+
+
+
+
+in <a href="/my-articles/" class="flip-title">Blog</a>
+
+      
+
+
+
+
+
+
+
+
+
+
 
     </p>
-  
+
+    
+    
+
+    <!-- 
 
 
+
+  <div class="hr pb0"></div>
+
+ -->
   </header>
-  <hr class="sr-only"/>
-
-
-
-
-
-
-
-
 
 
   
-  
-    
-    <h2 id="y-2017" class="hr">2017</h2>
-    <ul class="related-posts">
-    
-  
-  
+    <p>在一个页面中两次包含用一个JavaScript文件会损伤性能。导致一个脚本的重复有两个主要因素——团队大小和脚本数量。页面中的脚本越多，就越有可能将一个脚本包含两次。</p>
 
+<blockquote>
+  <p><strong>重复脚本损伤性能（Duplicate Script Hurt Performance）</strong></p>
+</blockquote>
 
-<li>
-  <a href="/my_tools/2017-02-25-icomoon/" class="h4 flip-title">
-    <span>Icomoon</span>
-  </a>
-  <time class="heading faded fine" datetime="2017-02-25T00:00:00+08:00">25 Feb</time>
-</li>
+<p>重复脚本损伤性能的方式有两种——不必要的HTTP请求和执行JavaScript所浪费是时间。</p>
 
-  
+<blockquote>
+  <p><strong>避免重复脚本（Avoiding Duplicate Scripts）</strong></p>
+</blockquote>
 
-  
-  
-  
+<p>避免意外包含同一个脚本两次的方法：</p>
 
+<ol>
+  <li>
+    <p>在你的模板系统中实现一个脚本管理模块。包含脚本的典型方式手机在HTML页面中使用SCRIPT标签：<code class="highlighter-rouge">&lt;script type="text/javascript" src="menu）1.0.1.js"&gt;&lt;/script&gt;</code>。</p>
+  </li>
+  <li>
+    <p>在PHP中创建一个称作insertScript的函数<code class="highlighter-rouge"><span class="cp">&lt;?php</span> <span class="nx">insertScript</span><span class="err">（</span><span class="s2">"menu.js"</span><span class="err">）</span> <span class="cp">?&gt;</span></code>。</p>
+  </li>
+</ol>
 
-<li>
-  <a href="/my_tools/2017-02-11-autoprefixer/" class="h4 flip-title">
-    <span>Autoprefixer</span>
-  </a>
-  <time class="heading faded fine" datetime="2017-02-11T00:00:00+08:00">11 Feb</time>
-</li>
+<p>当我们处理重复脚本问题时，需要添加处理脚本依赖性和版本的功能。</p>
 
-  
-
-  
-  
-    </ul>
-    <h2 id="y-2016" class="hr">2016</h2>
-    <ul class="related-posts">
     
   
-  
+</article>
 
 
-<li>
-  <a href="/my_tools/2016-07-16-cmd-markdown/" class="h4 flip-title">
-    <span>Cmd Markdown</span>
-  </a>
-  <time class="heading faded fine" datetime="2016-07-16T00:00:00+08:00">16 Jul</time>
-</li>
-
-  
-
-  
-  
-  
+<hr class="dingbat related" />
 
 
-<li>
-  <a href="/my_tools/2016-06-12-iconfont/" class="h4 flip-title">
-    <span>Iconfont</span>
-  </a>
-  <time class="heading faded fine" datetime="2016-06-12T00:00:00+08:00">12 Jun</time>
-</li>
+
 
   
-
-  
-  
-    </ul>
-    <h2 id="y-2015" class="hr">2015</h2>
-    <ul class="related-posts">
     
-  
-  
 
 
-<li>
-  <a href="/my_tools/2015-10-24-html5test/" class="h4 flip-title">
-    <span>Html5test</span>
-  </a>
-  <time class="heading faded fine" datetime="2015-10-24T00:00:00+08:00">24 Oct</time>
-</li>
-
-  
-
-  
-  
-  
 
 
-<li>
-  <a href="/my_tools/2015-06-13-tinypng/" class="h4 flip-title">
-    <span>TinyPNG</span>
-  </a>
-  <time class="heading faded fine" datetime="2015-06-13T00:00:00+08:00">13 Jun</time>
-</li>
+<aside class="related mb4" role="complementary">
+  <h2 class="hr">Related Posts</h2>
 
-  
-
-  
-  
-    </ul>
-    <h2 id="y-2014" class="hr">2014</h2>
-    <ul class="related-posts">
+  <ul class="related-posts">
     
-  
-  
+      
 
 
 <li>
-  <a href="/my_tools/2014-01-26-CSS-click-chart/" class="h4 flip-title">
-    <span>CSS Click Chart</span>
+  <a href="/my_articles/2018-06-28-ElementUI_Table-render-header/" class="h4 flip-title">
+    <span>ElementUI中Table自定义表头render-header</span>
   </a>
-  <time class="heading faded fine" datetime="2014-01-26T00:00:00+08:00">26 Jan</time>
+  <time class="heading faded fine" datetime="2018-06-28T00:00:00+08:00">28 Jun 2018</time>
 </li>
 
-  
-
-  
-  
-  
+    
+      
 
 
 <li>
-  <a href="/my_tools/2014-01-18-spritePad/" class="h4 flip-title">
-    <span>SpritePad</span>
+  <a href="/my_articles/2018-06-23-Refresh-Load-in-Vue/" class="h4 flip-title">
+    <span>vue移动端下拉刷新、上拉加载</span>
   </a>
-  <time class="heading faded fine" datetime="2014-01-18T00:00:00+08:00">18 Jan</time>
+  <time class="heading faded fine" datetime="2018-06-23T00:00:00+08:00">23 Jun 2018</time>
 </li>
 
+    
+      
+
+
+<li>
+  <a href="/my_articles/2018-06-03-ElementUI_Upload-Qiniuyun/" class="h4 flip-title">
+    <span>ElementUI中Upload上传七牛云</span>
+  </a>
+  <time class="heading faded fine" datetime="2018-06-03T00:00:00+08:00">03 Jun 2018</time>
+</li>
+
+    
   </ul>
+</aside>
+
+
+  
 
 
   
@@ -395,7 +379,7 @@
         <a
           id="_navigation"
           href="/my_articles/"
-          class="sidebar-nav-item"
+          class="sidebar-nav-item active"
           
           >
           Blog

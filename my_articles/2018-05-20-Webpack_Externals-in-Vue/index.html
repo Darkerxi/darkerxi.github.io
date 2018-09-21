@@ -24,20 +24,20 @@
 
   
 <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>开发分支管理模型之阿里AoneFlow | darkerxi</title>
+<title>配置webpack中externals来减少打包后vendor.js的体积 | darkerxi</title>
 <meta name="generator" content="Jekyll v3.8.3" />
-<meta property="og:title" content="开发分支管理模型之阿里AoneFlow" />
+<meta property="og:title" content="配置webpack中externals来减少打包后vendor.js的体积" />
 <meta name="author" content="darkerxi" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="说到分支管理模型，令人最为熟悉的莫过于TrunkBased 和 GitFlow。" />
-<meta property="og:description" content="说到分支管理模型，令人最为熟悉的莫过于TrunkBased 和 GitFlow。" />
-<link rel="canonical" href="https://darkerxi.github.io/my_articles/2017-04-22-AoneFlow/" />
-<meta property="og:url" content="https://darkerxi.github.io/my_articles/2017-04-22-AoneFlow/" />
+<meta name="description" content="在日常的项目开发中，我们会用到各种第三方库来提高效率，但随之带来的问题就是打包后的vendor.js体积过大，导致加载时空白页时间过长，给用户的体验太差。为此我们需要减少vendor.js的体积，从本质上来解决这种问题。" />
+<meta property="og:description" content="在日常的项目开发中，我们会用到各种第三方库来提高效率，但随之带来的问题就是打包后的vendor.js体积过大，导致加载时空白页时间过长，给用户的体验太差。为此我们需要减少vendor.js的体积，从本质上来解决这种问题。" />
+<link rel="canonical" href="https://darkerxi.github.io/my_articles/2018-05-20-Webpack_Externals-in-Vue/" />
+<meta property="og:url" content="https://darkerxi.github.io/my_articles/2018-05-20-Webpack_Externals-in-Vue/" />
 <meta property="og:site_name" content="darkerxi" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2017-04-22T00:00:00+08:00" />
+<meta property="article:published_time" content="2018-05-20T00:00:00+08:00" />
 <script type="application/ld+json">
-{"description":"说到分支管理模型，令人最为熟悉的莫过于TrunkBased 和 GitFlow。","author":{"@type":"Person","name":"darkerxi"},"@type":"BlogPosting","url":"https://darkerxi.github.io/my_articles/2017-04-22-AoneFlow/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://darkerxi.github.io/assets/icons/icon.png"},"name":"darkerxi"},"headline":"开发分支管理模型之阿里AoneFlow","dateModified":"2017-04-22T00:00:00+08:00","datePublished":"2017-04-22T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://darkerxi.github.io/my_articles/2017-04-22-AoneFlow/"},"@context":"http://schema.org"}</script>
+{"description":"在日常的项目开发中，我们会用到各种第三方库来提高效率，但随之带来的问题就是打包后的vendor.js体积过大，导致加载时空白页时间过长，给用户的体验太差。为此我们需要减少vendor.js的体积，从本质上来解决这种问题。","author":{"@type":"Person","name":"darkerxi"},"@type":"BlogPosting","url":"https://darkerxi.github.io/my_articles/2018-05-20-Webpack_Externals-in-Vue/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://darkerxi.github.io/assets/icons/icon.png"},"name":"darkerxi"},"headline":"配置webpack中externals来减少打包后vendor.js的体积","dateModified":"2018-05-20T00:00:00+08:00","datePublished":"2018-05-20T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://darkerxi.github.io/my_articles/2018-05-20-Webpack_Externals-in-Vue/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -64,7 +64,7 @@
 
 
 
-<link rel="alternate" href="https://darkerxi.github.io/my_articles/2017-04-22-AoneFlow/" hreflang="en">
+<link rel="alternate" href="https://darkerxi.github.io/my_articles/2018-05-20-Webpack_Externals-in-Vue/" hreflang="en">
 
 <link rel="shortcut icon" href="/assets/icons/favicon.ico">
 <link rel="apple-touch-icon" href="/assets/icons/icon.png">
@@ -180,17 +180,17 @@
 
 
 
-<article id="post-my_articles-AoneFlow" class="page post mb6" role="article">
+<article id="post-my_articles-Webpack_Externals-in-Vue" class="page post mb6" role="article">
   <header>
     <h1 class="post-title">
       
-        开发分支管理模型之阿里AoneFlow
+        配置webpack中externals来减少打包后vendor.js的体积
       
     </h1>
 
     <p class="post-date heading">
       
-      <time datetime="2017-04-22T00:00:00+08:00">22 Apr 2017</time>
+      <time datetime="2018-05-20T00:00:00+08:00">20 May 2018</time>
       
       
       
@@ -235,56 +235,71 @@ in <a href="/my-articles/" class="flip-title">Blog</a>
 
 
   
-    <p>说到分支管理模型，令人最为熟悉的莫过于TrunkBased 和 GitFlow。</p>
+    <p>在日常的项目开发中，我们会用到各种第三方库来提高效率，但随之带来的问题就是打包后的vendor.js体积过大，导致加载时空白页时间过长，给用户的体验太差。为此我们需要减少vendor.js的体积，从本质上来解决这种问题。</p>
 
-<p>TrunkBased 模型是持续集成思想所崇尚的工作方式，它由单个master分支和许多release分支组成，每个release分支在特定版本的提交点上从master分支创建出来，用来进行上线部署和 Hotfix。在 TrunkBased 模式中，没有显性的feature分支。</p>
+<p>webpack的外部扩展(externals)可以有效的解决。
+externals 配置选项提供了「从输出的 bundle 中排除依赖」的方法。相反，所创建的 bundle 依赖于那些存在于用户环境(consumer’s environment)中的依赖。防止将某些 import 的包(package)打包到 bundle 中，而是在运行时(runtime)再去从外部获取这些扩展依赖(external dependencies)。</p>
 
-<p>GitFlow 模型是若干模式的集大成者，包含一个master分支、一个develop分支、许多的feature分支、许多的release分支和 Hotfix 分支，以及许多繁琐的合并规则。</p>
+<p>webpack之externals官方参考文档传送门，请戳这里→ <a href="https://webpack.docschina.org/configuration/externals/" target="_blank">externals</a></p>
 
-<p>基于这两种模型，演变出了很多的新模型，而阿里的AoneFlow，它基本上兼顾了 TrunkBased 的“易于持续集成”和 GitFlow 的“易于管理需求”特点，同时规避掉 GitFlow 的那些繁文缛节。</p>
+<p>下面就以Vue项目为例，介绍一下externals的使用。项目中引用了<strong>vue、vue-router、axios、element-ui、qs</strong>等第三方库，那么我们的目标就是把这些从输出的 bundle 中排除依赖。</p>
 
-<p><strong>AoneFlow 只使用三种分支类型：master分支、feature分支、release分支，以及三条基本规则。</strong></p>
+<p><strong>1</strong>、在<code class="highlighter-rouge">/build/webpack.base.conf.js</code>中，配置externals</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// externals中的key是后面需要require的名字，value是第三方库暴露出来的方法名</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">//...</span>
+  <span class="na">externals</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'vue'</span><span class="p">:</span> <span class="s1">'Vue'</span><span class="p">,</span>
+    <span class="s1">'vue-router'</span><span class="p">:</span> <span class="s1">'VueRouter'</span><span class="p">,</span>
+    <span class="s1">'axios'</span><span class="p">:</span> <span class="s1">'axios'</span><span class="p">,</span>
+    <span class="s1">'element-ui'</span><span class="p">:</span> <span class="s1">'Element'</span><span class="p">,</span>
+    <span class="s1">'qs'</span><span class="p">:</span> <span class="s1">'Qs'</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-<p><strong>规则一，开始工作前，从master创建feature分支。</strong></p>
+<p><strong>2</strong>、在<code class="highlighter-rouge">/src/main.js</code>和<code class="highlighter-rouge">/src/router/index.js</code>中，移除上面与之相关的import引入，改为require方式引入</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// /src/main.js</span>
+<span class="c1">// 移除</span>
+<span class="k">import</span> <span class="nx">Vue</span> <span class="k">from</span> <span class="s1">'vue'</span>
+<span class="k">import</span> <span class="nx">ElementUI</span> <span class="k">from</span> <span class="s1">'element-ui'</span>
+<span class="k">import</span> <span class="s1">'element-ui/lib/theme-chalk/index.css'</span>
+<span class="k">import</span> <span class="nx">axios</span> <span class="k">from</span> <span class="s1">'axios'</span>
+<span class="k">import</span> <span class="nx">Qs</span> <span class="k">from</span> <span class="s1">'qs'</span>
+<span class="nx">Vue</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">ElementUI</span><span class="p">)</span>
+<span class="c1">// 添加</span>
+<span class="kd">const</span> <span class="nx">Vue</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'vue'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">ElementUI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'element-ui'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'axios'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">Qs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'qs'</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// /src/router/index.js</span>
+<span class="c1">// 移除</span>
+<span class="k">import</span> <span class="nx">Router</span> <span class="k">from</span> <span class="s1">'vue-router'</span>
+<span class="nx">Vue</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">Router</span><span class="p">)</span>
+<span class="c1">// 添加</span>
+<span class="kd">const</span> <span class="nx">Router</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'vue-router'</span><span class="p">)</span>
+</code></pre></div></div>
 
-<p>从代表最新已发布版本的master分支上创建一个通常以feature/前缀命名的特性分支，然后在这个分支上提交代码修改。也就是说，每个工作项（可以是一个人完成，或是多个人协作完成）对应一个特性分支，所有的修改都不允许直接提交到master分支。
-
-  <hy-img root-margin="512px"  src="/assets/img/articles/aoneflow/AoneFlow1.jpg" alt="AoneFlow1" >
-    <noscript><img re-ignore  src="/assets/img/articles/aoneflow/AoneFlow1.jpg" alt="AoneFlow1" /></noscript>
-    <span class="loading" slot="loading" hidden>
-      <span class="icon-cog"></span>
-    </span>
-  </hy-img></p>
-
-<p><strong>规则二，通过合并feature分支，形成release分支。</strong></p>
-
-<p>从master分支上拉出一条新分支，将所有本次要集成或发布的feature分支依次合并过去，从而得到release分支。release分支通常以release/前缀命名。
-
-  <hy-img root-margin="512px"  src="/assets/img/articles/aoneflow/AoneFlow2.jpg" alt="AoneFlow2" >
-    <noscript><img re-ignore  src="/assets/img/articles/aoneflow/AoneFlow2.jpg" alt="AoneFlow2" /></noscript>
-    <span class="loading" slot="loading" hidden>
-      <span class="icon-cog"></span>
-    </span>
-  </hy-img></p>
-
-<p><strong>规则三，发布到线上正式环境后，合并相应的release分支到master分支，在master分支上添加tag，同时删除该release分支关联的feature分支。</strong></p>
-
-<p>为了避免在代码仓库里堆积大量历史上的feature分支，还应该清理掉已经上线部分feature分支。如果要回溯历史版本，只需在master分支上找到相应的版本的tag即可。
-
-  <hy-img root-margin="512px"  src="/assets/img/articles/aoneflow/AoneFlow3.jpg" alt="AoneFlow3" >
-    <noscript><img re-ignore  src="/assets/img/articles/aoneflow/AoneFlow3.jpg" alt="AoneFlow3" /></noscript>
-    <span class="loading" slot="loading" hidden>
-      <span class="icon-cog"></span>
-    </span>
-  </hy-img></p>
-
-<p>除了基本规则，还有一些实际操作中不成文的技巧。比如上线后的Hotfix，正常的处理方法应该是，创建一条新的release分支，对应线上环境（相当于Hotfix分支），同时为这个分支创建临时流水线，以保障必要的发布前检查和冒烟测试能够自动执行。</p>
-
-<p>其实还有一种简便方法是，将线上正式环境对应的release分支上关联的feature分支全部清退掉，在这个release分支上直接进行修改，改完利用现成的流水线自动发布。</p>
-
-<p>如果非得修一个历史版本的Bug怎么办呢？那就老老实实地在master分支找到版本tag位置，然后从那个位置创建 Hotfix分支。</p>
-
-<p>所谓模型，在不同的开发团队，不同的文化，不同的项目背景情况下都有可能需要进行适当的裁剪或扩充。</p>
+<p><strong>3</strong>、在<code class="highlighter-rouge">/index.html</code>中，通过CDN引入相应的js文件和css文件(CDN地址：<a href="https://www.bootcdn.cn" target="_blank">https://www.bootcdn.cn</a>)</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width,initial-scale=1.0"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://cdn.bootcss.com/element-ui/2.3.8/theme-chalk/index.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;title&gt;</span>配置webpack中externals来减少打包后vendor.js的体积<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;&lt;/div&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.bootcss.com/vue/2.5.15/vue.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.bootcss.com/vue-router/3.0.1/vue-router.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.bootcss.com/axios/0.18.0/axios.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.bootcss.com/element-ui/2.3.8/index.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.bootcss.com/qs/6.5.2/qs.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+<p>至此，我们所有的改造步骤都已完成。你可以运行你的项目去检测，改造前后的差距吧！</p>
 
     
   

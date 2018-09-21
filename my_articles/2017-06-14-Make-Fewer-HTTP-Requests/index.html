@@ -24,20 +24,20 @@
 
   
 <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Tools | darkerxi</title>
+<title>高性能网站建设指南(一)减少HTTP请求 | darkerxi</title>
 <meta name="generator" content="Jekyll v3.8.3" />
-<meta property="og:title" content="Tools" />
+<meta property="og:title" content="高性能网站建设指南(一)减少HTTP请求" />
 <meta name="author" content="darkerxi" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="I am a web developer focusing on front-end development. Here are some of the tools I use in my daily development." />
-<meta property="og:description" content="I am a web developer focusing on front-end development. Here are some of the tools I use in my daily development." />
-<link rel="canonical" href="https://darkerxi.github.io/my-tools/" />
-<meta property="og:url" content="https://darkerxi.github.io/my-tools/" />
+<meta name="description" content="根据性能黄金法则，改善响应时间的最简单的途径就是减少组件的数量,并由此减少HTTP请求的数量。" />
+<meta property="og:description" content="根据性能黄金法则，改善响应时间的最简单的途径就是减少组件的数量,并由此减少HTTP请求的数量。" />
+<link rel="canonical" href="https://darkerxi.github.io/my_articles/2017-06-14-Make-Fewer-HTTP-Requests/" />
+<meta property="og:url" content="https://darkerxi.github.io/my_articles/2017-06-14-Make-Fewer-HTTP-Requests/" />
 <meta property="og:site_name" content="darkerxi" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-21T16:43:56+08:00" />
+<meta property="article:published_time" content="2017-06-14T00:00:00+08:00" />
 <script type="application/ld+json">
-{"description":"I am a web developer focusing on front-end development. Here are some of the tools I use in my daily development.","author":{"@type":"Person","name":"darkerxi"},"@type":"WebPage","url":"https://darkerxi.github.io/my-tools/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://darkerxi.github.io/assets/icons/icon.png"},"name":"darkerxi"},"headline":"Tools","dateModified":"2018-09-21T16:43:56+08:00","datePublished":"2018-09-21T16:43:56+08:00","@context":"http://schema.org"}</script>
+{"description":"根据性能黄金法则，改善响应时间的最简单的途径就是减少组件的数量,并由此减少HTTP请求的数量。","author":{"@type":"Person","name":"darkerxi"},"@type":"BlogPosting","url":"https://darkerxi.github.io/my_articles/2017-06-14-Make-Fewer-HTTP-Requests/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://darkerxi.github.io/assets/icons/icon.png"},"name":"darkerxi"},"headline":"高性能网站建设指南(一)减少HTTP请求","dateModified":"2017-06-14T00:00:00+08:00","datePublished":"2017-06-14T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://darkerxi.github.io/my_articles/2017-06-14-Make-Fewer-HTTP-Requests/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -64,7 +64,7 @@
 
 
 
-<link rel="alternate" href="https://darkerxi.github.io/my-tools/" hreflang="en">
+<link rel="alternate" href="https://darkerxi.github.io/my_articles/2017-06-14-Make-Fewer-HTTP-Requests/" hreflang="en">
 
 <link rel="shortcut icon" href="/assets/icons/favicon.ico">
 <link rel="apple-touch-icon" href="/assets/icons/icon.png">
@@ -166,7 +166,7 @@
   
     <main
   id="_main"
-  class="content fade-in layout-list"
+  class="content fade-in layout-post"
   role="main"
   data-color="rgb(79,177,186)"
   data-theme-color="rgb(25,55,71)"
@@ -178,163 +178,157 @@
   
 
 
+
+
+<article id="post-my_articles-Make-Fewer-HTTP Requests" class="page post mb6" role="article">
   <header>
-    <h1 class="page-title">Tools</h1>
-    
+    <h1 class="post-title">
+      
+        高性能网站建设指南(一)减少HTTP请求
+      
+    </h1>
+
+    <p class="post-date heading">
+      
+      <time datetime="2017-06-14T00:00:00+08:00">14 Jun 2017</time>
+      
+      
+      
+      
+      
 
 
 
-  
-    <p class="message" >
-      I am a web developer focusing on front-end development. <br />Here are some of the tools I use in my daily development.
+
+
+
+
+
+
+in <a href="/my-articles/" class="flip-title">Blog</a>
+
+      
+
+
+
+
+
+
+
+
+
+
 
     </p>
-  
+
+    
+    
+
+    <!-- 
 
 
+
+  <div class="hr pb0"></div>
+
+ -->
   </header>
-  <hr class="sr-only"/>
-
-
-
-
-
-
-
-
 
 
   
-  
-    
-    <h2 id="y-2017" class="hr">2017</h2>
-    <ul class="related-posts">
-    
-  
-  
+    <p>根据<strong>性能黄金法则</strong>，改善响应时间的最简单的途径就是减少组件的数量,并由此减少HTTP请求的数量。</p>
+
+<blockquote>
+  <p><strong>图片地图（Image Maps）</strong></p>
+</blockquote>
+
+<p>图片地图有两种类型：<strong>服务器端图片地图（Server-side image maps）</strong>和<strong>客户端图片地图（Client-side image maps）</strong>。</p>
+
+<p>服务器端图片地图将所有点击提交到同一个目标URL，想起传递用户点击的x、y坐标。Web应用程序将该x、y坐标映射为适合的操作。</p>
+
+<p>客户端图片地图更加典型，因为它可以将用户的点击映射到一个操作，而无需向后端应用程序发送请求。映射通过HTML的MAP标签实现。</p>
+
+<blockquote>
+  <p><strong>CSS Sprites</strong></p>
+</blockquote>
+
+<p>CSS Sprites 也可以合并图片，但更为灵活。图片地图中的图片必须是连续的，而CSS Sprites没有这个限制。</p>
+
+<blockquote>
+  <p><strong>内联图片（Inline Images）</strong></p>
+</blockquote>
+
+<p>通过使用data:URL模式可以在Web页面中包含图片但无需任何额外的HTTP请求（Internet Explorer目前不支持）。</p>
+
+<p>data:URL模式的主要缺陷是不受IE的支持，另一个缺陷是可能存在数据大小的限制。Base64编码会增加图片的大小，因此整体下载量会增加。</p>
+
+<p>由于data:URL是内联在页面中的，在跨越不同页面时不会被缓存。</p>
+
+<blockquote>
+  <p><strong>合并脚本和样式表（Combined Scripts and Stylesheets）</strong></p>
+</blockquote>
+
+<p>对JavaScript和CSS进行“内联”（也就是将其嵌在HTML文档中）还是将其放在外部的脚本和样式表文件中。一般来说，使用外部脚本和样式表对性能更加有利。如果采用模块化的原则将代码分开放在多个小文件中，会降低性能，因为每个文件都会导致一个额外的HTTP请求。而合并脚本和样式表都可以带来性能改进。</p>
 
 
-<li>
-  <a href="/my_tools/2017-02-25-icomoon/" class="h4 flip-title">
-    <span>Icomoon</span>
-  </a>
-  <time class="heading faded fine" datetime="2017-02-25T00:00:00+08:00">25 Feb</time>
-</li>
-
-  
-
-  
-  
-  
-
-
-<li>
-  <a href="/my_tools/2017-02-11-autoprefixer/" class="h4 flip-title">
-    <span>Autoprefixer</span>
-  </a>
-  <time class="heading faded fine" datetime="2017-02-11T00:00:00+08:00">11 Feb</time>
-</li>
-
-  
-
-  
-  
-    </ul>
-    <h2 id="y-2016" class="hr">2016</h2>
-    <ul class="related-posts">
     
   
-  
+</article>
 
 
-<li>
-  <a href="/my_tools/2016-07-16-cmd-markdown/" class="h4 flip-title">
-    <span>Cmd Markdown</span>
-  </a>
-  <time class="heading faded fine" datetime="2016-07-16T00:00:00+08:00">16 Jul</time>
-</li>
-
-  
-
-  
-  
-  
+<hr class="dingbat related" />
 
 
-<li>
-  <a href="/my_tools/2016-06-12-iconfont/" class="h4 flip-title">
-    <span>Iconfont</span>
-  </a>
-  <time class="heading faded fine" datetime="2016-06-12T00:00:00+08:00">12 Jun</time>
-</li>
+
 
   
-
-  
-  
-    </ul>
-    <h2 id="y-2015" class="hr">2015</h2>
-    <ul class="related-posts">
     
-  
-  
 
 
-<li>
-  <a href="/my_tools/2015-10-24-html5test/" class="h4 flip-title">
-    <span>Html5test</span>
-  </a>
-  <time class="heading faded fine" datetime="2015-10-24T00:00:00+08:00">24 Oct</time>
-</li>
-
-  
-
-  
-  
-  
 
 
-<li>
-  <a href="/my_tools/2015-06-13-tinypng/" class="h4 flip-title">
-    <span>TinyPNG</span>
-  </a>
-  <time class="heading faded fine" datetime="2015-06-13T00:00:00+08:00">13 Jun</time>
-</li>
+<aside class="related mb4" role="complementary">
+  <h2 class="hr">Related Posts</h2>
 
-  
-
-  
-  
-    </ul>
-    <h2 id="y-2014" class="hr">2014</h2>
-    <ul class="related-posts">
+  <ul class="related-posts">
     
-  
-  
+      
 
 
 <li>
-  <a href="/my_tools/2014-01-26-CSS-click-chart/" class="h4 flip-title">
-    <span>CSS Click Chart</span>
+  <a href="/my_articles/2018-06-28-ElementUI_Table-render-header/" class="h4 flip-title">
+    <span>ElementUI中Table自定义表头render-header</span>
   </a>
-  <time class="heading faded fine" datetime="2014-01-26T00:00:00+08:00">26 Jan</time>
+  <time class="heading faded fine" datetime="2018-06-28T00:00:00+08:00">28 Jun 2018</time>
 </li>
 
-  
-
-  
-  
-  
+    
+      
 
 
 <li>
-  <a href="/my_tools/2014-01-18-spritePad/" class="h4 flip-title">
-    <span>SpritePad</span>
+  <a href="/my_articles/2018-06-23-Refresh-Load-in-Vue/" class="h4 flip-title">
+    <span>vue移动端下拉刷新、上拉加载</span>
   </a>
-  <time class="heading faded fine" datetime="2014-01-18T00:00:00+08:00">18 Jan</time>
+  <time class="heading faded fine" datetime="2018-06-23T00:00:00+08:00">23 Jun 2018</time>
 </li>
 
+    
+      
+
+
+<li>
+  <a href="/my_articles/2018-06-03-ElementUI_Upload-Qiniuyun/" class="h4 flip-title">
+    <span>ElementUI中Upload上传七牛云</span>
+  </a>
+  <time class="heading faded fine" datetime="2018-06-03T00:00:00+08:00">03 Jun 2018</time>
+</li>
+
+    
   </ul>
+</aside>
+
+
+  
 
 
   
@@ -395,7 +389,7 @@
         <a
           id="_navigation"
           href="/my_articles/"
-          class="sidebar-nav-item"
+          class="sidebar-nav-item active"
           
           >
           Blog
