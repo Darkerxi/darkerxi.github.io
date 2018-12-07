@@ -24,20 +24,20 @@
 
   
 <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>高性能网站建设指南(四)压缩组件 | darkerxi</title>
+<title>Vue调试神器之Vue.js devTools | darkerxi</title>
 <meta name="generator" content="Jekyll v3.8.3" />
-<meta property="og:title" content="高性能网站建设指南(四)压缩组件" />
+<meta property="og:title" content="Vue调试神器之Vue.js devTools" />
 <meta name="author" content="darkerxi" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="通过减小HTTP响应的大小来减少响应时间。如果HTTP请求产生的响应包很小，传输时间就会减少，因为只需要将很小的包从服务器传递到客户端。这一效果对速度较慢的带宽尤其明显。使用gzip编码来压缩HTTP响应包，并由此减少网络响应时间。这是减小页面大小的最简单的技术，但影响是最大的。" />
-<meta property="og:description" content="通过减小HTTP响应的大小来减少响应时间。如果HTTP请求产生的响应包很小，传输时间就会减少，因为只需要将很小的包从服务器传递到客户端。这一效果对速度较慢的带宽尤其明显。使用gzip编码来压缩HTTP响应包，并由此减少网络响应时间。这是减小页面大小的最简单的技术，但影响是最大的。" />
-<link rel="canonical" href="https://darkerxi.github.io/my_articles/2017-06-17-Gzip-Components/" />
-<meta property="og:url" content="https://darkerxi.github.io/my_articles/2017-06-17-Gzip-Components/" />
+<meta name="description" content="Vue项目中使用Vue.js devTools这款调试神器，可以极大程度的提高我们的开发效率。" />
+<meta property="og:description" content="Vue项目中使用Vue.js devTools这款调试神器，可以极大程度的提高我们的开发效率。" />
+<link rel="canonical" href="https://darkerxi.github.io/my_articles/2018-08-16-Vue.js-devTools/" />
+<meta property="og:url" content="https://darkerxi.github.io/my_articles/2018-08-16-Vue.js-devTools/" />
 <meta property="og:site_name" content="darkerxi" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2017-06-17T00:00:00+08:00" />
+<meta property="article:published_time" content="2018-08-16T00:00:00+08:00" />
 <script type="application/ld+json">
-{"description":"通过减小HTTP响应的大小来减少响应时间。如果HTTP请求产生的响应包很小，传输时间就会减少，因为只需要将很小的包从服务器传递到客户端。这一效果对速度较慢的带宽尤其明显。使用gzip编码来压缩HTTP响应包，并由此减少网络响应时间。这是减小页面大小的最简单的技术，但影响是最大的。","author":{"@type":"Person","name":"darkerxi"},"@type":"BlogPosting","url":"https://darkerxi.github.io/my_articles/2017-06-17-Gzip-Components/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://darkerxi.github.io/assets/icons/icon.png"},"name":"darkerxi"},"headline":"高性能网站建设指南(四)压缩组件","dateModified":"2017-06-17T00:00:00+08:00","datePublished":"2017-06-17T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://darkerxi.github.io/my_articles/2017-06-17-Gzip-Components/"},"@context":"http://schema.org"}</script>
+{"description":"Vue项目中使用Vue.js devTools这款调试神器，可以极大程度的提高我们的开发效率。","author":{"@type":"Person","name":"darkerxi"},"@type":"BlogPosting","url":"https://darkerxi.github.io/my_articles/2018-08-16-Vue.js-devTools/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://darkerxi.github.io/assets/icons/icon.png"},"name":"darkerxi"},"headline":"Vue调试神器之Vue.js devTools","dateModified":"2018-08-16T00:00:00+08:00","datePublished":"2018-08-16T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://darkerxi.github.io/my_articles/2018-08-16-Vue.js-devTools/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -64,7 +64,7 @@
 
 
 
-<link rel="alternate" href="https://darkerxi.github.io/my_articles/2017-06-17-Gzip-Components/" hreflang="en">
+<link rel="alternate" href="https://darkerxi.github.io/my_articles/2018-08-16-Vue.js-devTools/" hreflang="en">
 
 <link rel="shortcut icon" href="/assets/icons/favicon.ico">
 <link rel="apple-touch-icon" href="/assets/icons/icon.png">
@@ -180,17 +180,17 @@
 
 
 
-<article id="post-my_articles-Gzip-Components" class="page post mb6" role="article">
+<article id="post-my_articles-Vue.js-devTools" class="page post mb6" role="article">
   <header>
     <h1 class="post-title">
       
-        高性能网站建设指南(四)压缩组件
+        Vue调试神器之Vue.js devTools
       
     </h1>
 
     <p class="post-date heading">
       
-      <time datetime="2017-06-17T00:00:00+08:00">17 Jun 2017</time>
+      <time datetime="2018-08-16T00:00:00+08:00">16 Aug 2018</time>
       
       
       
@@ -235,55 +235,33 @@ in <a href="/my-articles/" class="flip-title">Blog</a>
 
 
   
-    <p>通过减小HTTP响应的大小来减少响应时间。如果HTTP请求产生的响应包很小，传输时间就会减少，因为只需要将很小的包从服务器传递到客户端。这一效果对速度较慢的带宽尤其明显。使用gzip编码来压缩HTTP响应包，并由此减少网络响应时间。这是减小页面大小的最简单的技术，但影响是最大的。</p>
+    <p>Vue项目中使用Vue.js devTools这款调试神器，可以极大程度的提高我们的开发效率。</p>
 
-<blockquote>
-  <p><strong>压缩是如何工作的（How Compression Works）</strong></p>
-</blockquote>
+<h2 id="安装">安装</h2>
 
-<p>用于减小文件提价的文件压缩已经在E-mail应用和FTP站点中使用了10年，同样的技术也可以用于向浏览器发布压缩的Web页面。从HTTP1.1开始，Web客户端可以通过HTTP请求中的Accept-Encoding头来表示对压缩的支持。</p>
+<p><strong>1</strong>、打开Chrome网上应用商店安装插件（自墙）,直接搜索devTools安装即可。贵宾传送阵，请戳这里→<a href="https://chrome.google.com/webstore/category/extensions?hl=zh-CN" target="_blank">Chrome网上应用商店</a></p>
 
-<p>gzip是目前最流行和最有效的压缩方法。这是GNU项目开发的一种免费的格式，并被标准化为RFC1952。</p>
+<p><strong>2</strong>、从github上下载到本地。贵宾传送阵，请戳这里→<a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank">vue-devtools</a></p>
 
-<blockquote>
-  <p><strong>压缩什么（What to Compression）</strong></p>
-</blockquote>
+<p><strong>1)</strong>、进入到<code class="highlighter-rouge">/vue-devtools</code>目录下(npm install或者cnpm install)安装项目所需依赖。</p>
 
-<p>服务器基于文件类型选择压缩什么，但这通常受限于对其进行配置。很多网站会压缩其HTML文档。压缩脚本和样式表也是非常值得的。</p>
+<p><strong>2)</strong>、安装完依赖后(npm run build或者cnpm run build)编译项目。</p>
 
-<blockquote>
-  <p><strong>节省（The Savings）</strong></p>
-</blockquote>
+<p><strong>3)</strong>、编译完项目后，在<code class="highlighter-rouge">/vue-devtools/shell/chrome/manifest.json</code>中修改persistent参数false为true。</p>
 
-<p>压缩通常能将响应的数据量减少将近70%。</p>
+<p><strong>4)</strong>、在chrome扩展程序页面，打开“开发者模式”，点击“加载已解压的扩展程序”按钮，选择你本地的<code class="highlighter-rouge">.../vue-devtools/shell/chrome</code>文件夹, 添加完成后，勾选允许文件地址是否访问。</p>
 
-<blockquote>
-  <p><strong>配置（Configuration）</strong></p>
-</blockquote>
+<p>安装完成后devTools的图标会出现在浏览器的菜单栏中。</p>
 
-<p>配置gzip时使用的模块取决于Apache的版本——Apache1.3使用mod_gzip，而Apache 2.X使用mod_deflate。</p>
+<p>以上两种安装方式告一段落。下面让我们在vue项目中体验一下这款调试神器吧。</p>
 
-<blockquote>
-  <p><strong>代理缓存（Proxy Caching）</strong></p>
-</blockquote>
+<h2 id="使用">使用</h2>
 
-<p>在Web服务器的响应中添加Vary头。Web服务器可以告诉代理根据一个或多个请求头来改变缓存的响应。由于压缩的决定是基于Accept-Encoding请求头的，因此需要在服务器的Vary响应头中包含Accept-Encoding。这将是的代理缓存响应的多个版本，为Accept-Encoding请求头的每个值缓存一份。</p>
+<p>运行Vue项目，在Chrome浏览器中展示项目（浏览器菜单栏中的devTools图标会亮起），按F12打开开发者工具，在开发者工具的菜单栏最后面会看到Vue，选中它就可以尽情的使用了。</p>
 
-<blockquote>
-  <p><strong>边缘情形（Edge Cases）</strong></p>
-</blockquote>
+<p>当然这样一顿行云流水的操作下来，有些人会一次成功，而有些人则不会成功，浏览器菜单中的devTools图标亮滴鸭批，但是就是在开发者工具的菜单栏最后面看不到Vue。嗯~~~，怎么肥事小老弟？</p>
 
-<p>服务器和客户端的压缩对等性看似简单，但必须正确才行。无论是客户端还是服务器发生错误页面都会被破坏。错误并不会经常发生，但是得考虑边缘情形。</p>
-
-<p>一种安全的方式是只为已证实过支持压缩的浏览器提供压缩内容，这被称作浏览器白名单方式。</p>
-
-<blockquote>
-  <p><strong>压缩的实际效果（Gzip in Action）</strong></p>
-</blockquote>
-
-<p>经过压缩HTML文档、样式表和脚本，页面大小减小了70%，压缩组件后，页面的响应时间减少了50%。</p>
-
-<p>对Web服务器配置进行简单的修改，压缩尽可能多的组件，就能显著改善页面的反应速度。</p>
+<p>请查看项目的index.html中，对vue.js的引用。你肯定使用了压缩版的vue.min.js，使用vue.min.js默认为生产环境，会导致devTools不显示，改为vue.js即可。</p>
 
     
   
@@ -321,10 +299,10 @@ in <a href="/my-articles/" class="flip-title">Blog</a>
 
 
 <li>
-  <a href="/my_articles/2018-08-16-Vue.js-devTools/" class="h4 flip-title">
-    <span>Vue调试神器之Vue.js devTools</span>
+  <a href="/my_articles/2018-06-28-ElementUI_Table-render-header/" class="h4 flip-title">
+    <span>ElementUI中Table自定义表头render-header</span>
   </a>
-  <time class="heading faded fine" datetime="2018-08-16T00:00:00+08:00">16 Aug 2018</time>
+  <time class="heading faded fine" datetime="2018-06-28T00:00:00+08:00">28 Jun 2018</time>
 </li>
 
     
@@ -332,10 +310,10 @@ in <a href="/my-articles/" class="flip-title">Blog</a>
 
 
 <li>
-  <a href="/my_articles/2018-06-28-ElementUI_Table-render-header/" class="h4 flip-title">
-    <span>ElementUI中Table自定义表头render-header</span>
+  <a href="/my_articles/2018-06-23-Refresh-Load-in-Vue/" class="h4 flip-title">
+    <span>vue移动端下拉刷新、上拉加载</span>
   </a>
-  <time class="heading faded fine" datetime="2018-06-28T00:00:00+08:00">28 Jun 2018</time>
+  <time class="heading faded fine" datetime="2018-06-23T00:00:00+08:00">23 Jun 2018</time>
 </li>
 
     

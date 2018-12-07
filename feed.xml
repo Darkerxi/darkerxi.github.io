@@ -1,4 +1,74 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="https://darkerxi.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://darkerxi.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2018-09-21T16:55:44+08:00</updated><id>https://darkerxi.github.io/</id><title type="html">darkerxi</title><subtitle></subtitle><author><name>darkerxi</name></author><entry><title type="html">ElementUI中Table自定义表头render-header</title><link href="https://darkerxi.github.io/my_articles/2018-06-28-ElementUI_Table-render-header/" rel="alternate" type="text/html" title="ElementUI中Table自定义表头render-header" /><published>2018-06-28T00:00:00+08:00</published><updated>2018-06-28T00:00:00+08:00</updated><id>https://darkerxi.github.io/my_articles/ElementUI_Table-render-header</id><content type="html" xml:base="https://darkerxi.github.io/my_articles/2018-06-28-ElementUI_Table-render-header/">&lt;p&gt;ElementUI的Table表格，官方网站上提供了很多样式，但是在日常开发中还会碰到各种情况，显然官方提供的是不能满足需求的。那么，我们就根据自己的需求对table进行改造。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="https://darkerxi.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://darkerxi.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2018-12-07T10:14:09+08:00</updated><id>https://darkerxi.github.io/</id><title type="html">darkerxi</title><subtitle></subtitle><author><name>darkerxi</name></author><entry><title type="html">预防cdn链接失效，无缝切换本地文件</title><link href="https://darkerxi.github.io/my_articles/2018-08-19-CDN-fails-to-use-local-file/" rel="alternate" type="text/html" title="预防cdn链接失效，无缝切换本地文件" /><published>2018-08-19T00:00:00+08:00</published><updated>2018-08-19T00:00:00+08:00</updated><id>https://darkerxi.github.io/my_articles/CDN-fails-to-use-local-file</id><content type="html" xml:base="https://darkerxi.github.io/my_articles/2018-08-19-CDN-fails-to-use-local-file/">&lt;p&gt;如今的前端项目追求的不仅仅是能用能看的程度，而是愈发追求项目的性能，对用户体验的影响。而现在的开发工具在性能优化方面也替我们做很大一部分的工作，想必大家对CDN的使用都是轻车熟路了，但是大家有没有考虑过，万一我们使用的CDN服务器，地址啥的出现了问题，导致我们引用的CDN文件都拿不到了，那么我们的项目崩溃了，天了噜，崩溃了。&lt;/p&gt;
+
+&lt;p&gt;因此我们得考虑下，引用CDN的文件拿不到了，应该有相应的处理方案，而不会直接导致我们项目崩溃。&lt;/p&gt;
+
+&lt;p&gt;想必大家都能想到的处理方案就是：&lt;strong&gt;如果引用CDN的文件出错了，拿不到，那么我们就引用本地相对应的文件。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;有人肯定会说，这样处理会导致项目体积变大的。对，是的，没有错，会使项目体积变大，但是这种处理总不会直接导致项目崩溃的，给用户的体验能更好一点，牺牲这么一点点是值得的。很多事情都是没有绝对的情况，都是相对的，这就需要我们自己去权衡了。&lt;/p&gt;
+
+&lt;p&gt;话不多说，直接进入正题。下面以Vue项目为列:&lt;/p&gt;
+
+&lt;p&gt;当然是我们项目的启动页&lt;code class=&quot;highlighter-rouge&quot;&gt;/index.html&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.bootcss.com/vue/2.5.15/vue.min.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Vue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;unescape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'%3Cscript src=&quot;./static/js/vue.min.js&quot;%3E%3C/script%3E'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+    
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.bootcss.com/vue-router/3.0.1/vue-router.min.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;VueRouter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;unescape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'%3Cscript src=&quot;./static/js/vue-router.min.js&quot;%3E%3C/script%3E'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+    
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.bootcss.com/axios/0.18.0/axios.min.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;axios&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;unescape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'%3Cscript src=&quot;./static/js/axios.min.js&quot;%3E%3C/script%3E'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+    
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.bootcss.com/element-ui/2.4.9/index.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Element&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;unescape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'%3Cscript src=&quot;./static/js/element-ui-index.js&quot;%3E%3C/script%3E'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Element&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;unescape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'%3Clink href=&quot;./static/css/element-ui-index.css&quot; rel=&quot;stylesheet&quot;%3E%3C/link%3E'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+    
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.bootcss.com/qs/6.5.2/qs.min.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Qs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;unescape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'%3Cscript src=&quot;./static/js/qs.js&quot;%3E%3C/script%3E'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+    
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.bootcss.com/vuex/3.0.1/vuex.min.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Vuex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;unescape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'%3Cscript src=&quot;./static/js/vuex.min.js&quot;%3E%3C/script%3E'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;下面就在啰嗦几点，看懂的慢走，不送啦。不太懂的再瞅瞅。&lt;/p&gt;
+
+&lt;p&gt;1)、不用担心会全部加载，出现重复的情况，不信邪的自己去NetWork里验证。&lt;/p&gt;
+
+&lt;p&gt;2)、&lt;code class=&quot;highlighter-rouge&quot;&gt;!window.Vue&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;!window.VueRouter&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;!window.axios&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;!window.Element&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;!window.Qs&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;!window.Vuex&lt;/code&gt;这些都是些什么鬼？ 那是第三方库暴露出来的方法名。也可以去看看我之前 “配置webpack中externals来减少打包后vendor.js的体积” 这篇文章。&lt;/p&gt;
+
+&lt;p&gt;3)、对js文件的处理都是这样的，但是对css文件应该怎么处理呢。 眼尖的已经看到了，上面那段中已经写出来。&lt;/p&gt;
+
+&lt;p&gt;4)、心细善于思考的你，还会发现，其实对css文件的处理还是存在问题的。 因为难以直接判断出CDN上的css文件是否成功加载，所以直接用js文件加载完成的判断方式，打包一起处理。这样如果CDN上的整个Element-UI出现问题，那js和css都可以加载本地的。最坏的情况是，CDN上的css文件很不巧的出现问题了呢？    那就让凉吧。没办法。。。哈哈哈&lt;/p&gt;
+
+&lt;p&gt;因为对于css文件的处理，暂时没有想到好一点的处理方案，所以目前只能先这样统一处理。&lt;/p&gt;
+
+&lt;p&gt;不可否认对css处理这里是存在问题的。如果你有更好的处理方案，欢迎评论告知我，谢谢。 当然文中有不当的地方，也欢迎大家指正，谢谢。&lt;/p&gt;</content><author><name>darkerxi</name></author><summary type="html">如今的前端项目追求的不仅仅是能用能看的程度，而是愈发追求项目的性能，对用户体验的影响。而现在的开发工具在性能优化方面也替我们做很大一部分的工作，想必大家对CDN的使用都是轻车熟路了，但是大家有没有考虑过，万一我们使用的CDN服务器，地址啥的出现了问题，导致我们引用的CDN文件都拿不到了，那么我们的项目崩溃了，天了噜，崩溃了。</summary></entry><entry><title type="html">Vue调试神器之Vue.js devTools</title><link href="https://darkerxi.github.io/my_articles/2018-08-16-Vue.js-devTools/" rel="alternate" type="text/html" title="Vue调试神器之Vue.js devTools" /><published>2018-08-16T00:00:00+08:00</published><updated>2018-08-16T00:00:00+08:00</updated><id>https://darkerxi.github.io/my_articles/Vue.js-devTools</id><content type="html" xml:base="https://darkerxi.github.io/my_articles/2018-08-16-Vue.js-devTools/">&lt;p&gt;Vue项目中使用Vue.js devTools这款调试神器，可以极大程度的提高我们的开发效率。&lt;/p&gt;
+
+&lt;h2 id=&quot;安装&quot;&gt;安装&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;1&lt;/strong&gt;、打开Chrome网上应用商店安装插件（自墙）,直接搜索devTools安装即可。贵宾传送阵，请戳这里→&lt;a href=&quot;https://chrome.google.com/webstore/category/extensions?hl=zh-CN&quot; target=&quot;_blank&quot;&gt;Chrome网上应用商店&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2&lt;/strong&gt;、从github上下载到本地。贵宾传送阵，请戳这里→&lt;a href=&quot;https://github.com/vuejs/vue-devtools#vue-devtools&quot; target=&quot;_blank&quot;&gt;vue-devtools&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1)&lt;/strong&gt;、进入到&lt;code class=&quot;highlighter-rouge&quot;&gt;/vue-devtools&lt;/code&gt;目录下(npm install或者cnpm install)安装项目所需依赖。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2)&lt;/strong&gt;、安装完依赖后(npm run build或者cnpm run build)编译项目。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3)&lt;/strong&gt;、编译完项目后，在&lt;code class=&quot;highlighter-rouge&quot;&gt;/vue-devtools/shell/chrome/manifest.json&lt;/code&gt;中修改persistent参数false为true。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4)&lt;/strong&gt;、在chrome扩展程序页面，打开“开发者模式”，点击“加载已解压的扩展程序”按钮，选择你本地的&lt;code class=&quot;highlighter-rouge&quot;&gt;.../vue-devtools/shell/chrome&lt;/code&gt;文件夹, 添加完成后，勾选允许文件地址是否访问。&lt;/p&gt;
+
+&lt;p&gt;安装完成后devTools的图标会出现在浏览器的菜单栏中。&lt;/p&gt;
+
+&lt;p&gt;以上两种安装方式告一段落。下面让我们在vue项目中体验一下这款调试神器吧。&lt;/p&gt;
+
+&lt;h2 id=&quot;使用&quot;&gt;使用&lt;/h2&gt;
+
+&lt;p&gt;运行Vue项目，在Chrome浏览器中展示项目（浏览器菜单栏中的devTools图标会亮起），按F12打开开发者工具，在开发者工具的菜单栏最后面会看到Vue，选中它就可以尽情的使用了。&lt;/p&gt;
+
+&lt;p&gt;当然这样一顿行云流水的操作下来，有些人会一次成功，而有些人则不会成功，浏览器菜单中的devTools图标亮滴鸭批，但是就是在开发者工具的菜单栏最后面看不到Vue。嗯~~~，怎么肥事小老弟？&lt;/p&gt;
+
+&lt;p&gt;请查看项目的index.html中，对vue.js的引用。你肯定使用了压缩版的vue.min.js，使用vue.min.js默认为生产环境，会导致devTools不显示，改为vue.js即可。&lt;/p&gt;</content><author><name>darkerxi</name></author><summary type="html">Vue项目中使用Vue.js devTools这款调试神器，可以极大程度的提高我们的开发效率。</summary></entry><entry><title type="html">ElementUI中Table自定义表头render-header</title><link href="https://darkerxi.github.io/my_articles/2018-06-28-ElementUI_Table-render-header/" rel="alternate" type="text/html" title="ElementUI中Table自定义表头render-header" /><published>2018-06-28T00:00:00+08:00</published><updated>2018-06-28T00:00:00+08:00</updated><id>https://darkerxi.github.io/my_articles/ElementUI_Table-render-header</id><content type="html" xml:base="https://darkerxi.github.io/my_articles/2018-06-28-ElementUI_Table-render-header/">&lt;p&gt;ElementUI的Table表格，官方网站上提供了很多样式，但是在日常开发中还会碰到各种情况，显然官方提供的是不能满足需求的。那么，我们就根据自己的需求对table进行改造。&lt;/p&gt;
 
 &lt;p&gt;先丢出关于Table的官方文档的传送门，请戳这里→ &lt;a href=&quot;http://element-cn.eleme.io/#/zh-CN/component/table&quot; target=&quot;_blank&quot;&gt;http://element-cn.eleme.io/#/zh-CN/component/table&lt;/a&gt;
 官方对Table相关的Attributes介绍的不是很详细，对于不太熟悉人，很难搞明白，实际操作起来很难受。&lt;/p&gt;
@@ -27,7 +97,7 @@
 &lt;/table&gt;
 
 &lt;h4 id=&quot;一自定义表头样式&quot;&gt;一、自定义表头样式&lt;/h4&gt;
-&lt;p&gt;![自定义表头样式]（/assets/img/articles/ElementUI-Table-column_render-header/tableHead.jpg)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/img/articles/ElementUI-Table-column_render-header/tableHead.jpg&quot; alt=&quot;自定义表头样式&quot; /&gt;&lt;/p&gt;
 &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;renderHeaderOne&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;（&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;column&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$index&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;（&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'span'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
     &lt;span class=&quot;nx&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;（&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'span'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;column&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
@@ -44,7 +114,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;二自定义表头样式和整列的拖动&quot;&gt;二、自定义表头样式和整列的拖动&lt;/h4&gt;
-&lt;p&gt;![自定义表头样式和整列的拖动]（/assets/img/articles/ElementUI-Table-column_render-header/tableDrag.gif)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/img/articles/ElementUI-Table-column_render-header/tableDrag.gif&quot; alt=&quot;自定义表头样式和整列的拖动&quot; /&gt;&lt;/p&gt;
 &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;renderHeader&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;（&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;column&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$index&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;c1&quot;&gt;// 这里可以根据$index的值来对自身需求进行修改，&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;（&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'span'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -1534,67 +1604,4 @@ externals 配置选项提供了「从输出的 bundle 中排除依赖」的方�
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;binding-bg&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;:style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{ background: 'url(' + require('../assets/images/'+ testBg ? testBg : bgDef) + ') no-repeat center center', backgroundSize: '100% 100%'}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>darkerxi</name></author><summary type="html">1、动态绑定图片</summary></entry><entry><title type="html">高性能网站建设指南(十四)使Ajax可缓存</title><link href="https://darkerxi.github.io/my_articles/2017-06-27-Make-Ajax-Cacheable/" rel="alternate" type="text/html" title="高性能网站建设指南(十四)使Ajax可缓存" /><published>2017-06-27T00:00:00+08:00</published><updated>2017-06-27T00:00:00+08:00</updated><id>https://darkerxi.github.io/my_articles/Make-Ajax-Cacheable</id><content type="html" xml:base="https://darkerxi.github.io/my_articles/2017-06-27-Make-Ajax-Cacheable/">&lt;p&gt;&lt;strong&gt;Ajax&lt;/strong&gt;（Asynchronous JavaScript and XML）由Jesse James Garrett于2005年提出（尽管如果除了XML还有很多选择，最著名的是JSON）。AJax不是一个单独的、需要许可证的技术，而是一组技术，包括JavaScript、CSS、DOM和异步数据获取。Ajax的目的是为了突破Web本质的开始-停止交互方式。向用户显示一个白屏然后重绘整个页面不是一种好的用户体验。而Ajax在UI和Web服务器之间插了一层。这个Ajax层位于客户端，与Web服务器进行交互以获取请求的信息，并与表现层交互，仅更新哪些必要的组件。它将Web体验从“浏览页面”转变为“与应用程序进行交互”。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;异步与即时（Asynchronous = Instantaneous）&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Ajax的一个明显的有点就是向用户提供了即时反馈，因为它异步地从后端Web服务器请求信息。&lt;/p&gt;
-
-&lt;p&gt;用户是否需要等待的关键因素在于Ajax请求是被动还是主动。&lt;strong&gt;被动请求&lt;/strong&gt;（Passive Request）是为了将来使用而预先发起的。&lt;strong&gt;主动请求&lt;/strong&gt;（Active Request）是基于用户当前的操作而发起的。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;优化Ajax请求（Optimizing Ajax Requests）&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;当发起主动Ajax请求时，用户可能仍须等待。要改善性能，优化这些请求很重要。优化主动Ajax请求的技术同样适用于被动Ajax请求，主动请求对用户体验的影响更大。&lt;/p&gt;
-
-&lt;p&gt;改善这些主动Ajax请求最重要的方式就是使响应可缓存。之前的一些规则也适用于
-Ajax请求。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;规则四——压缩组件&lt;/li&gt;
-  &lt;li&gt;规则九——减少DNS查找&lt;/li&gt;
-  &lt;li&gt;规则十——精简JavaScript&lt;/li&gt;
-  &lt;li&gt;规则十一——避免重定向&lt;/li&gt;
-  &lt;li&gt;规则十三——ETag用还是不用&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;确保Ajax请求遵守性能指导，尤其应具有长久的Expires头。&lt;/p&gt;</content><author><name>darkerxi</name></author><summary type="html">Ajax（Asynchronous JavaScript and XML）由Jesse James Garrett于2005年提出（尽管如果除了XML还有很多选择，最著名的是JSON）。AJax不是一个单独的、需要许可证的技术，而是一组技术，包括JavaScript、CSS、DOM和异步数据获取。Ajax的目的是为了突破Web本质的开始-停止交互方式。向用户显示一个白屏然后重绘整个页面不是一种好的用户体验。而Ajax在UI和Web服务器之间插了一层。这个Ajax层位于客户端，与Web服务器进行交互以获取请求的信息，并与表现层交互，仅更新哪些必要的组件。它将Web体验从“浏览页面”转变为“与应用程序进行交互”。</summary></entry><entry><title type="html">高性能网站建设指南(十三)配置ETag</title><link href="https://darkerxi.github.io/my_articles/2017-06-26-Configure-ETags/" rel="alternate" type="text/html" title="高性能网站建设指南(十三)配置ETag" /><published>2017-06-26T00:00:00+08:00</published><updated>2017-06-26T00:00:00+08:00</updated><id>https://darkerxi.github.io/my_articles/Configure-ETags</id><content type="html" xml:base="https://darkerxi.github.io/my_articles/2017-06-26-Configure-ETags/">&lt;p&gt;减少呈现页面时必须的HTTP请求数量是加速用户体验的最佳方式。可以通过最大化浏览器缓存组件的能力来实现这一目标，但当网站被宿主在多于一台服务器上时，ETag头可能会阻碍缓存。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;ETag是什么？（What’s 按ETag？）&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;实体标签&lt;/strong&gt;（Entity Tag,ETag）是Web服务器和浏览器用于确认缓存组件有效性的一种机制。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;实体标签（Entity Tags）&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;ETag提供了另一种方式，用于检测浏览器缓存中的组件与原始服务器上的组件是否匹配。&lt;/p&gt;
-
-&lt;p&gt;ETag在HTTP1.1中引入,是唯一标识了一个组件的一个特定版本的字符串。唯一的格式约束是该字符串必须用引号引起来。原始服务器使用ETag响应头来指定组件的ETag。&lt;/p&gt;
-
-&lt;p&gt;ETag的加入为验证实体提供了比最新修改日期更为灵活的机制。如果浏览器必须验证一个组件，它会使用If-None-Match头将ETag传回原始服务器。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;ETag带来的问题（The Problem with ETags）&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;ETag的问题在于，通常使用组件的某些属性来构造它，这些属性对于特定的、寄宿了网站的服务器来说是唯一的。当浏览器从一台服务器上获取了原始组件，之后，又向另一台不同的服务器发起条件GET请求时，ETag是不会匹配的——而对于使用度武器集群来处理请求的网站来说，这是很常见的一种情况。默认情况下，对于拥有多台服务器的网站，APache和IIS向ETag中嵌入的数据都会大大地降低有效性验证的成功率。&lt;/p&gt;
-
-&lt;p&gt;对组件进行不必要的重新加载还会影响度武器的性能并增加带宽开销。&lt;/p&gt;
-
-&lt;p&gt;ETag还降低了代理缓存的效率。&lt;/p&gt;
-
-&lt;p&gt;If-None-Match比If-Modified-Since具有更高的优先级。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;ETag——用还是不用（ETags:use’Em or Lose’Em）&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;如果你的组件必须通过最新修改日期之外的一些东西来进行验证，则ETag是一种强大的方法。&lt;/p&gt;
-
-&lt;p&gt;如果你无须自定义ETag，最好简单地将其移除。只留下大小和时间戳作为组件的ETag。然而，这些信息都是重复的，所以将ETag完全移除——Last-Modified头可以提供完全等价的信息，而且移除ETag可以减少响应和后续请求的HTTP头大小。&lt;/p&gt;</content><author><name>darkerxi</name></author><summary type="html">减少呈现页面时必须的HTTP请求数量是加速用户体验的最佳方式。可以通过最大化浏览器缓存组件的能力来实现这一目标，但当网站被宿主在多于一台服务器上时，ETag头可能会阻碍缓存。</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>darkerxi</name></author><summary type="html">1、动态绑定图片</summary></entry></feed>
