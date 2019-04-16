@@ -24,20 +24,20 @@
 
   
 <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>预防cdn链接失效，无缝切换本地文件 | darkerxi</title>
+<title>前端性能优化之gzip | darkerxi</title>
 <meta name="generator" content="Jekyll v3.8.3" />
-<meta property="og:title" content="预防cdn链接失效，无缝切换本地文件" />
+<meta property="og:title" content="前端性能优化之gzip" />
 <meta name="author" content="darkerxi" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="如今的前端项目追求的不仅仅是能用能看的程度，而是愈发追求项目的性能，对用户体验的影响。而现在的开发工具在性能优化方面也替我们做很大一部分的工作，想必大家对CDN的使用都是轻车熟路了，但是大家有没有考虑过，万一我们使用的CDN服务器，地址啥的出现了问题，导致我们引用的CDN文件都拿不到了，那么我们的项目崩溃了，天了噜，崩溃了。" />
-<meta property="og:description" content="如今的前端项目追求的不仅仅是能用能看的程度，而是愈发追求项目的性能，对用户体验的影响。而现在的开发工具在性能优化方面也替我们做很大一部分的工作，想必大家对CDN的使用都是轻车熟路了，但是大家有没有考虑过，万一我们使用的CDN服务器，地址啥的出现了问题，导致我们引用的CDN文件都拿不到了，那么我们的项目崩溃了，天了噜，崩溃了。" />
-<link rel="canonical" href="https://darkerxi.github.io/my_articles/2018-08-19-CDN-Fails-to-Use-Local-File/" />
-<meta property="og:url" content="https://darkerxi.github.io/my_articles/2018-08-19-CDN-Fails-to-Use-Local-File/" />
+<meta name="description" content="gzip是GNUzip的缩写，它是一个GNU自由软件的文件压缩程序。它最早由Jean-loup Gailly和Mark Adler创建，用于UNⅨ系统的文件压缩。我们在Linux中经常会用到后缀为.gz的文件，它们就是GZIP格式的。现今已经成为Internet 上使用非常普遍的一种数据压缩格式，或者说一种文件格式。" />
+<meta property="og:description" content="gzip是GNUzip的缩写，它是一个GNU自由软件的文件压缩程序。它最早由Jean-loup Gailly和Mark Adler创建，用于UNⅨ系统的文件压缩。我们在Linux中经常会用到后缀为.gz的文件，它们就是GZIP格式的。现今已经成为Internet 上使用非常普遍的一种数据压缩格式，或者说一种文件格式。" />
+<link rel="canonical" href="https://darkerxi.github.io/my_articles/2018-10-20-Performance-Optimization-Gzip/" />
+<meta property="og:url" content="https://darkerxi.github.io/my_articles/2018-10-20-Performance-Optimization-Gzip/" />
 <meta property="og:site_name" content="darkerxi" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-08-19T00:00:00+08:00" />
+<meta property="article:published_time" content="2018-10-20T00:00:00+08:00" />
 <script type="application/ld+json">
-{"description":"如今的前端项目追求的不仅仅是能用能看的程度，而是愈发追求项目的性能，对用户体验的影响。而现在的开发工具在性能优化方面也替我们做很大一部分的工作，想必大家对CDN的使用都是轻车熟路了，但是大家有没有考虑过，万一我们使用的CDN服务器，地址啥的出现了问题，导致我们引用的CDN文件都拿不到了，那么我们的项目崩溃了，天了噜，崩溃了。","author":{"@type":"Person","name":"darkerxi"},"@type":"BlogPosting","url":"https://darkerxi.github.io/my_articles/2018-08-19-CDN-Fails-to-Use-Local-File/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://darkerxi.github.io/assets/icons/icon.png"},"name":"darkerxi"},"headline":"预防cdn链接失效，无缝切换本地文件","dateModified":"2018-08-19T00:00:00+08:00","datePublished":"2018-08-19T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://darkerxi.github.io/my_articles/2018-08-19-CDN-Fails-to-Use-Local-File/"},"@context":"http://schema.org"}</script>
+{"description":"gzip是GNUzip的缩写，它是一个GNU自由软件的文件压缩程序。它最早由Jean-loup Gailly和Mark Adler创建，用于UNⅨ系统的文件压缩。我们在Linux中经常会用到后缀为.gz的文件，它们就是GZIP格式的。现今已经成为Internet 上使用非常普遍的一种数据压缩格式，或者说一种文件格式。","author":{"@type":"Person","name":"darkerxi"},"@type":"BlogPosting","url":"https://darkerxi.github.io/my_articles/2018-10-20-Performance-Optimization-Gzip/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://darkerxi.github.io/assets/icons/icon.png"},"name":"darkerxi"},"headline":"前端性能优化之gzip","dateModified":"2018-10-20T00:00:00+08:00","datePublished":"2018-10-20T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://darkerxi.github.io/my_articles/2018-10-20-Performance-Optimization-Gzip/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -64,7 +64,7 @@
 
 
 
-<link rel="alternate" href="https://darkerxi.github.io/my_articles/2018-08-19-CDN-Fails-to-Use-Local-File/" hreflang="en">
+<link rel="alternate" href="https://darkerxi.github.io/my_articles/2018-10-20-Performance-Optimization-Gzip/" hreflang="en">
 
 <link rel="shortcut icon" href="/assets/icons/favicon.ico">
 <link rel="apple-touch-icon" href="/assets/icons/icon.png">
@@ -180,17 +180,17 @@
 
 
 
-<article id="post-my_articles-CDN-Fails-to-Use-Local-File" class="page post mb6" role="article">
+<article id="post-my_articles-Performance-Optimization-Gzip" class="page post mb6" role="article">
   <header>
     <h1 class="post-title">
       
-        预防cdn链接失效，无缝切换本地文件
+        前端性能优化之gzip
       
     </h1>
 
     <p class="post-date heading">
       
-      <time datetime="2018-08-19T00:00:00+08:00">19 Aug 2018</time>
+      <time datetime="2018-10-20T00:00:00+08:00">20 Oct 2018</time>
       
       
       
@@ -235,51 +235,59 @@ in <a href="/my-articles/" class="flip-title">Blog</a>
 
 
   
-    <p>如今的前端项目追求的不仅仅是能用能看的程度，而是愈发追求项目的性能，对用户体验的影响。而现在的开发工具在性能优化方面也替我们做很大一部分的工作，想必大家对CDN的使用都是轻车熟路了，但是大家有没有考虑过，万一我们使用的CDN服务器，地址啥的出现了问题，导致我们引用的CDN文件都拿不到了，那么我们的项目崩溃了，天了噜，崩溃了。</p>
+    <p>gzip是GNUzip的缩写，它是一个GNU自由软件的文件压缩程序。它最早由Jean-loup Gailly和Mark Adler创建，用于UNⅨ系统的文件压缩。我们在Linux中经常会用到后缀为.gz的文件，它们就是GZIP格式的。现今已经成为Internet 上使用非常普遍的一种数据压缩格式，或者说一种文件格式。</p>
 
-<p>因此我们得考虑下，引用CDN的文件拿不到了，应该有相应的处理方案，而不会直接导致我们项目崩溃。</p>
+<p>HTTP协议上的GZIP编码是一种用来改进WEB应用程序性能的技术。大流量的WEB站点常常使用GZIP压缩技术来让用户感受更快的速度。减少文件大小有两个明显的好处，一是可以减少存储空间，二是通过网络传输文件时，可以减少传输的时间。</p>
 
-<p>想必大家都能想到的处理方案就是：<strong>如果引用CDN的文件出错了，拿不到，那么我们就引用本地相对应的文件。</strong></p>
+<p>当然WEB服务器和客户端（浏览器）必须共同支持gzip。目前主流的浏览器Chrome,firefox,IE等都支持该协议。常见的服务器如Apache，Nginx，IIS同样支持gzip。</p>
 
-<p>有人肯定会说，这样处理会导致项目体积变大的。对，是的，没有错，会使项目体积变大，但是这种处理总不会直接导致项目崩溃的，给用户的体验能更好一点，牺牲这么一点点是值得的。很多事情都是没有绝对的情况，都是相对的，这就需要我们自己去权衡了。</p>
+<p>下面就以Vue项目为例，介绍一下gzip的使用（vue-cli 2.*）</p>
 
-<p>话不多说，直接进入正题。下面以Vue项目为列:</p>
-
-<p>当然是我们项目的启动页<code class="highlighter-rouge">/index.html</code></p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.bootcss.com/vue/2.5.15/vue.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script&gt;</span><span class="o">!</span><span class="nb">window</span><span class="p">.</span><span class="nx">Vue</span> <span class="o">&amp;&amp;</span> <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">unescape</span><span class="p">(</span><span class="s1">'%3Cscript src="./static/js/vue.min.js"%3E%3C/script%3E'</span><span class="p">))</span><span class="nt">&lt;/script&gt;</span>
-    
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.bootcss.com/vue-router/3.0.1/vue-router.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script&gt;</span><span class="o">!</span><span class="nb">window</span><span class="p">.</span><span class="nx">VueRouter</span> <span class="o">&amp;&amp;</span> <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">unescape</span><span class="p">(</span><span class="s1">'%3Cscript src="./static/js/vue-router.min.js"%3E%3C/script%3E'</span><span class="p">))</span><span class="nt">&lt;/script&gt;</span>
-    
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.bootcss.com/axios/0.18.0/axios.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script&gt;</span><span class="o">!</span><span class="nb">window</span><span class="p">.</span><span class="nx">axios</span> <span class="o">&amp;&amp;</span> <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">unescape</span><span class="p">(</span><span class="s1">'%3Cscript src="./static/js/axios.min.js"%3E%3C/script%3E'</span><span class="p">))</span><span class="nt">&lt;/script&gt;</span>
-    
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.bootcss.com/element-ui/2.4.9/index.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script&gt;</span><span class="o">!</span><span class="nb">window</span><span class="p">.</span><span class="nx">Element</span> <span class="o">&amp;&amp;</span> <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">unescape</span><span class="p">(</span><span class="s1">'%3Cscript src="./static/js/element-ui-index.js"%3E%3C/script%3E'</span><span class="p">))</span><span class="nt">&lt;/script&gt;</span>
-    <span class="nt">&lt;script&gt;</span><span class="o">!</span><span class="nb">window</span><span class="p">.</span><span class="nx">Element</span> <span class="o">&amp;&amp;</span> <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">unescape</span><span class="p">(</span><span class="s1">'%3Clink href="./static/css/element-ui-index.css" rel="stylesheet"%3E%3C/link%3E'</span><span class="p">))</span><span class="nt">&lt;/script&gt;</span>
-    
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.bootcss.com/qs/6.5.2/qs.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script&gt;</span><span class="o">!</span><span class="nb">window</span><span class="p">.</span><span class="nx">Qs</span> <span class="o">&amp;&amp;</span> <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">unescape</span><span class="p">(</span><span class="s1">'%3Cscript src="./static/js/qs.js"%3E%3C/script%3E'</span><span class="p">))</span><span class="nt">&lt;/script&gt;</span>
-    
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.bootcss.com/vuex/3.0.1/vuex.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script&gt;</span><span class="o">!</span><span class="nb">window</span><span class="p">.</span><span class="nx">Vuex</span> <span class="o">&amp;&amp;</span> <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">unescape</span><span class="p">(</span><span class="s1">'%3Cscript src="./static/js/vuex.min.js"%3E%3C/script%3E'</span><span class="p">))</span><span class="nt">&lt;/script&gt;</span>
+<p><strong>1</strong>、在<code class="highlighter-rouge">/config/index.js</code>中，修改配置开启gzip</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Gzip off by default as many popular static hosts such as</span>
+<span class="c1">// Surge or Netlify already gzip all static assets for you.</span>
+<span class="c1">// Before setting to `true`, make sure to:</span>
+<span class="c1">// npm install --save-dev compression-webpack-plugin</span>
+<span class="nx">productionGzip</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="nx">productionGzipExtensions</span><span class="p">:</span> <span class="p">[</span><span class="s1">'js'</span><span class="p">,</span> <span class="s1">'css'</span><span class="p">],</span>
 </code></pre></div></div>
+<p>在修改<code class="highlighter-rouge">productionGzip</code>的默认值（false）为<strong>true</strong>之前，先安装所需的依赖<code class="highlighter-rouge">npm install --save-dev compression-webpack-plugin</code>。</p>
 
-<p>下面就在啰嗦几点，看懂的慢走，不送啦。不太懂的再瞅瞅。</p>
+<p><strong><em>如果按上述操作完成后，打包时出错，建议更换低版本的<code class="highlighter-rouge">compression-webpack-plugin</code>，推荐使用1.1.12或者1.1.11版本等</em></strong>
+<strong><em><code class="highlighter-rouge">npm uninstall --save-dev compression-webpack-plugin</code></em></strong>
+<strong><em><code class="highlighter-rouge">npm install --save-dev compression-webpack-plugin@1.1.12</code></em></strong></p>
 
-<p>1)、不用担心会全部加载，出现重复的情况，不信邪的自己去NetWork里验证。</p>
+<p><strong>2</strong>、在nginx中开启gzip，<code class="highlighter-rouge">/nginx/conf/nginx.conf</code>中添加gzip配置</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">http</span><span class="p">:{</span> 
+  <span class="err">#启用或禁用</span><span class="nx">gzipping</span><span class="err">响应。#</span>
+  <span class="nx">gzip</span> <span class="nx">on</span><span class="p">;</span> 
+  <span class="err">#设置用于压缩响应的缓冲区</span><span class="nx">number</span><span class="err">和</span><span class="nx">size</span><span class="err">。默认情况下，缓冲区大小等于一个内存页面。这是</span><span class="mi">4</span><span class="nx">K</span><span class="err">或</span><span class="mi">8</span><span class="nx">K</span><span class="err">，具体取决于平台。#</span>
+  <span class="nx">gzip_static</span> <span class="nx">on</span><span class="p">;</span>
+  <span class="err">#启用或禁用</span><span class="nx">gzipping</span><span class="err">响应。#</span>
+  <span class="nx">gzip_buffers</span> <span class="mi">4</span> <span class="mi">16</span><span class="nx">k</span><span class="p">;</span>
+  <span class="err">#设置</span><span class="nx">level</span><span class="err">响应的</span><span class="nx">gzip</span><span class="err">压缩。可接受的值范围为</span><span class="mi">1</span><span class="err">到</span><span class="mi">9</span><span class="err">。#</span>
+  <span class="nx">gzip_comp_level</span> <span class="mi">5</span><span class="p">;</span>
+  <span class="err">#设置将被</span><span class="nx">gzip</span><span class="err">压缩的响应的最小长度。长度仅由“</span><span class="nx">Content</span><span class="o">-</span><span class="nx">Length</span><span class="err">”响应头字段确定。#</span>
+  <span class="nx">gzip_min_length</span> <span class="mi">100</span><span class="p">;</span>
+  <span class="err">#匹配</span><span class="nx">MIME</span><span class="err">类型进行压缩，</span><span class="nx">text</span><span class="o">/</span><span class="nx">html</span><span class="err">默认被压缩。#</span>
+  <span class="nx">gzip_types</span> <span class="nx">text</span><span class="o">/</span><span class="nx">plain</span> <span class="nx">application</span><span class="o">/</span><span class="nx">javascript</span> <span class="nx">text</span><span class="o">/</span><span class="nx">css</span> <span class="nx">application</span><span class="o">/</span><span class="nx">xml</span> <span class="nx">text</span><span class="o">/</span><span class="nx">javascript</span> <span class="nx">application</span><span class="o">/</span><span class="nx">x</span><span class="o">-</span><span class="nx">httpd</span><span class="o">-</span><span class="nx">php</span> <span class="nx">image</span><span class="o">/</span><span class="nx">jpeg</span><span class="err"> </span><span class="nx">image</span><span class="o">/</span><span class="nx">gif</span> <span class="nx">image</span><span class="o">/</span><span class="nx">png</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>修改完nginx配置，重启服务。</p>
 
-<p>2)、<code class="highlighter-rouge">!window.Vue</code>、<code class="highlighter-rouge">!window.VueRouter</code>、<code class="highlighter-rouge">!window.axios</code>、<code class="highlighter-rouge">!window.Element</code>、<code class="highlighter-rouge">!window.Qs</code>、<code class="highlighter-rouge">!window.Vuex</code>这些都是些什么鬼？ 那是第三方库暴露出来的方法名。也可以去看看我之前 “配置webpack中externals来减少打包后vendor.js的体积” 这篇文章。</p>
+<p>关于gzip详细的配置和描述，请查阅 <a href="http://nginx.org/en/docs/http/ngx_http_gzip_module.html" target="_blank">Module ngx_http_gzip_module</a></p>
 
-<p>3)、对js文件的处理都是这样的，但是对css文件应该怎么处理呢。 眼尖的已经看到了，上面那段中已经写出来。</p>
+<p>至此，gzip已开启。你可以运行你的项目去检测一下。</p>
 
-<p>4)、心细善于思考的你，还会发现，其实对css文件的处理还是存在问题的。 因为难以直接判断出CDN上的css文件是否成功加载，所以直接用js文件加载完成的判断方式，打包一起处理。这样如果CDN上的整个Element-UI出现问题，那js和css都可以加载本地的。最坏的情况是，CDN上的css文件很不巧的出现问题了呢？    那就让凉吧。没办法。。。哈哈哈</p>
+<p>打开Chrome控制台，可以看到<code class="highlighter-rouge">Network</code>下的<code class="highlighter-rouge">Response Headers</code>中返回了<code class="highlighter-rouge">Content-Encoding: gzip</code>，表明gzip开启成功。
+而<code class="highlighter-rouge">Request Headers</code>里面的<code class="highlighter-rouge">Accept-Encoding: gzip</code>只是表示前端（用户浏览器）支持gzip的压缩方式。</p>
 
-<p>因为对于css文件的处理，暂时没有想到好一点的处理方案，所以目前只能先这样统一处理。</p>
+<p>服务器支持gzip的方式可以有两种：</p>
 
-<p>不可否认对css处理这里是存在问题的。如果你有更好的处理方案，欢迎评论告知我，谢谢。 当然文中有不当的地方，也欢迎大家指正，谢谢。</p>
+<p>1、打包的时候生成对应的.gz文件，浏览器请求xx.js时，服务器返回对应的xxx.js.gz文件</p>
+
+<p>2、浏览器请求xx.js时，服务器对xx.js进行gzip压缩后传输给浏览器</p>
+
 
     
   

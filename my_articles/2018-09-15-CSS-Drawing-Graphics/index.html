@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+
+
+
+
+
+
+
+<head>
+  
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+
+  
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>css绘制各种图形 | darkerxi</title>
+<meta name="generator" content="Jekyll v3.8.3" />
+<meta property="og:title" content="css绘制各种图形" />
+<meta name="author" content="darkerxi" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="使用 CSS 可以绘制出许多形状，比如三角形、梯形、圆形、椭圆等，并不只是可以绘制矩形。下面列举一些基本形状和组合形状。基本形状是比较容易实现的，而利用这些基本形状进行组合，就可以实现稍微复杂点的组合形状。" />
+<meta property="og:description" content="使用 CSS 可以绘制出许多形状，比如三角形、梯形、圆形、椭圆等，并不只是可以绘制矩形。下面列举一些基本形状和组合形状。基本形状是比较容易实现的，而利用这些基本形状进行组合，就可以实现稍微复杂点的组合形状。" />
+<link rel="canonical" href="https://darkerxi.github.io/my_articles/2018-09-15-CSS-Drawing-Graphics/" />
+<meta property="og:url" content="https://darkerxi.github.io/my_articles/2018-09-15-CSS-Drawing-Graphics/" />
+<meta property="og:site_name" content="darkerxi" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-09-15T00:00:00+08:00" />
+<script type="application/ld+json">
+{"description":"使用 CSS 可以绘制出许多形状，比如三角形、梯形、圆形、椭圆等，并不只是可以绘制矩形。下面列举一些基本形状和组合形状。基本形状是比较容易实现的，而利用这些基本形状进行组合，就可以实现稍微复杂点的组合形状。","author":{"@type":"Person","name":"darkerxi"},"@type":"BlogPosting","url":"https://darkerxi.github.io/my_articles/2018-09-15-CSS-Drawing-Graphics/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://darkerxi.github.io/assets/icons/icon.png"},"name":"darkerxi"},"headline":"css绘制各种图形","dateModified":"2018-09-15T00:00:00+08:00","datePublished":"2018-09-15T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://darkerxi.github.io/my_articles/2018-09-15-CSS-Drawing-Graphics/"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+  
+
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="darkerxi">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<meta name="application-name" content="darkerxi">
+<meta name="msapplication-config" content="/assets/ieconfig.xml">
+
+
+<meta name="theme-color" content="rgb(25,55,71)">
+
+
+<meta name="generator" content="Hydejack v8.0.0" />
+
+
+
+
+<link rel="alternate" href="https://darkerxi.github.io/my_articles/2018-09-15-CSS-Drawing-Graphics/" hreflang="en">
+
+<link rel="shortcut icon" href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/icon.png">
+
+<link rel="manifest" href="/assets/manifest.json">
+
+
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+
+
+
+
+
+
+<link href="/assets/js/hydejack-8.0.0.js" id="_hrefJS">
+<link href="/assets/bower_components/fontfaceobserver/fontfaceobserver.standalone.js" id="_hrefFFO">
+<link href="/assets/bower_components/katex/dist/katex.min.js" id="_hrefKatexJS">
+<link href="/assets/bower_components/katex/dist/katex.min.css" id="_hrefKatexCSS">
+<link href="/assets/img/swipe.svg" id="_hrefSwipeSVG">
+
+<script>
+  !function(e,t){"use strict";function n(e,t,n,r){e.addEventListener?e.addEventListener(t,n,r):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n}e.loadJS=function(e,r){var o=t.createElement("script");o.src=e,r&&n(o,"load",r,{once:!0});var a=t.scripts[0];return a.parentNode.insertBefore(o,a),o},e._loaded=!1,e.loadJSDeferred=function(r,o){function a(){e._loaded=!0,o&&n(d,"load",o,{once:!0});var r=t.scripts[0];r.parentNode.insertBefore(d,r)}var d=t.createElement("script");return d.src=r,e._loaded?a():n(e,"load",a,{once:!0}),d},e.setRel=e.setRelStylesheet=function(e){function n(){this.rel="stylesheet"}var r=t.getElementById(e);r.addEventListener?r.addEventListener("load",n,{once:!0}):r.onload=n}}(window,document);
+!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+
+  window._noPushState = false;
+  window._noDrawer = false;
+  
+    !function(w, d) {
+      loadJS(document.getElementById('_hrefFFO').href, function() {
+        if ('Promise' in w) Promise.all([
+          new FontFaceObserver('Noto Sans').load(),
+          new FontFaceObserver('Roboto Slab').load(),
+        ]).then(function f() { d.body.className += ' font-active'; }, function() {});
+      });
+    }(window, document);
+  
+</script>
+
+<!--[if gt IE 8]><!---->
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="/assets/css/hydejack-8.0.0.css">
+  <link rel="stylesheet" href="/assets/icomoon/style.css">
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400|Noto+Sans:400,400i,700,700i">
+    <noscript>
+      <style>
+        html { font-family: Noto Sans, Helvetica, Arial, sans-serif!important; }
+        h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .heading { font-family: Roboto Slab, Helvetica, Arial, sans-serif!important; }
+      </style>
+    </noscript>
+  
+
+
+<style id="_pageStyle">
+
+.content a:not(.btn){color:#4fb1ba;border-color:rgba(79,177,186,0.2)}.content a:not(.btn):hover{border-color:#4fb1ba}:focus{outline-color:#4fb1ba}.btn-primary{color:#fff;background-color:#4fb1ba;border-color:#4fb1ba}.btn-primary:focus,.btn-primary.focus,.form-control:focus,.form-control.focus{box-shadow:0 0 0 3px rgba(79,177,186,0.5)}.btn-primary:hover,.btn-primary.hover{color:#fff;background-color:#409ba3;border-color:#409ba3}.btn-primary:disabled,.btn-primary.disabled{color:#fff;background-color:#4fb1ba;border-color:#4fb1ba}.btn-primary:active,.btn-primary.active{color:#fff;background-color:#409ba3;border-color:#409ba3}::selection{color:#fff;background:#4fb1ba}::-moz-selection{color:#fff;background:#4fb1ba}
+
+</style>
+
+<!--<![endif]-->
+
+
+
+
+</head>
+
+<body>
+  <div class="navbar fixed-top">
+  <div class="content">
+    <div class="nav-btn-bar">
+      <span class="sr-only">Jump to:</span>
+      <a id="_menu" class="nav-btn no-hover" href="#_navigation">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-menu"></span>
+      </a>
+    </div>
+  </div>
+</div>
+<hr class="sr-only" hidden />
+
+
+<hy-push-state
+  replace-ids="_main"
+  link-selector="a[href]:not([href*='/assets/']):not(.external):not(.no-push-state)"
+  duration="250"
+  script-selector="script:not([type^='math/tex'])"
+  prefetch
+>
+  
+    <main
+  id="_main"
+  class="content fade-in layout-post"
+  role="main"
+  data-color="rgb(79,177,186)"
+  data-theme-color="rgb(25,55,71)"
+  
+    data-image="/assets/img/sidebar-bg.jpg"
+    data-overlay
+  
+  >
+  
+
+
+
+
+<article id="post-my_articles-CSS-Drawing-Graphics" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title">
+      
+        css绘制各种图形
+      
+    </h1>
+
+    <p class="post-date heading">
+      
+      <time datetime="2018-09-15T00:00:00+08:00">15 Sep 2018</time>
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+in <a href="/my-articles/" class="flip-title">Blog</a>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+    </p>
+
+    
+    
+
+    <!-- 
+
+
+
+  <div class="hr pb0"></div>
+
+ -->
+  </header>
+
+
+  
+    <p>使用 CSS 可以绘制出许多形状，比如三角形、梯形、圆形、椭圆等，并不只是可以绘制矩形。下面列举一些基本形状和组合形状。基本形状是比较容易实现的，而利用这些基本形状进行组合，就可以实现稍微复杂点的组合形状。</p>
+
+<p><strong>一、基础形状</strong></p>
+
+<p>1、三角形</p>
+
+<div class="triangle-top" style="float: left;">
+  <p class="triangle" style="width: 0; height: 0; border: 50px solid #4fb1ba; border-color: transparent transparent #4fb1ba transparent;"></p>
+</div>
+<div class="triangle-down" style="float: left; margin-left:50px;">
+  <p class="triangle" style="width: 0; height: 0; border: 50px solid #4fb1ba; border-color: #4fb1ba transparent transparent transparent;"></p>
+</div>
+<div class="triangle-left" style="float: left;">
+  <p class="triangle" style="width: 0; height: 0; border: 50px solid #4fb1ba; border-color: transparent #4fb1ba transparent transparent;"></p>
+</div>
+<div class="triangle-right" style="float: left; margin-left:70px;">
+  <p class="triangle" style="width: 0; height: 0; border: 50px solid #4fb1ba; border-color: transparent transparent transparent #4fb1ba;"></p>
+</div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.triangle</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="m">50px</span> <span class="nb">solid</span> <span class="m">#4fb1ba</span><span class="p">;</span>
+    <span class="c">/* 通过改变边框颜色，可以改变三角形的方向 */</span>
+   <span class="nl">border-color</span><span class="p">:</span> <span class="nb">transparent</span> <span class="nb">transparent</span> <span class="m">#4fb1ba</span> <span class="nb">transparent</span><span class="p">;</span>
+    <span class="c">/* border-color: transparent transparent transparent #4fb1ba; */</span>
+    <span class="c">/* border-color: #4fb1ba transparent transparent transparent; */</span>
+    <span class="c">/* border-color: transparent #4fb1ba transparent transparent; */</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>2、梯形</p>
+
+<p>梯形由三角形设置宽度(高度)演变而来</p>
+
+<div class="trapzoid-content" style="clear: both;">
+  <div class="trapzoid-top" style="float: left;">
+    <p class="trapzoid" style="width: 30px; height: 0; border: 35px solid #4fb1ba; border-color: transparent transparent #4fb1ba transparent; box-sizing: content-box;"></p>
+  </div>
+  <div class="trapzoid-down" style="float: left; margin-left:50px;">
+    <p class="trapzoid" style="width: 30px; height: 0; border: 35px solid #4fb1ba; border-color: #4fb1ba transparent transparent transparent; box-sizing: content-box;"></p>
+  </div>
+  <div class="trapzoid-left" style="float: left; margin-left:50px;">
+    <p class="trapzoid" style="width: 0; height: 30px; border: 35px solid #4fb1ba; border-color: transparent #4fb1ba transparent transparent; box-sizing: content-box;"></p>
+  </div>
+  <div class="trapzoid-right" style="float: left; margin-left:70px;">
+    <p class="trapzoid" style="width: 0; height: 30px; border: 35px solid #4fb1ba; border-color: transparent transparent transparent #4fb1ba; box-sizing: content-box;"></p>
+  </div>
+</div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.trapzoid</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">30px</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="m">35px</span> <span class="nb">solid</span> <span class="m">#4fb1ba</span><span class="p">;</span>
+    <span class="nl">border-color</span><span class="p">:</span> <span class="nb">transparent</span> <span class="nb">transparent</span> <span class="m">#4fb1ba</span> <span class="nb">transparent</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>3、圆形</p>
+
+<div class="circle-content" style="clear: both;">
+  <p class="circle" style="width: 100px; height: 100px; border-radius:50%; background: #4fb1ba;"></p>
+</div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.circle</span><span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nl">border-radius</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+    <span class="nl">background</span><span class="p">:</span> <span class="m">#4fb1ba</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>4、椭圆</p>
+
+<p>由圆形变换宽度(高度)而来</p>
+
+<div class="ellipse-content" style="clear: both;">
+  <p class="ellipse" style="width: 150px; height: 100px; border-radius: 50%; background: #4fb1ba;"></p>
+</div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.ellipse</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">150px</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nl">border-radius</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+    <span class="nl">background</span><span class="p">:</span> <span class="m">#4fb1ba</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>5、半圆</p>
+
+<p>由圆形设置半径而来</p>
+
+<div class="semicircle-content" style="clear: both;">
+  <div class="semicircle-top" style="float: left;">
+    <p class="semicircle" style="width: 100px; height: 50px; border-radius: 100% 100% 0 0 / 200% 200% 0 0; background: #4fb1ba;"></p>
+  </div>
+  <div class="semicircle-down" style="float: left; margin-left:50px;">
+    <p class="semicircle" style="width: 100px; height: 50px; border-radius: 0 0 100% 100% / 0 0 200% 200%; background: #4fb1ba;"></p>
+  </div>
+  <div class="semicircle-left" style="float: left; margin-left:50px;">
+    <p class="semicircle" style="width: 50px; height: 100px; border-radius: 200% 0 0 200% / 100% 0 0 100%; background: #4fb1ba;"></p>
+  </div>
+  <div class="semicircle-right" style="float: left; margin-left:70px;">
+    <p class="semicircle" style="width: 50px; height: 100px; border-radius: 0 200% 200% 0 / 0 100% 100% 0; background: #4fb1ba;"></p>
+  </div>
+</div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.semicircle</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="c">/*  "/"前四个值表示圆角的水平半径，后四个值表示圆角的垂直半径*/</span>
+    <span class="nl">border-radius</span><span class="p">:</span> <span class="m">200%</span> <span class="m">0</span> <span class="m">0</span> <span class="m">200%</span> <span class="p">/</span> <span class="m">100%</span> <span class="m">0</span> <span class="m">0</span> <span class="m">100%</span><span class="p">;</span>
+    <span class="c">/* 效果和用%一样 */</span>
+    <span class="c">/* border-radius: 50px 0 0 50px; */</span>
+    <span class="nl">background</span><span class="p">:</span> <span class="m">#4fb1ba</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>6、四分之一圆</p>
+
+<p>由圆形设置半径而来</p>
+
+<div class="quartercircle-content" style="clear: both;">
+  <div class="q-top-left" style="float: left;">
+    <p class="quartercircle" style="width: 50px; height: 50px; border-radius: 50px 0 0 0; background: #4fb1ba;"></p>
+  </div>
+  <div class="q-top-right" style="float: left; margin-left:50px;">
+    <p class="quartercircle" style="width: 50px; height: 50px; border-radius: 0 50px 0 0; background: #4fb1ba;"></p>
+  </div>
+  <div class="q-down-left" style="float: left; margin-left:50px;">
+    <p class="quartercircle" style="width: 50px; height: 50px; border-radius: 0 0 0 50px; background: #4fb1ba;"></p>
+  </div>
+  <div class="q-down-right" style="float: left; margin-left:50px;">
+    <p class="quartercircle" style="width: 50px; height: 50px; border-radius: 0 0 50px 0; background: #4fb1ba;"></p>
+  </div>
+</div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.quartercircle</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+    <span class="nl">border-radius</span><span class="p">:</span> <span class="m">50px</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">background</span><span class="p">:</span> <span class="m">#4fb1ba</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>7、球体</p>
+
+<p>由圆形设置背景色渐变而来</p>
+
+<div class="sphere-content" style="clear: both;">
+  <p class="sphere" style="width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle at 70px 70px, #4fb1ba, #000);"></p>
+</div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.sphere</span> <span class="p">{</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nl">border-radius</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+    <span class="nl">background</span><span class="p">:</span> <span class="n">radial-gradient</span><span class="p">(</span><span class="nb">circle</span> <span class="n">at</span> <span class="m">70px</span> <span class="m">70px</span><span class="p">,</span> <span class="m">#4fb1ba</span><span class="p">,</span> <span class="m">#000</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>8、矩形</p>
+
+<div class="rectangle-content" style="clear: both;">
+  <p class="rectangle" style="width: 100px; height: 100px; background: #4fb1ba;"></p>
+</div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.rectangle</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nl">background</span><span class="p">:</span> <span class="m">#4fb1ba</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>9、菱形</p>
+
+<p>菱形由矩形旋转而来</p>
+
+<div class="rhombus-content" style="clear: both; height: 160px; margin-top: 50px;">
+  <p class="rhombus" style="width: 100px; height: 100px; transform: rotateZ(45deg) skew(10deg, 10deg); background: #4fb1ba;"></p>
+</div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.rhombus</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nl">transform</span><span class="p">:</span> <span class="n">rotateZ</span><span class="p">(</span><span class="m">45deg</span><span class="p">)</span> <span class="n">skew</span><span class="p">(</span><span class="m">10deg</span><span class="p">,</span> <span class="m">10deg</span><span class="p">);</span>
+    <span class="nl">background</span><span class="p">:</span> <span class="m">#4fb1ba</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>10、平行四边形</p>
+
+<p>平行四边形由矩形切斜而来</p>
+
+<div class="parallelogram-content" style="clear: both;">
+  <p class="parallelogram" style="width: 100px; height: 70px; transform: skew(30deg); background: #4fb1ba;"></p>
+</div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.parallelogram</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">70px</span><span class="p">;</span>
+    <span class="nl">transform</span><span class="p">:</span> <span class="n">skew</span><span class="p">(</span><span class="m">30deg</span><span class="p">);</span>
+    <span class="nl">background</span><span class="p">:</span> <span class="m">#4fb1ba</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong><em>综上所述：基础形状只有三角形、矩形和圆形构成，其余的都是由他们变化而来。</em></strong></p>
+
+<p><strong>二、组合形状</strong></p>
+
+<p>1、心形</p>
+
+<p>心形由两个圆形和一个矩形进行组合而来</p>
+
+<div class="heart-content" style="clear: both; height: 180px;">
+  <div class="heart-combination-after" style="float: left;">
+    <div class="heart" style="position: relative; width: 70px; height: 70px; margin: 70px 0 0 70px; transform: rotateZ(45deg); background: red;">
+      <p class="heart-before" style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; border-radius: 50%; background: red;"></p>
+      <p class="heart-after" style="position: absolute; top: -100%; left: 0; width: 100%; height: 100%; border-radius: 50%; background: red;"></p>
+    </div>
+  </div>
+  <div class="heart-combination-before" style="float: left; margin-left:150px;">
+    <div class="heart" style="position: relative; width: 70px; height: 70px; margin: 70px 0 0 70px; transform: rotateZ(45deg); background: red;">
+      <p class="heart-before" style="position: absolute; top: 0; left: -50%; width: 100%; height: 100%; border-radius: 50%; background: red;"></p>
+      <p class="heart-after" style="position: absolute; top: -50%; left: 0; width: 100%; height: 100%; border-radius: 50%; background: red;"></p>
+    </div>
+  </div>
+</div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.heart</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">70px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">70px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">60px</span> <span class="m">0</span> <span class="m">0</span> <span class="m">50px</span><span class="p">;</span>
+  <span class="nl">transform</span><span class="p">:</span> <span class="n">rotateZ</span><span class="p">(</span><span class="m">45deg</span><span class="p">);</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.heart</span><span class="nd">::after</span><span class="o">,</span>
+<span class="nc">.heart</span><span class="nd">::before</span> <span class="p">{</span>
+  <span class="nl">content</span><span class="p">:</span> <span class="s1">""</span><span class="p">;</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+  <span class="nl">top</span><span class="p">:</span> <span class="m">-50%</span><span class="p">;</span>
+  <span class="nl">left</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.heart</span><span class="nd">::before</span> <span class="p">{</span>
+  <span class="nl">top</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">left</span><span class="p">:</span> <span class="m">-50%</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>2、扇形</p>
+
+<p>扇形由一个圆形和一个矩形进行组合而来，用矩形遮住圆形的一部分就形成了扇形</p>
+
+<div class="sector-content" style="clear: both; height: 150px; overflow: hidden;">
+  <div class="sector-combination-after" style="float: left;">
+    <div class="sector-before" style="float: left; width: 90px; height:90px; margin: 60px 0 0 100px; background-color: #ddd; transform-origin: left; transform: rotate(230deg);"></div>
+    <div class="sector" style="float: left; width: 120px; height: 120px; margin-left: -50px; background: #ddd; border-radius: 50%; background-image: linear-gradient(to right, transparent 50%, #4fb1ba 0);">
+    </div>
+  </div>
+  <div class="sector-combination-before" style="float: left; margin-left:50px;">
+    <div class="sector" style="position: relative; width: 120px; height: 120px; background: #fff; border-radius: 50%; background-image: linear-gradient(to right, transparent 50%, #4fb1ba 0);">
+      <div class="sector-before" style="width: 100%; height: 100%; margin-left: 50%; background-color: inherit; transform-origin: left; transform: rotate(230deg);"></div>
+    </div>
+  </div>
+</div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.sector</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">120px</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">120px</span><span class="p">;</span>
+    <span class="c">/* 这里的背景色要与扇形外的背景色一致 */</span>
+    <span class="nl">background</span><span class="p">:</span> <span class="m">#fff</span><span class="p">;</span>
+    <span class="nl">border-radius</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+    <span class="nl">background-image</span><span class="p">:</span> <span class="n">linear-gradient</span><span class="p">(</span><span class="n">to</span> <span class="nb">right</span><span class="p">,</span> <span class="nb">transparent</span> <span class="m">50%</span><span class="p">,</span> <span class="m">#4fb1ba</span> <span class="m">0</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nc">.sector</span><span class="nd">::before</span> <span class="p">{</span>
+    <span class="nl">content</span><span class="p">:</span> <span class="s2">''</span><span class="p">;</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+    <span class="nl">margin-left</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="nb">inherit</span><span class="p">;</span>
+    <span class="nl">transform-origin</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
+    <span class="c">/*调整角度，改变扇形大小*/</span>
+    <span class="nl">transform</span><span class="p">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">230deg</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>3、五边形</p>
+
+<p>五边形由一个三角形和一个梯形进行组合而来</p>
+
+<div class="pentagonal-content" style="clear: both; height: 140px;">
+  <div class="pentagonal-combination-after" style="float: left;">
+    <div class="pentagonal" style="position: relative; width: 70px; margin: 60px 0 0 0; border-width: 65px 30px 0; border-style: solid; border-color: #4fb1ba transparent; box-sizing: content-box;">
+      <p class="pentagonal-before" style="position: absolute; top: -125px;; left: -30px; width: 0; height: 0; border-width: 0px 65px 50px; border-style: solid; border-color: transparent transparent #4fb1ba;"></p>
+    </div>
+  </div>
+  <div class="pentagonal-combination-before" style="float: left; margin-left:150px;">
+    <div class="pentagonal" style="position: relative; width: 70px; margin: 50px 0 0 0; border-width: 65px 30px 0; border-style: solid; border-color: #4fb1ba transparent; box-sizing: content-box;">
+      <p class="pentagonal-before" style="position: absolute; top: -115px;; left: -30px; width: 0; height: 0; border-width: 0px 65px 50px; border-style: solid; border-color: transparent transparent #4fb1ba;"></p>
+    </div>
+  </div>
+</div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.pentagonal</span> <span class="p">{</span>
+    <span class="nl">position</span><span class="p">:</span> <span class="nb">relative</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">70px</span><span class="p">;</span>
+    <span class="nl">margin-top</span><span class="p">:</span> <span class="m">55px</span><span class="p">;</span>
+    <span class="nl">border-width</span><span class="p">:</span> <span class="m">65px</span> <span class="m">30px</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">border-style</span><span class="p">:</span> <span class="nb">solid</span><span class="p">;</span>
+    <span class="nl">border-color</span><span class="p">:</span> <span class="m">#4fb1ba</span> <span class="nb">transparent</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.pentagonal</span><span class="nd">:before</span> <span class="p">{</span>
+    <span class="nl">content</span><span class="p">:</span> <span class="s1">""</span><span class="p">;</span>
+    <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+    <span class="nl">top</span><span class="p">:</span> <span class="m">-115px</span><span class="p">;</span>
+    <span class="nl">left</span><span class="p">:</span> <span class="m">-30px</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">border-width</span><span class="p">:</span> <span class="m">0px</span> <span class="m">65px</span> <span class="m">50px</span><span class="p">;</span>
+    <span class="nl">border-style</span><span class="p">:</span> <span class="nb">solid</span><span class="p">;</span>
+    <span class="nl">border-color</span><span class="p">:</span> <span class="nb">transparent</span> <span class="nb">transparent</span> <span class="m">#4fb1ba</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>4、六边形</p>
+
+<p>六边形由上面（左面）一个三角形，中间一个矩形，下面（右面）一个三角形进行组合而来</p>
+
+<div class="hexagon-content" style="clear: both; height: 150px;">
+  <div class="hexagon-combination-after" style="float: left;">
+    <div class="hexagon" style="position: relative; width: 100px; height: 50px; margin-top: 40px; background-color: #4fb1ba;">
+      <p class="hexagon-before" style="position: absolute; top: -40px; left: 0; width: 0; height: 0; border-left: 50px solid transparent; border-right: 50px solid transparent; border-bottom: 30px solid #4fb1ba;"></p>
+      <p class="hexagon-after" style="position: absolute; top: 60px; left: 0; width: 0; height: 0; border-left: 50px solid transparent; border-right: 50px solid transparent; border-top: 30px solid #4fb1ba;"></p>
+    </div>
+  </div>
+  <div class="hexagon-combination-before" style="float: left; margin-left:150px;">
+    <div class="hexagon" style="position: relative; width: 100px; height: 50px; margin-top: 30px; background-color: #4fb1ba;">
+      <p class="hexagon-before" style="position: absolute; top: -30px; left: 0; width: 0; height: 0; border-left: 50px solid transparent; border-right: 50px solid transparent; border-bottom: 30px solid #4fb1ba;"></p>
+      <p class="hexagon-after" style="position: absolute; top: 50px; left: 0; width: 0; height: 0; border-left: 50px solid transparent; border-right: 50px solid transparent; border-top: 30px solid #4fb1ba;"></p>
+    </div>
+  </div>
+</div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.hexagon</span> <span class="p">{</span>
+    <span class="nl">position</span><span class="p">:</span> <span class="nb">relative</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="m">#4fb1ba</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.hexagon</span><span class="nd">:before</span> <span class="p">{</span>
+    <span class="nl">content</span><span class="p">:</span> <span class="s1">""</span><span class="p">;</span>
+    <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+    <span class="nl">top</span><span class="p">:</span> <span class="m">-30px</span><span class="p">;</span>
+    <span class="nl">left</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">border-left</span><span class="p">:</span> <span class="m">50px</span> <span class="nb">solid</span> <span class="nb">transparent</span><span class="p">;</span>
+    <span class="nl">border-right</span><span class="p">:</span> <span class="m">50px</span> <span class="nb">solid</span> <span class="nb">transparent</span><span class="p">;</span>
+    <span class="nl">border-bottom</span><span class="p">:</span> <span class="m">30px</span> <span class="nb">solid</span> <span class="m">#4fb1ba</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.hexagon</span><span class="nd">:after</span> <span class="p">{</span>
+    <span class="nl">content</span><span class="p">:</span> <span class="s1">""</span><span class="p">;</span>
+    <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+    <span class="nl">top</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+    <span class="nl">left</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">border-left</span><span class="p">:</span> <span class="m">50px</span> <span class="nb">solid</span> <span class="nb">transparent</span><span class="p">;</span>
+    <span class="nl">border-right</span><span class="p">:</span> <span class="m">50px</span> <span class="nb">solid</span> <span class="nb">transparent</span><span class="p">;</span>
+    <span class="nl">border-top</span><span class="p">:</span> <span class="m">30px</span> <span class="nb">solid</span> <span class="m">#4fb1ba</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>5、五角星</p>
+
+<p>五角星由三个三角形组合而来</p>
+
+<div class="star-five-content" style="clear: both; height: 210px;">
+  <div class="star-five-combination-after" style="float: left; margin-left: 50px;">
+    <div class="star-five" style="position: relative; width: 0; height: 0; margin: 0 80px; border-bottom: 68px solid red; border-left: 23px solid transparent; border-right: 23px solid transparent;">
+      <p class="star-five-before" style="position: absolute; top: 71px; left: -165px; width: 0; height: 0; border-right: 100px solid transparent; border-bottom: 70px solid red; border-left: 100px solid transparent; transform: rotate(35deg);"></p>
+      <p class="star-five-after" style="position: absolute; top: 71px; left: -30px; width: 0; height: 0; border-right: 100px solid transparent; border-bottom: 70px solid red; border-left: 100px solid transparent; transform: rotate(-35deg);"></p>
+    </div>
+  </div>
+  <div class="star-five-combination-before" style="float: left; margin-left: 200px;">
+    <div class="star-five" style="position: relative; width: 0; height: 0; margin: 0 80px; border-bottom: 68px solid red; border-left: 23px solid transparent; border-right: 23px solid transparent;">
+      <p class="star-five-before" style="position: absolute; top: 61px; left: -97px; width: 0; height: 0; border-right: 100px solid transparent; border-bottom: 70px solid red; border-left: 100px solid transparent; transform: rotate(35deg);"></p>
+      <p class="star-five-after" style="position: absolute; top: 61px; left: -103px; width: 0; height: 0; border-right: 100px solid transparent; border-bottom: 70px solid red; border-left: 100px solid transparent; transform: rotate(-35deg);"></p>
+    </div>
+  </div>
+</div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.star-five</span> <span class="p">{</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">relative</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="m">80px</span><span class="p">;</span>
+  <span class="nl">border-bottom</span><span class="p">:</span> <span class="m">68px</span> <span class="nb">solid</span> <span class="no">red</span><span class="p">;</span>
+  <span class="nl">border-left</span><span class="p">:</span> <span class="m">23px</span> <span class="nb">solid</span> <span class="nb">transparent</span><span class="p">;</span>
+  <span class="nl">border-right</span><span class="p">:</span> <span class="m">23px</span> <span class="nb">solid</span> <span class="nb">transparent</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.star-five</span><span class="nd">:before</span> <span class="p">{</span>
+  <span class="nl">content</span><span class="p">:</span> <span class="s1">""</span><span class="p">;</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+  <span class="nl">top</span><span class="p">:</span> <span class="m">61px</span><span class="p">;</span>
+  <span class="nl">left</span><span class="p">:</span> <span class="m">-97px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">border-right</span><span class="p">:</span> <span class="m">100px</span> <span class="nb">solid</span> <span class="nb">transparent</span><span class="p">;</span>
+  <span class="nl">border-bottom</span><span class="p">:</span> <span class="m">70px</span> <span class="nb">solid</span> <span class="no">red</span><span class="p">;</span>
+  <span class="nl">border-left</span><span class="p">:</span> <span class="m">100px</span> <span class="nb">solid</span> <span class="nb">transparent</span><span class="p">;</span>
+  <span class="nl">transform</span><span class="p">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">35deg</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nc">.star-five</span><span class="nd">:after</span> <span class="p">{</span>
+  <span class="nl">content</span><span class="p">:</span> <span class="s1">""</span><span class="p">;</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+  <span class="nl">top</span><span class="p">:</span> <span class="m">61px</span><span class="p">;</span>
+  <span class="nl">left</span><span class="p">:</span> <span class="m">-103px</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">border-right</span><span class="p">:</span> <span class="m">100px</span> <span class="nb">solid</span> <span class="nb">transparent</span><span class="p">;</span>
+  <span class="nl">border-bottom</span><span class="p">:</span> <span class="m">70px</span> <span class="nb">solid</span> <span class="no">red</span><span class="p">;</span>
+  <span class="nl">border-left</span><span class="p">:</span> <span class="m">100px</span> <span class="nb">solid</span> <span class="nb">transparent</span><span class="p">;</span>
+  <span class="nl">transform</span><span class="p">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">-35deg</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>6、六角星</p>
+
+<p>六角星由两个三角形组合而来</p>
+
+<div class="star-six-content" style="clear: both; height: 140px;">
+  <div class="star-six-combination-after" style="float: left;">
+    <div class="star-six" style="position: relative; width: 0; height: 0; border-right: 50px solid transparent; border-bottom: 90px solid #fcc200; border-left: 50px solid transparent;">
+      <p class="star-six-before" style="position: absolute; top: 30px; left: 30px; width: 0; height: 0; border-right: 50px solid transparent; border-bottom: 90px solid #fcc200; border-left: 50px solid transparent; transform: rotate(180deg);"></p>
+    </div>
+  </div>
+  <div class="star-six-combination-before" style="float: left; margin-left: 150px;">
+    <div class="star-six" style="position: relative; width: 0; height: 0; border-right: 50px solid transparent; border-bottom: 90px solid #fcc200; border-left: 50px solid transparent;">
+      <p class="star-six-before" style="position: absolute; top: 30px; left: -50px; width: 0; height: 0; border-right: 50px solid transparent; border-bottom: 90px solid #fcc200; border-left: 50px solid transparent; transform: rotate(180deg);"></p>
+    </div>
+  </div>
+</div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.star-six</span> <span class="p">{</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">relative</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">border-right</span><span class="p">:</span> <span class="m">50px</span> <span class="nb">solid</span> <span class="nb">transparent</span><span class="p">;</span>
+  <span class="nl">border-bottom</span><span class="p">:</span> <span class="m">90px</span> <span class="nb">solid</span> <span class="m">#fcc200</span><span class="p">;</span>
+  <span class="nl">border-left</span><span class="p">:</span> <span class="m">50px</span> <span class="nb">solid</span> <span class="nb">transparent</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.star-six</span><span class="nd">:before</span> <span class="p">{</span>
+  <span class="nl">content</span><span class="p">:</span> <span class="s1">""</span><span class="p">;</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+  <span class="nl">top</span><span class="p">:</span> <span class="m">30px</span><span class="p">;</span>
+  <span class="nl">left</span><span class="p">:</span> <span class="m">-50px</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">border-right</span><span class="p">:</span> <span class="m">50px</span> <span class="nb">solid</span> <span class="nb">transparent</span><span class="p">;</span>
+  <span class="nl">border-bottom</span><span class="p">:</span> <span class="m">90px</span> <span class="nb">solid</span> <span class="m">#fcc200</span><span class="p">;</span>
+  <span class="nl">border-left</span><span class="p">:</span> <span class="m">50px</span> <span class="nb">solid</span> <span class="nb">transparent</span><span class="p">;</span>
+  <span class="nl">transform</span><span class="p">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">180deg</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>7、无限符图形(Infinity)</p>
+
+<p>无限符图形由两个正方形改变边框radius组合而来</p>
+
+<div class="infinity-content" style="clear: both; height: 100px;">
+  <div class="infinity-combination-after" style="float: left;">
+    <div class="infinity" style="position: relative;">
+      <p class="infinity-before" style="position: absolute; top: 0; left: 0; width: 60px; height: 60px; border: 10px solid #4fb1ba; border-radius: 50px 50px 0 50px; transform: rotate(-45deg); box-sizing: content-box;"></p>
+      <p class="infinity-after" style="position: absolute; top: 0; left: 125px; width: 60px; height: 60px; border: 10px solid #4fb1ba; border-radius: 50px 50px 50px 0; transform: rotate(45deg); box-sizing: content-box;"></p>
+    </div>
+  </div>
+  <div class="infinity-combination-before" style="float: left; margin-left: 300px;">
+    <div class="infinity" style="position: relative;">
+      <p class="infinity-before" style="position: absolute; top: 0; left: 0; width: 60px; height: 60px; border: 10px solid #4fb1ba; border-radius: 50px 50px 0 50px; transform: rotate(-45deg); box-sizing: content-box;"></p>
+      <p class="infinity-after" style="position: absolute; top: 0; left: 98px; width: 60px; height: 60px; border: 10px solid #4fb1ba; border-radius: 50px 50px 50px 0; transform: rotate(45deg); box-sizing: content-box;"></p>
+    </div>
+  </div>
+</div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.infinity</span><span class="nd">:before</span><span class="o">,</span>
+<span class="nc">.infinity</span><span class="nd">:after</span> <span class="p">{</span>
+  <span class="nl">content</span><span class="p">:</span> <span class="s1">""</span><span class="p">;</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+  <span class="nl">top</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">left</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">60px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">60px</span><span class="p">;</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="m">10px</span> <span class="nb">solid</span> <span class="m">#4fb1ba</span><span class="p">;</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">50px</span> <span class="m">50px</span> <span class="m">0</span> <span class="m">50px</span><span class="p">;</span>
+  <span class="nl">transform</span><span class="p">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">-45deg</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nc">.infinity</span><span class="nd">:after</span> <span class="p">{</span>
+  <span class="nl">left</span><span class="p">:</span> <span class="m">98px</span><span class="p">;</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">50px</span> <span class="m">50px</span> <span class="m">50px</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">transform</span><span class="p">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">45deg</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>8、鸡蛋</p>
+
+<p>鸡蛋由一个矩形改变radius而来</p>
+
+<div class="egg-content" style="clear: both; height: 200px;">
+  <div class="egg-combination-before">
+    <div class="egg" style="width: 126px; height: 180px; background-color: #fbcc7d; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; box-sizing: content-box;"></div>
+  </div>
+</div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.egg</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">126px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">180px</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="m">#fbcc7d</span><span class="p">;</span>
+  <span class="c">/* 前四个值表示圆角的水平半径，后四个值表示圆角的垂直半径 */</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">50%</span> <span class="m">50%</span> <span class="m">50%</span> <span class="m">50%</span> <span class="p">/</span> <span class="m">60%</span> <span class="m">60%</span> <span class="m">40%</span> <span class="m">40%</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>9、月亮</p>
+
+<p>月亮由一个圆增加shadow而来</p>
+
+<div class="moon-content" style="clear: both; height: 140px;">
+  <div class="moon-combination-before">
+    <div class="moon" style="width: 100px; height: 100px; border-radius: 50%; box-shadow: 15px 15px 0 0 #ffeb5d; box-sizing: content-box;"></div>
+  </div>
+</div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.moon</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+  <span class="nl">box-shadow</span><span class="p">:</span> <span class="m">15px</span> <span class="m">15px</span> <span class="m">0</span> <span class="m">0</span> <span class="m">#ffeb5d</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>10、聊天框</p>
+
+<p>聊天框由一个矩形和三角形组合而来</p>
+
+<div class="talkbubble-content" style="clear: both; height: 100px;">
+  <div class="talkbubble-combination-after" style="float: left;">
+    <div class="talkbubble" style="position: relative; width: 120px; height: 80px; background: #4fb1ba; border-radius: 10px;">
+      <p class="talkbubble-before" style="position: absolute; top: 26px; left: 130px; width: 0; height: 0; border-top: 13px solid transparent; border-left: 26px solid #4fb1ba; border-bottom: 13px solid transparent;"></p>
+    </div>
+  </div>
+  <div class="talkbubble-combination-before" style="float: left; margin-left: 150px;">
+    <div class="talkbubble" style="position: relative; width: 120px; height: 80px; background: #4fb1ba; border-radius: 10px;">
+      <p class="talkbubble-before" style="position: absolute; top: 26px; left: 120px; width: 0; height: 0; border-top: 13px solid transparent; border-left: 26px solid #4fb1ba; border-bottom: 13px solid transparent;"></p>
+    </div>
+  </div>
+</div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.talkbubble</span> <span class="p">{</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">relative</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">120px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">80px</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="m">#4fb1ba</span><span class="p">;</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.talkbubble</span><span class="nd">:before</span> <span class="p">{</span>
+  <span class="nl">content</span><span class="p">:</span> <span class="s1">""</span><span class="p">;</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+  <span class="nl">top</span><span class="p">:</span> <span class="m">26px</span><span class="p">;</span>
+  <span class="nl">left</span><span class="p">:</span> <span class="m">120px</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">border-top</span><span class="p">:</span> <span class="m">13px</span> <span class="nb">solid</span> <span class="nb">transparent</span><span class="p">;</span>
+  <span class="nl">border-left</span><span class="p">:</span> <span class="m">26px</span> <span class="nb">solid</span> <span class="m">#4fb1ba</span><span class="p">;</span>
+  <span class="nl">border-bottom</span><span class="p">:</span> <span class="m">13px</span> <span class="nb">solid</span> <span class="nb">transparent</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>11、阴阳八卦</p>
+
+<p>阴阳八卦由三个圆组合而来</p>
+
+<div class="bagua-content" style="clear: both; height: 120px;">
+  <div class="bagua-combination-after" style="float: left; margin-left: 50px;">
+    <div class="bagua" style="position: relative; width: 96px; height: 48px; border-width: 2px 2px 50px 2px; border-style: solid; border-color: #000; border-radius: 50%; background: #ddd; box-sizing: content-box;">
+      <p class="bagua-before" style="position: absolute; top: 50%; left: -60px; width: 12px; height: 12px; border: 18px solid #000; border-radius: 50%; background: #ddd; box-sizing: content-box;"></p>
+      <p class="bagua-after" style="position: absolute; top: 50%; left: 110px; width: 12px; height: 12px; border: 18px solid #ddd; border-radius: 50%; background: #000; box-sizing: content-box;"></p>
+    </div>
+  </div>
+  <div class="bagua-combination-before" style="float: left; margin-left: 200px;">
+    <div class="bagua" style="position: relative; width: 96px; height: 48px; border-width: 2px 2px 50px 2px; border-style: solid; border-color: #000; border-radius: 50%; background: #fff; box-sizing: content-box;">
+      <p class="bagua-before" style="position: absolute; top: 50%; left: 0; width: 12px; height: 12px; border: 18px solid #000; border-radius: 50%; background: #fff; box-sizing: content-box;"></p>
+      <p class="bagua-after" style="position: absolute; top: 50%; left: 50%; width: 12px; height: 12px; border: 18px solid #fff; border-radius: 50%; background: #000; box-sizing: content-box;"></p>
+    </div>
+  </div>
+</div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.bagua</span> <span class="p">{</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">relative</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">96px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">48px</span><span class="p">;</span>
+  <span class="nl">border-width</span><span class="p">:</span> <span class="m">2px</span> <span class="m">2px</span> <span class="m">50px</span> <span class="m">2px</span><span class="p">;</span>
+  <span class="nl">border-style</span><span class="p">:</span> <span class="nb">solid</span><span class="p">;</span>
+  <span class="nl">border-color</span><span class="p">:</span> <span class="m">#000</span><span class="p">;</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="m">#fff</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.bagua</span><span class="nd">:before</span> <span class="p">{</span>
+  <span class="nl">content</span><span class="p">:</span> <span class="s1">""</span><span class="p">;</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+  <span class="nl">top</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+  <span class="nl">left</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">12px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">12px</span><span class="p">;</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="m">18px</span> <span class="nb">solid</span> <span class="m">#000</span><span class="p">;</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="m">#fff</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.bagua</span><span class="nd">:after</span> <span class="p">{</span>
+  <span class="nl">content</span><span class="p">:</span> <span class="s1">""</span><span class="p">;</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+  <span class="nl">top</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+  <span class="nl">left</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">12px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">12px</span><span class="p">;</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="m">18px</span> <span class="nb">solid</span> <span class="m">#fff</span><span class="p">;</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="m">#000</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>12、徽章丝带</p>
+
+<p>徽章丝带由一个圆和两个三角形组合而来</p>
+
+<div class="badge-ribbon-content" style="clear: both; height: 190px;">
+  <div class="badge-ribbon-combination-after" style="float: left;">
+    <div class="badge-ribbon" style="position: relative; width: 100px; height: 100px; margin-left: 20px; border-radius: 50px; background: red;">
+      <p class="badge-ribbon-before" style="position: absolute; top: 105px; left: -50px; width: 0; height: 0; border-bottom: 70px solid red; border-left: 40px solid transparent; border-right: 40px solid transparent; transform: rotate(-140deg);"></p>
+      <p class="badge-ribbon-before" style="position: absolute; top: 105px; left: auto; right: -50px; width: 0; height: 0; border-bottom: 70px solid red; border-left: 40px solid transparent; border-right: 40px solid transparent; transform: rotate(140deg);"></p>
+    </div>
+  </div>
+  <div class="badge-ribbon-combination-before" style="float: left; margin-left: 150px;">
+    <div class="badge-ribbon" style="position: relative; width: 100px; height: 100px; border-radius: 50px; background: red;">
+      <p class="badge-ribbon-before" style="position: absolute; top: 80px; left: -10px; width: 0; height: 0; border-bottom: 70px solid red; border-left: 40px solid transparent; border-right: 40px solid transparent; transform: rotate(-140deg);"></p>
+      <p class="badge-ribbon-before" style="position: absolute; top: 80px; left: auto; right: -10px; width: 0; height: 0; border-bottom: 70px solid red; border-left: 40px solid transparent; border-right: 40px solid transparent; transform: rotate(140deg);"></p>
+    </div>
+  </div>
+</div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.badge-ribbon</span> <span class="p">{</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">relative</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.badge-ribbon</span><span class="nd">:before</span><span class="o">,</span>
+<span class="nc">.badge-ribbon</span><span class="nd">:after</span> <span class="p">{</span>
+  <span class="nl">content</span><span class="p">:</span> <span class="s1">""</span><span class="p">;</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+  <span class="nl">top</span><span class="p">:</span> <span class="m">80px</span><span class="p">;</span>
+  <span class="nl">left</span><span class="p">:</span> <span class="m">-10px</span><span class="p">;</span>
+  <span class="nl">border-bottom</span><span class="p">:</span> <span class="m">70px</span> <span class="nb">solid</span> <span class="no">red</span><span class="p">;</span>
+  <span class="nl">border-left</span><span class="p">:</span> <span class="m">40px</span> <span class="nb">solid</span> <span class="nb">transparent</span><span class="p">;</span>
+  <span class="nl">border-right</span><span class="p">:</span> <span class="m">40px</span> <span class="nb">solid</span> <span class="nb">transparent</span><span class="p">;</span>
+  <span class="nl">transform</span><span class="p">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">-140deg</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nc">.badge-ribbon</span><span class="nd">:after</span> <span class="p">{</span>
+  <span class="nl">left</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+  <span class="nl">right</span><span class="p">:</span> <span class="m">-10px</span><span class="p">;</span>
+  <span class="nl">transform</span><span class="p">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">140deg</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>13、放大镜</p>
+
+<p>放大镜由一个圆和一个矩形组合而来</p>
+
+<div class="magnifying-glass-content" style="clear: both; height: 90px;">
+  <div class="magnifying-glass-combination-after" style="float: left;">
+    <div class="magnifying-glass" style="position: relative; width: 40px; height: 40px; border: 10px solid #4fb1ba; border-radius: 40px; box-sizing: content-box;">
+      <p class="magnifying-glass-before" style="position: absolute; top: 20px; left: 60px; width: 35px; height: 10px; border-width: 0; background: #4fb1ba; transform: rotate(45deg);"></p>
+    </div>
+  </div>
+  <div class="magnifying-glass-combination-before" style="float: left; margin-left: 150px;">
+    <div class="magnifying-glass" style="position: relative; width: 40px; height: 40px; border: 10px solid #4fb1ba; border-radius: 40px; box-sizing: content-box;">
+      <p class="magnifying-glass-before" style="position: absolute; top: 40px; left: 30px; width: 35px; height: 10px; background: #4fb1ba; transform: rotate(45deg);"></p>
+    </div>
+  </div>
+</div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.magnifying-glass</span> <span class="p">{</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">relative</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">40px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">40px</span><span class="p">;</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="m">10px</span> <span class="nb">solid</span> <span class="m">#4fb1ba</span><span class="p">;</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">40px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.magnifying-glass</span><span class="nd">::before</span> <span class="p">{</span>
+  <span class="nl">content</span><span class="p">:</span> <span class="s1">""</span><span class="p">;</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+  <span class="nl">top</span><span class="p">:</span> <span class="m">40px</span><span class="p">;</span>
+  <span class="nl">left</span><span class="p">:</span> <span class="m">30px</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">35px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="m">#4fb1ba</span><span class="p">;</span>
+  <span class="nl">transform</span><span class="p">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">45deg</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>14、圆柱体</p>
+
+<p>圆柱体由二个椭圆和一个圆角矩形合而来</p>
+
+<div class="cylinder-content" style="clear: both; height: 210px; overflow: hidden;">
+  <div class="cylinder-after" style="float: left;">
+    <div class="cylinder" style="position: relative; transform: rotateX(110deg); margin-top: 40px;">
+      <!--下面 -->
+      <div class="ellipse-down" style="width: 100px; height: 100px; border-radius: 50px; background: deepskyblue; transform: translateY(-40px);"></div>
+      <div class="rectangle" style="position: absolute; top: 0; left: 0; width: 100px; height: 450px; border-radius: 50px; background: deepskyblue; opacity: 0.6;"></div>
+      <!--上面 -->
+      <div class="ellipse-top" style="width: 100px; height: 100px; border-radius: 50px; background: deepskyblue; transform: translateY(290px);"></div>
+    </div>
+  </div> 
+  <div class="pyramid-before" style="float: left; margin-left: 150px;">
+    <div class="cylinder" style="position: relative; transform: rotateX(110deg); margin-top: 40px;">
+      <!--下面 -->
+      <div class="ellipse-down" style="width: 100px; height: 100px; border-radius: 50px; background: deepskyblue;"></div>
+      <div class="rectangle" style="position: absolute; top: 0; left: 0; width: 100px; height: 450px; border-radius: 50px; background: deepskyblue; opacity: 0.6;"></div>
+      <!--上面 -->
+      <div class="ellipse-up" style="width: 100px; height: 100px; border-radius: 50px; background: deepskyblue; transform: translateY(250px);"></div>
+    </div>
+  </div>
+</div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.cylinder</span> <span class="p">{</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">relative</span><span class="p">;</span>
+  <span class="nl">transform</span><span class="p">:</span> <span class="n">rotateX</span><span class="p">(</span><span class="m">110deg</span><span class="p">);</span>
+  <span class="nl">margin-top</span><span class="p">:</span> <span class="m">40px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.ellipse-top</span><span class="o">,</span>
+<span class="nc">.ellipse-down</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="no">deepskyblue</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.rectangle</span> <span class="p">{</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+  <span class="nl">top</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">left</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">450px</span><span class="p">;</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="no">deepskyblue</span><span class="p">;</span>
+  <span class="nl">opacity</span><span class="p">:</span> <span class="m">0.6</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.ellipse-up</span> <span class="p">{</span>
+  <span class="nl">transform</span><span class="p">:</span> <span class="n">translateY</span><span class="p">(</span><span class="m">250px</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>15、四棱锥</p>
+
+<p>四棱锥由一个矩形和四个三角形组合而来</p>
+
+<div class="pyramid-content" style="clear: both; height: 130px;">
+  <div class="pyramid-after" style="float: left;">
+    <div class="pyramid" style="width: 100px; width: 100px; margin-left: 20px; transform-style: preserve-3d; transform: rotateX(-10deg) rotateY(-30deg);">
+      <!--前面 -->
+      <div class="front" style="position: absolute; top: -60px; left: 0; width: 0; height: 0; border: 50px solid transparent; border-bottom-width: 100px; opacity: 0.8; transform: translateZ(60px) rotateX(30deg); border-bottom-color: #ffff00; transform-origin: 0 100%;"></div>
+      <!--后面 -->
+      <div class="back" style="position: absolute; top: -60px; left: 0; width: 0; height: 0; border: 50px solid transparent; border-bottom-width: 100px; opacity: 0.8; transform: translateZ(-60px) rotateX(-30deg); border-bottom-color: #00e600; transform-origin: 0 100%;"></div>
+      <!--左面 -->
+      <div class="left" style="position: absolute; top: -60px; left: 0; width: 0; height: 0; border: 50px solid transparent; border-bottom-width: 100px; opacity: 0.8; transform: translateX(-60px) rotateZ(30deg) rotateY(90deg); border-bottom-color: #0001cf; transform-origin: 50% 100%;"></div>
+      <!--右面 -->
+      <div class="right" style="position: absolute; top: -60px; left: 0; width: 0; height: 0; border: 50px solid transparent; border-bottom-width: 100px; opacity: 0.8; transform: translateX(60px) rotateZ(-30deg) rotateY(90deg); border-bottom-color: #fe0000; transform-origin: 50% 100%;"></div>
+      <!--下面 -->
+      <div class="bottom" style="position: absolute; top: 0; left: 0; width: 0; height: 0; border: 50px solid transparent; border-bottom-width: 100px; opacity: 0.8; width: 100px; height: 100px; border: 0; transform: translateX(-50px) rotateZ(90deg) rotateY(90deg); background: #e65c01; transform-origin: 50% 100%;"></div>
+    </div>
+  </div> 
+  <div class="pyramid-before" style="float: left; margin-left: 250px;">
+    <div class="pyramid" style="width: 100px; width: 100px; margin-left: 20px; transform-style: preserve-3d; transform: rotateX(-10deg) rotateY(-30deg);">
+      <!--前面 -->
+      <div class="front" style="position: absolute; top: -60px; left: 0; width: 0; height: 0; border: 50px solid transparent; border-bottom-width: 100px; opacity: 0.8; transform: translateZ(50px) rotateX(30deg); border-bottom-color: #ffff00; transform-origin: 0 100%;"></div>
+      <!--后面 -->
+      <div class="back" style="position: absolute; top: -60px; left: 0; width: 0; height: 0; border: 50px solid transparent; border-bottom-width: 100px; opacity: 0.8; transform: translateZ(-50px) rotateX(-30deg); border-bottom-color: #00e600; transform-origin: 0 100%;"></div>
+      <!--左面 -->
+      <div class="left" style="position: absolute; top: -60px; left: 0; width: 0; height: 0; border: 50px solid transparent; border-bottom-width: 100px; opacity: 0.8; transform: translateX(-50px) rotateZ(30deg) rotateY(90deg); border-bottom-color: #0001cf; transform-origin: 50% 100%;"></div>
+      <!--右面 -->
+      <div class="right" style="position: absolute; top: -60px; left: 0; width: 0; height: 0; border: 50px solid transparent; border-bottom-width: 100px; opacity: 0.8; transform: translateX(50px) rotateZ(-30deg) rotateY(90deg); border-bottom-color: #fe0000; transform-origin: 50% 100%;"></div>
+      <!--下面 -->
+      <div class="bottom" style="position: absolute; top: -10px; left: 0; width: 0; height: 0; border: 50px solid transparent; border-bottom-width: 100px; opacity: 0.8; width: 100px; height: 100px; border: 0; transform: translateX(-50px) rotateZ(90deg) rotateY(90deg); background: #e65c01; transform-origin: 50% 100%;"></div>
+    </div>
+  </div>
+</div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.pyramid</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">margin-left</span><span class="p">:</span> <span class="m">40px</span><span class="p">;</span>
+  <span class="nl">transform-style</span><span class="p">:</span> <span class="n">preserve-3d</span><span class="p">;</span>
+  <span class="nl">transform</span><span class="p">:</span> <span class="n">rotateX</span><span class="p">(</span><span class="m">-10deg</span><span class="p">)</span> <span class="n">rotateY</span><span class="p">(</span><span class="m">-30deg</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nc">.pyramid</span> <span class="nt">div</span> <span class="p">{</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+  <span class="nl">top</span><span class="p">:</span> <span class="m">-50px</span><span class="p">;</span>
+  <span class="nl">left</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="m">50px</span> <span class="nb">solid</span> <span class="nb">transparent</span><span class="p">;</span>
+  <span class="nl">border-bottom-width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">opacity</span><span class="p">:</span> <span class="m">0.8</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.pyramid</span> <span class="nc">.front</span> <span class="p">{</span>
+  <span class="nl">transform</span><span class="p">:</span> <span class="n">translateZ</span><span class="p">(</span><span class="m">50px</span><span class="p">)</span> <span class="n">rotateX</span><span class="p">(</span><span class="m">30deg</span><span class="p">);</span>
+  <span class="nl">border-bottom-color</span><span class="p">:</span> <span class="m">#ffff00</span><span class="p">;</span>
+  <span class="nl">transform-origin</span><span class="p">:</span> <span class="m">0</span> <span class="m">100%</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.pyramid</span> <span class="nc">.back</span> <span class="p">{</span>
+  <span class="nl">transform</span><span class="p">:</span> <span class="n">translateZ</span><span class="p">(</span><span class="m">-50px</span><span class="p">)</span> <span class="n">rotateX</span><span class="p">(</span><span class="m">-30deg</span><span class="p">);</span>
+  <span class="nl">border-bottom-color</span><span class="p">:</span> <span class="m">#00e600</span><span class="p">;</span>
+  <span class="nl">transform-origin</span><span class="p">:</span> <span class="m">0</span> <span class="m">100%</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.pyramid</span> <span class="nc">.left</span> <span class="p">{</span>
+  <span class="nl">transform</span><span class="p">:</span> <span class="n">translateX</span><span class="p">(</span><span class="m">-50px</span><span class="p">)</span> <span class="n">rotateZ</span><span class="p">(</span><span class="m">30deg</span><span class="p">)</span> <span class="n">rotateY</span><span class="p">(</span><span class="m">90deg</span><span class="p">);</span>
+  <span class="nl">border-bottom-color</span><span class="p">:</span> <span class="m">#0001cf</span><span class="p">;</span>
+  <span class="nl">transform-origin</span><span class="p">:</span> <span class="m">50%</span> <span class="m">100%</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.pyramid</span> <span class="nc">.right</span> <span class="p">{</span>
+  <span class="nl">transform</span><span class="p">:</span> <span class="n">translateX</span><span class="p">(</span><span class="m">50px</span><span class="p">)</span> <span class="n">rotateZ</span><span class="p">(</span><span class="m">-30deg</span><span class="p">)</span> <span class="n">rotateY</span><span class="p">(</span><span class="m">90deg</span><span class="p">);</span>
+  <span class="nl">border-bottom-color</span><span class="p">:</span> <span class="m">#fe0000</span><span class="p">;</span>
+  <span class="nl">transform-origin</span><span class="p">:</span> <span class="m">50%</span> <span class="m">100%</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.pyramid</span> <span class="nc">.bottom</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">top</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">transform</span><span class="p">:</span> <span class="n">translateX</span><span class="p">(</span><span class="m">-50px</span><span class="p">)</span> <span class="n">rotateZ</span><span class="p">(</span><span class="m">90deg</span><span class="p">)</span> <span class="n">rotateY</span><span class="p">(</span><span class="m">90deg</span><span class="p">);</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="m">#e65c01</span><span class="p">;</span>
+  <span class="nl">transform-origin</span><span class="p">:</span> <span class="m">50%</span> <span class="m">100%</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>16、正方体</p>
+
+<p>正方体由六个正方形组合而来</p>
+
+<div class="cubo-content" style="clear: both; height: 180px;">
+  <div class="cubo-after" style="float: left;">
+    <div class="cubo" style="width: 100px; height: 100px; margin: 30px 0 0 20px; transform-style: preserve-3d; transform: rotateX(-20deg) rotateY(-30deg);">
+      <!--前面 -->
+      <div class="front" style="position: absolute; width: 100px; height: 100px; opacity: 0.8; transform: translateZ(60px); background: #ffff00;"></div>
+      <!--后面 -->
+      <div class="back" style="position: absolute; width: 100px; height: 100px; opacity: 0.8; transform: translateZ(-60px); background: #e6e6e6;"></div>
+      <!--左面 -->
+      <div class="left" style="position: absolute; width: 100px; height: 100px; opacity: 0.8; transform: rotateX(90deg) rotateY(90deg) translateZ(-60px); background: #0001cf;"></div>
+      <!--右面 -->
+      <div class="right" style="position: absolute; width: 100px; height: 100px; opacity: 0.8; transform: rotateX(90deg) rotateY(90deg) translateZ(60px); background: #00e600;"></div>
+      <!--上面 -->
+      <div class="top" style="position: absolute; width: 100px; height: 100px; opacity: 0.8; transform: rotateX(90deg) translateZ(60px); background: #fe0000;"></div>
+      <!--下面 -->
+      <div class="bottom" style="position: absolute; width: 100px; height: 100px; opacity: 0.8; transform: rotateX(-90deg) translateZ(60px); background: #e65c01;"></div>
+    </div>
+  </div> 
+  <div class="cubo-before" style="float: left; margin-left: 150px;">
+    <div class="cubo" style="width: 100px; height: 100px; margin: 20px 0 0 20px; transform-style: preserve-3d; transform: rotateX(-20deg) rotateY(-30deg);">
+      <!--前面 -->
+      <div class="front" style="position: absolute; width: 100px; height: 100px; opacity: 0.8; transform: translateZ(50px); background: #ffff00;"></div>
+      <!--后面 -->
+      <div class="back" style="position: absolute; width: 100px; height: 100px; opacity: 0.8; transform: translateZ(-50px); background: #e6e6e6;"></div>
+      <!--左面 -->
+      <div class="left" style="position: absolute; width: 100px; height: 100px; opacity: 0.8; transform: rotateX(90deg) rotateY(90deg) translateZ(-50px); background: #0001cf;"></div>
+      <!--右面 -->
+      <div class="right" style="position: absolute; width: 100px; height: 100px; opacity: 0.8; transform: rotateX(90deg) rotateY(90deg) translateZ(50px); background: #00e600;"></div>
+      <!--上面 -->
+      <div class="top" style="position: absolute; width: 100px; height: 100px; opacity: 0.8; transform: rotateX(90deg) translateZ(50px); background: #fe0000;"></div>
+      <!--下面 -->
+      <div class="bottom" style="position: absolute; width: 100px; height: 100px; opacity: 0.8; transform: rotateX(-90deg) translateZ(50px); background: #e65c01;"></div>
+    </div>
+  </div>
+</div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.cubo</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">30px</span><span class="p">;</span>
+  <span class="nl">transform-style</span><span class="p">:</span> <span class="n">preserve-3d</span><span class="p">;</span>
+  <span class="nl">transform</span><span class="p">:</span> <span class="n">rotateX</span><span class="p">(</span><span class="m">-20deg</span><span class="p">)</span> <span class="n">rotateY</span><span class="p">(</span><span class="m">-30deg</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nc">.cubo</span> <span class="nt">div</span> <span class="p">{</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">opacity</span><span class="p">:</span> <span class="m">0.8</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.cubo</span> <span class="nc">.front</span> <span class="p">{</span>
+  <span class="nl">transform</span><span class="p">:</span> <span class="n">translateZ</span><span class="p">(</span><span class="m">50px</span><span class="p">);</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="m">#ffff00</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.cubo</span> <span class="nc">.back</span> <span class="p">{</span>
+  <span class="nl">transform</span><span class="p">:</span> <span class="n">translateZ</span><span class="p">(</span><span class="m">-50px</span><span class="p">);</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="m">#e6e6e6</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.cubo</span> <span class="nc">.left</span> <span class="p">{</span>
+  <span class="nl">transform</span><span class="p">:</span> <span class="n">rotateX</span><span class="p">(</span><span class="m">90deg</span><span class="p">)</span> <span class="n">rotateY</span><span class="p">(</span><span class="m">90deg</span><span class="p">)</span> <span class="n">translateZ</span><span class="p">(</span><span class="m">-50px</span><span class="p">);</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="m">#0001cf</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.cubo</span> <span class="nc">.right</span> <span class="p">{</span>
+  <span class="nl">transform</span><span class="p">:</span> <span class="n">rotateX</span><span class="p">(</span><span class="m">90deg</span><span class="p">)</span> <span class="n">rotateY</span><span class="p">(</span><span class="m">90deg</span><span class="p">)</span> <span class="n">translateZ</span><span class="p">(</span><span class="m">50px</span><span class="p">);</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="m">#00e600</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.cubo</span> <span class="nc">.top</span> <span class="p">{</span>
+  <span class="nl">transform</span><span class="p">:</span> <span class="n">rotateX</span><span class="p">(</span><span class="m">90deg</span><span class="p">)</span> <span class="n">translateZ</span><span class="p">(</span><span class="m">50px</span><span class="p">);</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="m">#fe0000</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.cubo</span> <span class="nc">.bottom</span> <span class="p">{</span>
+  <span class="nl">transform</span><span class="p">:</span> <span class="n">rotateX</span><span class="p">(</span><span class="m">-90deg</span><span class="p">)</span> <span class="n">translateZ</span><span class="p">(</span><span class="m">50px</span><span class="p">);</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="m">#e65c01</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+    
+  
+</article>
+
+
+<hr class="dingbat related" />
+
+
+
+
+  
+    
+
+
+
+
+<aside class="related mb4" role="complementary">
+  <h2 class="hr">Related Posts</h2>
+
+  <ul class="related-posts">
+    
+      
+
+
+<li>
+  <a href="/my_articles/2019-03-09-Vue-Global-Loading-and-Toast/" class="h4 flip-title">
+    <span>Vue自定义全局Toast和Loading</span>
+  </a>
+  <time class="heading faded fine" datetime="2019-03-09T00:00:00+08:00">09 Mar 2019</time>
+</li>
+
+    
+      
+
+
+<li>
+  <a href="/my_articles/2019-03-02-Vue-and-Native-Mutual-Call/" class="h4 flip-title">
+    <span>Vue与原生APP的相互交互</span>
+  </a>
+  <time class="heading faded fine" datetime="2019-03-02T00:00:00+08:00">02 Mar 2019</time>
+</li>
+
+    
+      
+
+
+<li>
+  <a href="/my_articles/2019-02-23-Vue-H5-Alipay/" class="h4 flip-title">
+    <span>Vue的H5页面唤起支付宝支付</span>
+  </a>
+  <time class="heading faded fine" datetime="2019-02-23T00:00:00+08:00">23 Feb 2019</time>
+</li>
+
+    
+  </ul>
+</aside>
+
+
+  
+
+
+  
+
+
+  
+<footer role="contentinfo">
+  <hr/>
+  
+    <p><small class="copyright">Copyright © 2018 Darkerxi
+</small></p>
+  
+  
+  <!-- <p><small>Powered by Jekyll & Hydejack.</small></p> -->
+  <hr class="sr-only"/>
+</footer>
+
+
+</main>
+
+    <hy-drawer
+  class=""
+  align="left"
+  threshold="10"
+  touch-events
+  prevent-default
+>
+  <header id="_sidebar" class="sidebar" role="banner">
+    
+    <div class="sidebar-bg sidebar-overlay" style="background-color:rgb(25,55,71);background-image:url(/assets/img/sidebar-bg.jpg)"></div>
+
+    <div class="sidebar-sticky">
+      <div class="sidebar-about">
+        
+          <a class="no-hover" href="/" tabindex="-1">
+            <img src="/assets/icons/icon.png" class="avatar" alt="darkerxi" re-ignore />
+          </a>
+        
+        <h2 class="h1"><a href="/">darkerxi</a></h2>
+        
+        
+          <p class="">
+            “Und wenn du lange in einen Abgrund blickst, blickt der Abgrund auch in dich hinein”
+
+          </p>
+        
+      </div>
+
+      <nav class="sidebar-nav heading" role="navigation">
+        <span class="sr-only">Navigation:</span>
+<ul>
+  
+  
+  
+  
+    
+      <li>
+        <a
+          id="_navigation"
+          href="/my_articles/"
+          class="sidebar-nav-item active"
+          
+          >
+          Blog
+        </a>
+      </li>
+    
+  
+    
+      <li>
+        <a
+          
+          href="/my_tools/"
+          class="sidebar-nav-item"
+          
+          >
+          Tools
+        </a>
+      </li>
+    
+  
+    
+      <li>
+        <a
+          
+          href="/about/"
+          class="sidebar-nav-item"
+          
+          >
+          About
+        </a>
+      </li>
+    
+  
+</ul>
+
+      </nav>
+
+      
+
+      <div class="sidebar-social">
+        <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/darkerxi" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:darkerxi@163.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+      </div>
+    </div>
+  </header>
+</hy-drawer>
+<hr class="sr-only" hidden />
+
+  
+</hy-push-state>
+
+
+  <!--[if gt IE 9]><!---->
+  <script>window.loadJSDeferred(document.getElementById('_hrefJS').href);</script>
+  
+
+  <!--<![endif]-->
+
+  
+
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      
+        navigator.serviceWorker.register('/sw.js')
+          .then(r => r.update())
+          .catch(() => {});
+      
+    }
+  </script>
+
+
+
+
+
+
+<h2 class="sr-only" hidden>Templates (for web app):</h2>
+
+<template id="_animation-template" hidden>
+  <div class="animation-main fixed-top">
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+<template id="_loading-template" hidden>
+  <div class="loading">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+<template id="_error-template" hidden>
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+<template id="_back-template" hidden>
+  <a id="_back" class="back nav-btn no-hover">
+    <span class="sr-only">Back</span>
+    <span class="icon-arrow-left2"></span>
+  </a>
+</template>
+
+<template id="_permalink-template" hidden>
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="icon-link"></span>
+  </a>
+</template>
+
+
+
+
+</body>
+</html>
